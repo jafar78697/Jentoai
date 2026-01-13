@@ -1,0 +1,8 @@
+{
+  "name": "Jento AI - The Autonomous Workflow Engine",
+  "description": "Enterprise-grade AI agents that execute complex workflows. Scale your business operations with Jento AI.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
