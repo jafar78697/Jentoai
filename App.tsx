@@ -54,9 +54,9 @@ const App: React.FC = () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          name,
-          email,
-          industry,
+          your_name: name,
+          work_email: email,
+          industry_sector: industry,
           timestamp: new Date().toISOString(),
           source: 'Booking Form (Home)'
         }),

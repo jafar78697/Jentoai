@@ -23,7 +23,11 @@ const Contact: React.FC = () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          ...formData,
+          your_name: formData.name,
+          industry_sector: formData.industry,
+          work_email: formData.email,
+          company: formData.company,
+          scope: formData.scope,
           timestamp: new Date().toISOString(),
           source: 'Contact Form'
         }),
