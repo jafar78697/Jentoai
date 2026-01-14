@@ -15,23 +15,23 @@ const About: React.FC = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-16 mb-32 reveal delay-200">
           <div>
-            <h4 className="text-sm font-black text-slate-900 uppercase tracking-widest mb-4">Precision Engineering</h4>
-            <p className="text-slate-500 text-sm leading-relaxed">Every agent is built with custom n8n workflows, ensuring complete transparency and modularity. You aren't buying a black box; you're owning an asset.</p>
+            <h4 className="text-sm font-black text-slate-900 uppercase tracking-widest mb-4">n8n Workflow Mastery</h4>
+            <p className="text-slate-500 text-sm leading-relaxed">Our architects are specialized in the n8n ecosystem, building transparent, visual automation flows that connect your local and cloud tech stack. No vendor lock-in—you own the logic and the assets.</p>
           </div>
           <div>
-            <h4 className="text-sm font-black text-slate-900 uppercase tracking-widest mb-4">High Availability</h4>
-            <p className="text-slate-500 text-sm leading-relaxed">Our infrastructure is designed for 24/7/365 performance. While your team sleeps, Jento Nodes are prospecting, resolving tickets, and processing data.</p>
+            <h4 className="text-sm font-black text-slate-900 uppercase tracking-widest mb-4">Gemini-Powered Intelligence</h4>
+            <p className="text-slate-500 text-sm leading-relaxed">We leverage advanced Google Gemini models to provide agents with high-reasoning capabilities. From complex document parsing to emotional intelligence in customer care, our bots are built to understand.</p>
           </div>
           <div>
-            <h4 className="text-sm font-black text-slate-900 uppercase tracking-widest mb-4">Security First</h4>
-            <p className="text-slate-500 text-sm leading-relaxed">Data privacy is not an afterthought. We deploy siloed enclaves and local LLM options to ensure your proprietary business data stays yours.</p>
+            <h4 className="text-sm font-black text-slate-900 uppercase tracking-widest mb-4">Scalable AI Workforce</h4>
+            <p className="text-slate-500 text-sm leading-relaxed">Whether you are a local agency or a global enterprise, our autonomous nodes scale with you. While your team focuses on high-level strategy, Jento Nodes work 24/7/365 to handle your lead generation and support.</p>
           </div>
         </div>
 
         <div className="reveal delay-300 relative rounded-[3rem] overflow-hidden aspect-[21/9] shadow-2xl">
-          <img 
-            src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=1200" 
-            alt="The Studio" 
+          <img
+            src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=1200"
+            alt="The Studio"
             className="w-full h-full object-cover grayscale"
           />
           <div className="absolute inset-0 bg-blue-600/20 mix-blend-multiply"></div>

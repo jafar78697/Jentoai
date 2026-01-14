@@ -3,59 +3,41 @@ import React from 'react';
 
 const Solutions: React.FC = () => {
   const solutions = [
-    { 
-      title: 'Automated Sales', 
-      industry: 'For Agencies', 
-      desc: 'Agents that find leads, verify their emails, and start conversations automatically across LinkedIn and Email.', 
-      img: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&q=80&w=800' 
+    {
+      title: 'Automated Sales Pipeline',
+      industry: 'For Agencies',
+      desc: 'Autonomous agents that find leads, verify data, and start multi-channel conversations. Saves an average of 35 hours per week on manual prospecting.',
+      img: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&q=80&w=800'
     },
-    { 
-      title: 'Property Concierge', 
-      industry: 'Real Estate', 
-      desc: 'Qualify buyers 24/7, book property viewings via WhatsApp, and manage listing data without human intervention.', 
-      img: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&q=80&w=800' 
+    {
+      title: 'Property Concierge Agent',
+      industry: 'Real Estate',
+      desc: 'Qualify buyers 24/7 and book viewings via WhatsApp API. Reduces lead response time from hours to seconds.',
+      img: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&q=80&w=800'
     },
-    { 
-      title: 'Data Entry Pro', 
-      industry: 'Operations', 
-      desc: 'Stop copying and pasting. Our AI reads invoices, contracts, and emails and fills your internal systems for you.', 
-      img: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=800' 
+    {
+      title: 'Invoice Intelligence Node',
+      industry: 'Finance & Ops',
+      desc: 'AI that extracts data from invoices and fillings systems autonomously. Achieves 99.9% accuracy with zero manual entry.',
+      img: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=800'
     },
-    { 
-      title: 'Churn Sentinel', 
-      industry: 'SaaS', 
-      desc: 'Identify users losing engagement in real-time and trigger automated retention flows before they cancel.', 
-      img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800' 
+    {
+      title: 'RetainBot Churn Sentry',
+      industry: 'SaaS Software',
+      desc: 'Predictive churn analysis that triggers automated retention flows. Increases LTV by capturing disengaged users before they cancel.',
+      img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800'
     },
-    { 
-      title: 'Talent Scout', 
-      industry: 'HR & Recruiting', 
-      desc: 'Autonomous sourcing on LinkedIn and initial screening of candidate resumes to keep your hiring pipeline full.', 
-      img: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&q=80&w=800' 
+    {
+      title: 'RecruiteX Talent Sourcing',
+      industry: 'HR & Recruiting',
+      desc: 'Sourcing agents that scan LinkedIn and screen resumes based on technical benchmarks. Fills pipelines 4x faster than human recruiters.',
+      img: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&q=80&w=800'
     },
-    { 
-      title: 'Predictive CX', 
-      industry: 'Customer Care', 
-      desc: 'Smart systems that resolve complex customer tickets and fix issues before they even have to ask for help.', 
-      img: 'https://images.unsplash.com/photo-1534536281715-e28d76689b4d?auto=format&fit=crop&q=80&w=800' 
-    },
-    { 
-      title: 'Compliance Guard', 
-      industry: 'Legal & Finance', 
-      desc: 'Automatically audit incoming documents against regulatory checklists using high-reasoning Gemini models.', 
-      img: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&q=80&w=800' 
-    },
-    { 
-      title: 'Supply Chain Sync', 
-      industry: 'Logistics', 
-      desc: 'Real-time tracking of inventory levels and automated vendor re-ordering based on predictive demand.', 
-      img: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=800' 
-    },
-    { 
-      title: 'Ad-Intel Agent', 
-      industry: 'Marketing', 
-      desc: 'Autonomous ad-spend monitoring and performance reporting for PPC agencies across multiple client accounts.', 
-      img: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800' 
+    {
+      title: 'Technical Support Aura',
+      industry: 'Customer Success',
+      desc: 'Human-like reasoning for complex support tickets using vector stores. Deflects 70%+ of tickets from your human support team.',
+      img: 'https://images.unsplash.com/photo-1534536281715-e28d76689b4d?auto=format&fit=crop&q=80&w=800'
     }
   ];
 
@@ -64,24 +46,24 @@ const Solutions: React.FC = () => {
       <div className="max-w-7xl mx-auto px-6">
         <div className="reveal flex flex-col lg:flex-row lg:items-end justify-between mb-24">
           <div className="max-w-2xl">
-            <p className="text-blue-600 text-xs font-black uppercase tracking-[0.3em] mb-4">How we help</p>
-            <h2 className="text-5xl font-black text-slate-900 uppercase tracking-tight leading-none">Real AI <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">For Real Growth.</span></h2>
+            <p className="text-blue-600 text-xs font-black uppercase tracking-[0.3em] mb-4">Real-World AI Problem Solving</p>
+            <h2 className="text-5xl font-black text-slate-900 uppercase tracking-tight leading-none">Solving High-Impact <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Business Bottlenecks.</span></h2>
           </div>
-          <p className="text-slate-500 max-w-md mt-6 lg:mt-0 font-medium leading-relaxed">We focus on high-impact automation—the tasks that consume your team's time but don't require their creative brain.</p>
+          <p className="text-slate-500 max-w-md mt-6 lg:mt-0 font-medium leading-relaxed">We focus on high-impact automation—the critical paths where manual logic slow down your enterprise growth and scalability.</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
           {solutions.map((s, i) => (
             <div key={i} className={`reveal delay-${(i % 3 + 1) * 200} group cursor-default`}>
               <div className="relative h-80 rounded-[2rem] overflow-hidden mb-8 shadow-xl transition-all group-hover:shadow-blue-500/10 bg-slate-100">
-                <img 
-                  src={s.img} 
-                  alt={s.title} 
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" 
+                <img
+                  src={s.img}
+                  alt={s.title}
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
                   loading="lazy"
                   onError={(e) => {
                     const target = e.target as HTMLImageElement;
-                    target.src = "https://images.unsplash.com/photo-1639322537228-f710d846310a?auto=format&fit=crop&q=80&w=800"; // Fallback to a core AI branding image
+                    target.src = "https://images.unsplash.com/photo-1639322537228-f710d846310a?auto=format&fit=crop&q=80&w=800";
                   }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-80"></div>

@@ -7,9 +7,9 @@ const Industries: React.FC = () => {
     <section className="py-32 bg-white min-h-screen">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-24 reveal">
-          <p className="text-blue-600 text-[10px] font-black uppercase tracking-[0.4em] mb-4">Market Verticals</p>
-          <h2 className="text-6xl font-black text-slate-900 uppercase tracking-tighter mb-6 leading-none">Sector <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Expertise.</span></h2>
-          <p className="text-xl text-slate-500 max-w-2xl mx-auto font-medium">Jento Nodes are pre-configured for specific industry logic, ensuring rapid deployment and instant ROI.</p>
+          <p className="text-blue-600 text-[10px] font-black uppercase tracking-[0.4em] mb-4">Vertical Solutions</p>
+          <h2 className="text-6xl font-black text-slate-900 uppercase tracking-tighter mb-6 leading-none">AI Sector <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Specializations.</span></h2>
+          <p className="text-xl text-slate-500 max-w-2xl mx-auto font-medium">Jento Nodes are custom-engineered for specific market verticals, solving the unique pain points of sales, HR, and logistics through intelligent automation.</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

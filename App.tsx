@@ -293,13 +293,17 @@ const App: React.FC = () => {
                 </span>
               </div>
               <p className="text-slate-400 text-sm font-medium leading-relaxed">
-                The engine for autonomous growth. Precision workflow architecture for high-scale teams.
+                The global leader in autonomous business architecture. We specialize in enterprise-grade n8n automation and custom AI agent development for high-scale teams.
               </p>
+              <div className="pt-4">
+                <p className="text-[10px] font-black uppercase tracking-[0.3em] text-blue-500 mb-2">Service Hubs</p>
+                <p className="text-slate-500 text-[10px] font-bold uppercase tracking-widest">Global Operations | Remote-First Architecture</p>
+              </div>
             </div>
 
             {/* Column 2: Platform */}
             <div>
-              <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-blue-500 mb-8">Platform</h4>
+              <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-blue-500 mb-8">Solutions</h4>
               <ul className="space-y-4">
                 {['AI Agents', 'Use Cases', 'Pricing', 'Infrastructure'].map(item => (
                   <li key={item}>
@@ -314,15 +318,15 @@ const App: React.FC = () => {
               </ul>
             </div>
 
-            {/* Column 3: Company */}
+            {/* Column 3: Expertise */}
             <div>
-              <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-blue-500 mb-8">Company</h4>
+              <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-blue-500 mb-8">Expertise</h4>
               <ul className="space-y-4">
-                {['About', 'Industries', 'Contact', 'Strategy Session'].map(item => (
+                {['n8n Workflows', 'Lead Generation', 'AI Consulting', 'Support Bots'].map(item => (
                   <li key={item}>
                     <button
-                      onClick={() => navigateTo(item === 'Strategy Session' ? 'book-call' : item.toLowerCase() as Page)}
-                      className="text-slate-400 hover:text-white text-sm font-bold uppercase tracking-widest transition-colors"
+                      onClick={() => navigateTo('services')}
+                      className="text-slate-400 hover:text-white text-sm font-bold uppercase tracking-widest transition-colors text-left"
                     >
                       {item}
                     </button>
@@ -338,24 +342,24 @@ const App: React.FC = () => {
                 System Protocol: Active
               </h4>
               <p className="text-[9px] font-mono text-slate-500 mb-6 uppercase tracking-wider">
-                Network Signature: JNT-OS-PRO
+                Node Location: Distributed Cloud
               </p>
               <a
                 href="mailto:info@jentoai.com"
-                className="inline-block w-full py-4 bg-blue-600 text-white text-center rounded-xl font-black uppercase tracking-widest text-[10px] hover:bg-white hover:text-blue-600 transition-all"
+                className="inline-block w-full py-4 bg-blue-600 text-white text-center rounded-xl font-black uppercase tracking-widest text-[10px] hover:bg-white hover:text-blue-600 transition-all shadow-xl shadow-blue-500/10"
               >
-                Architect Consultation
+                Start Your Automation
               </a>
             </div>
           </div>
 
           <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-6">
             <p className="text-slate-600 text-[9px] font-black uppercase tracking-[0.4em]">
-              © 2024 JENTO AI SYSTEMS | PRECISION AUTOMATION
+              © 2025 JENTO AI SYSTEMS | ENTERPRISE AI AUTOMATION
             </p>
             <div className="flex items-center space-x-8">
-              <button className="text-slate-600 hover:text-white text-[9px] font-black uppercase tracking-widest transition-colors">Privacy Protocol</button>
-              <button className="text-slate-600 hover:text-white text-[9px] font-black uppercase tracking-widest transition-colors">Terms of Node Use</button>
+              <button className="text-slate-600 hover:text-white text-[9px] font-black uppercase tracking-widest transition-colors">Security Protocol</button>
+              <button className="text-slate-600 hover:text-white text-[9px] font-black uppercase tracking-widest transition-colors">Terms of Service</button>
             </div>
           </div>
         </div>

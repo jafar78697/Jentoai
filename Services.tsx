@@ -7,9 +7,9 @@ const Services: React.FC = () => {
     <section className="py-32 bg-slate-50 min-h-screen">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-24 reveal">
-          <p className="text-blue-600 text-[10px] font-black uppercase tracking-[0.4em] mb-4">Precision Logic</p>
-          <h2 className="text-6xl font-black text-slate-900 uppercase tracking-tighter mb-6 leading-none">Our Architecture <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Services.</span></h2>
-          <p className="text-xl text-slate-500 max-w-2xl mx-auto font-medium">We don't just "use" AI—we build the structural integrity that allows AI to perform mission-critical business functions.</p>
+          <p className="text-blue-600 text-[10px] font-black uppercase tracking-[0.4em] mb-4">Autonomous Business Systems</p>
+          <h2 className="text-6xl font-black text-slate-900 uppercase tracking-tighter mb-6 leading-none">Custom AI & n8n <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Automation Services.</span></h2>
+          <p className="text-xl text-slate-500 max-w-2xl mx-auto font-medium">We specialize in mission-critical AI agent development and workflow architecture that solves real-world operational bottlenecks for scaling businesses.</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
