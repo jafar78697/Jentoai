@@ -45,12 +45,22 @@
   <!-- n8n Chat Embed -->
   <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
   <style>
-    /* Global Overrides for n8n Chat Widget Variables */
+    /* Force styles via CSS Parts and Global Variables */
+    n8n-chat::part(header) {
+      background-color: #2563eb !important;
+    }
+
+    n8n-chat::part(button) {
+      background-color: #2563eb !important;
+      border-radius: 1.5rem !important;
+    }
+
     :root {
+      --chat--header--background: #2563eb !important;
+      --chat--header--color: #ffffff !important;
+      --chat--button--background: #2563eb !important;
+      --chat--message--user--background: #2563eb !important;
       --n8n-chat-primary-color: #2563eb !important;
-      --n8n-chat-button-color: #2563eb !important;
-      --n8n-chat-button-hover-color: #1e40af !important;
-      --n8n-chat-header-background: #2563eb !important;
     }
   </style>
   <script type="module">
@@ -58,10 +68,6 @@
 
     createChat({
       webhookUrl: 'https://n8n.jentoaiautomation.online/webhook/a3b709ac-031d-423c-96a1-55cf1facf012/chat',
-      webhookConfig: {
-        method: 'POST',
-        headers: {}
-      },
       showWelcomeMessage: true,
       initialMessages: [
         'Protocol initialized. Jento AI Core is online.',
@@ -77,10 +83,13 @@
         }
       },
       theme: {
-        primaryColor: '#2563eb',
-        buttonColor: '#2563eb',
-        backgroundColor: '#ffffff',
-        fontFamily: 'Inter, sans-serif'
+        '--chat--header--background': '#2563eb',
+        '--chat--header--color': '#ffffff',
+        '--chat--button--background': '#2563eb',
+        '--chat--message--user--background': '#2563eb',
+        '--chat--message--user--color': '#ffffff',
+        '--chat--message--bot--background': '#f8fafc',
+        '--chat--message--bot--color': '#0f172a',
       }
     });
   </script>
