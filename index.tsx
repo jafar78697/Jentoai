@@ -1,4 +1,3 @@
-
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
@@ -14,3 +13,17 @@ root.render(
     <App />
   </React.StrictMode>
 );
+
+// Hide loading screen after React mounts
+setTimeout(() => {
+  const loading = document.getElementById('loading');
+  if (loading) {
+    loading.style.opacity = '0';
+    loading.style.transition = 'opacity 0.3s ease';
+    setTimeout(() => {
+      if (loading.parentNode) {
+        loading.parentNode.removeChild(loading);
+      }
+    }, 300);
+  }
+}, 100);
