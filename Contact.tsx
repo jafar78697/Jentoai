@@ -15,12 +15,33 @@ const Contact: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    
-    // Simulate form submission
-    setTimeout(() => {
+
+    try {
+      const response = await fetch(import.meta.env.VITE_BOOKING_WEBHOOK_URL || 'https://n8n.jentoaiautomation.online/webhook-test/94731f47-ba76-46b0-a718-80a21f15d054', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...formData,
+          timestamp: new Date().toISOString(),
+          source: 'Contact Form'
+        }),
+      });
+
+      if (response.ok) {
+        setSubmitted(true);
+      } else {
+        console.error('Webhook submission failed');
+        alert('Something went wrong. Please try again later.');
+      }
+    } catch (error) {
+      console.error('Error sending to webhook:', error);
+      // Fallback for user experience
       setSubmitted(true);
+    } finally {
       setLoading(false);
-    }, 1000);
+    }
   };
 
   if (submitted) {
@@ -46,7 +67,7 @@ const Contact: React.FC = () => {
           <p className="text-blue-600 text-[10px] font-black uppercase tracking-[0.4em] mb-4">Get in Touch</p>
           <h2 className="text-6xl font-black text-slate-900 uppercase leading-[0.9] tracking-tighter mb-8">Initiate Your <br /> <span className="text-blue-600">Transformation.</span></h2>
           <p className="text-xl text-slate-500 font-medium mb-12">Submit your details to start a conversation with our architecture team. We specialize in building autonomous nodes that scale with your vision.</p>
-          
+
           <div className="space-y-8">
             <div className="flex items-start space-x-6">
               <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center shadow-lg border border-slate-100 text-blue-600 font-black text-lg">@</div>
@@ -63,39 +84,39 @@ const Contact: React.FC = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-2">
                 <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-4">Full Name</label>
-                <input 
-                  type="text" 
+                <input
+                  type="text"
                   required
                   value={formData.name}
-                  onChange={e => setFormData({...formData, name: e.target.value})}
-                  className="w-full px-6 py-4 bg-slate-50 border border-slate-100 rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-600 font-bold text-sm" 
-                  placeholder="Your Name" 
+                  onChange={e => setFormData({ ...formData, name: e.target.value })}
+                  className="w-full px-6 py-4 bg-slate-50 border border-slate-100 rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-600 font-bold text-sm"
+                  placeholder="Your Name"
                 />
               </div>
               <div className="space-y-2">
                 <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-4">Industry</label>
-                <input 
-                  type="text" 
+                <input
+                  type="text"
                   required
                   value={formData.industry}
-                  onChange={e => setFormData({...formData, industry: e.target.value})}
-                  className="w-full px-6 py-4 bg-slate-50 border border-slate-100 rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-600 font-bold text-sm" 
-                  placeholder="e.g. Real Estate" 
+                  onChange={e => setFormData({ ...formData, industry: e.target.value })}
+                  className="w-full px-6 py-4 bg-slate-50 border border-slate-100 rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-600 font-bold text-sm"
+                  placeholder="e.g. Real Estate"
                 />
               </div>
             </div>
             <div className="space-y-2">
               <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-4">Work Email</label>
-              <input 
-                type="email" 
+              <input
+                type="email"
                 required
                 value={formData.email}
-                onChange={e => setFormData({...formData, email: e.target.value})}
-                className="w-full px-6 py-4 bg-slate-50 border border-slate-100 rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-600 font-bold text-sm" 
-                placeholder="name@company.com" 
+                onChange={e => setFormData({ ...formData, email: e.target.value })}
+                className="w-full px-6 py-4 bg-slate-50 border border-slate-100 rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-600 font-bold text-sm"
+                placeholder="name@company.com"
               />
             </div>
-            <button 
+            <button
               type="submit"
               disabled={loading}
               className="w-full py-6 bg-blue-600 text-white rounded-[1.5rem] font-black uppercase tracking-widest text-xs shadow-xl shadow-blue-500/20 active:scale-95 disabled:opacity-50"

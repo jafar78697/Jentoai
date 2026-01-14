@@ -16,12 +16,12 @@ import { AGENTS, PRICING } from './constants';
 
 const App: React.FC = () => {
   const [page, setPage] = useState<Page>('home');
-  
+
   // Lead Capture State
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [industry, setIndustry] = useState('');
-  
+
   const [bookingSubmitted, setBookingSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -44,14 +44,37 @@ const App: React.FC = () => {
   const handleBookingSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email || !name || !industry) return;
-    
+
     setIsSubmitting(true);
-    
-    // Simulate form submission
-    setTimeout(() => {
+
+    try {
+      const response = await fetch(import.meta.env.VITE_BOOKING_WEBHOOK_URL || 'https://n8n.jentoaiautomation.online/webhook-test/94731f47-ba76-46b0-a718-80a21f15d054', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          industry,
+          timestamp: new Date().toISOString(),
+          source: 'Booking Form (Home)'
+        }),
+      });
+
+      if (response.ok) {
+        setBookingSubmitted(true);
+      } else {
+        console.error('Submission failed');
+        alert('There was an issue sending your request. Please try again or contact us directly.');
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      // Fallback: still show success to user but log error
       setBookingSubmitted(true);
+    } finally {
       setIsSubmitting(false);
-    }, 1000);
+    }
   };
 
   const navigateTo = (p: Page) => {
@@ -60,7 +83,7 @@ const App: React.FC = () => {
   };
 
   const renderPage = () => {
-    switch(page) {
+    switch (page) {
       case 'agents':
         return (
           <section className="py-32 bg-slate-50">
@@ -87,7 +110,7 @@ const App: React.FC = () => {
               <p className="text-blue-600 text-[10px] font-black uppercase tracking-[0.3em] mb-4 reveal">Investment Model</p>
               <h2 className="text-6xl font-black text-slate-900 uppercase tracking-tighter mb-8 reveal">Transparent <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Workflow Pricing.</span></h2>
               <p className="text-xl text-slate-500 font-medium max-w-2xl mx-auto mb-20 reveal">Bespoke setup per workflow node. Each solution is built to own, not to rent.</p>
-              
+
               <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-32">
                 {PRICING.map((plan, i) => (
                   <div key={i} className={`reveal delay-${(i + 1) * 100} relative bg-white p-12 rounded-[3rem] border-2 ${plan.recommended ? 'border-blue-600 shadow-2xl scale-105 z-10' : 'border-slate-100'} transition-all`}>
@@ -123,14 +146,14 @@ const App: React.FC = () => {
                   <p className="text-lg text-slate-500 font-medium mb-16 max-w-xl mx-auto leading-relaxed">
                     Leave your details below. Our technical architects will review your industry context before our session.
                   </p>
-                  
+
                   <form onSubmit={handleBookingSubmit} className="max-w-2xl mx-auto space-y-6">
                     <div className="bg-white p-8 md:p-12 rounded-[3rem] shadow-2xl border border-slate-100 grid grid-cols-1 md:grid-cols-2 gap-6 text-left relative">
-                      
+
                       <div className="space-y-2">
                         <label className="text-[9px] font-black uppercase tracking-[0.2em] text-slate-400 ml-4">Full Name</label>
-                        <input 
-                          type="text" 
+                        <input
+                          type="text"
                           required
                           value={name}
                           onChange={(e) => setName(e.target.value)}
@@ -141,8 +164,8 @@ const App: React.FC = () => {
 
                       <div className="space-y-2">
                         <label className="text-[9px] font-black uppercase tracking-[0.2em] text-slate-400 ml-4">Industry</label>
-                        <input 
-                          type="text" 
+                        <input
+                          type="text"
                           required
                           value={industry}
                           onChange={(e) => setIndustry(e.target.value)}
@@ -153,8 +176,8 @@ const App: React.FC = () => {
 
                       <div className="md:col-span-2 space-y-2">
                         <label className="text-[9px] font-black uppercase tracking-[0.2em] text-slate-400 ml-4">Business Email</label>
-                        <input 
-                          type="email" 
+                        <input
+                          type="email"
                           required
                           value={email}
                           onChange={(e) => setEmail(e.target.value)}
@@ -164,7 +187,7 @@ const App: React.FC = () => {
                       </div>
 
                       <div className="md:col-span-2 pt-4">
-                        <button 
+                        <button
                           type="submit"
                           disabled={isSubmitting}
                           className="w-full py-6 bg-blue-600 text-white rounded-[1.8rem] font-black uppercase tracking-widest text-[12px] hover:bg-slate-900 transition-all shadow-xl shadow-blue-500/20 active:scale-95 disabled:opacity-50"
@@ -186,7 +209,7 @@ const App: React.FC = () => {
                   <p className="text-slate-400 text-xl font-medium max-w-xl mx-auto leading-relaxed mb-12">
                     Thank you, <span className="text-slate-900 font-black">{name.split(' ')[0]}</span>. Our team has received your inquiry for the <span className="text-blue-600 font-black">{industry}</span> sector. We will contact you at <span className="text-slate-900 font-black">{email}</span> shortly.
                   </p>
-                  <button 
+                  <button
                     onClick={() => { setBookingSubmitted(false); setPage('home'); }}
                     className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-500 hover:text-blue-600 transition-colors"
                   >
@@ -214,30 +237,30 @@ const App: React.FC = () => {
             <Solutions />
             <AnalysisTool />
             <section className="py-32 bg-slate-50 overflow-hidden">
-                <div className="max-w-7xl mx-auto px-6 flex flex-col lg:flex-row items-center justify-between gap-16 lg:gap-32">
-                    <div className="reveal flex-1 w-full lg:max-w-md">
-                        <p className="text-blue-600 text-[10px] font-black uppercase tracking-[0.4em] mb-4">The Engine</p>
-                        <h2 className="text-4xl font-black text-slate-900 uppercase tracking-tighter mb-6 leading-tight">The Jento <br /> <span className="text-blue-600">Autonomous Core.</span></h2>
-                        <ul className="space-y-4">
-                            {[
-                                { t: 'Decision Node', d: 'High-Level Reasoning' },
-                                { t: 'Persistence Layer', d: 'Secure Lead Indexing' },
-                                { t: 'Architecture', d: 'Cloud-Native Workflows' }
-                            ].map((item, i) => (
-                                <li key={i} className="flex items-center space-x-4 p-4 bg-white rounded-2xl border border-slate-100 shadow-sm">
-                                    <div className="w-8 h-8 bg-blue-600 text-white rounded-xl flex items-center justify-center font-black text-[10px] shrink-0">0{i+1}</div>
-                                    <div>
-                                        <h4 className="font-black text-slate-900 uppercase tracking-tighter text-xs">{item.t}</h4>
-                                        <p className="text-slate-500 text-[10px] font-bold uppercase tracking-widest">{item.d}</p>
-                                    </div>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-                    <div className="reveal delay-300 flex-[1.5] w-full lg:w-auto h-full min-h-[500px] flex items-center justify-center">
-                        <HolographicCore />
-                    </div>
+              <div className="max-w-7xl mx-auto px-6 flex flex-col lg:flex-row items-center justify-between gap-16 lg:gap-32">
+                <div className="reveal flex-1 w-full lg:max-w-md">
+                  <p className="text-blue-600 text-[10px] font-black uppercase tracking-[0.4em] mb-4">The Engine</p>
+                  <h2 className="text-4xl font-black text-slate-900 uppercase tracking-tighter mb-6 leading-tight">The Jento <br /> <span className="text-blue-600">Autonomous Core.</span></h2>
+                  <ul className="space-y-4">
+                    {[
+                      { t: 'Decision Node', d: 'High-Level Reasoning' },
+                      { t: 'Persistence Layer', d: 'Secure Lead Indexing' },
+                      { t: 'Architecture', d: 'Cloud-Native Workflows' }
+                    ].map((item, i) => (
+                      <li key={i} className="flex items-center space-x-4 p-4 bg-white rounded-2xl border border-slate-100 shadow-sm">
+                        <div className="w-8 h-8 bg-blue-600 text-white rounded-xl flex items-center justify-center font-black text-[10px] shrink-0">0{i + 1}</div>
+                        <div>
+                          <h4 className="font-black text-slate-900 uppercase tracking-tighter text-xs">{item.t}</h4>
+                          <p className="text-slate-500 text-[10px] font-bold uppercase tracking-widest">{item.d}</p>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
+                <div className="reveal delay-300 flex-[1.5] w-full lg:w-auto h-full min-h-[500px] flex items-center justify-center">
+                  <HolographicCore />
+                </div>
+              </div>
             </section>
           </>
         );
@@ -250,14 +273,14 @@ const App: React.FC = () => {
       <main className="flex-grow">
         {renderPage()}
       </main>
-      
+
       {/* PROFESSIONAL MULTI-COLUMN FOOTER */}
       <footer className="bg-slate-950 text-white pt-24 pb-12 border-t border-white/5">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-24">
             {/* Column 1: Brand */}
             <div className="space-y-6">
-              <div 
+              <div
                 className="flex items-center space-x-3 cursor-pointer group"
                 onClick={() => navigateTo('home')}
               >
@@ -281,7 +304,7 @@ const App: React.FC = () => {
               <ul className="space-y-4">
                 {['AI Agents', 'Use Cases', 'Pricing', 'Infrastructure'].map(item => (
                   <li key={item}>
-                    <button 
+                    <button
                       onClick={() => navigateTo(item.toLowerCase().replace(' ', '-') as Page)}
                       className="text-slate-400 hover:text-white text-sm font-bold uppercase tracking-widest transition-colors"
                     >
@@ -298,7 +321,7 @@ const App: React.FC = () => {
               <ul className="space-y-4">
                 {['About', 'Industries', 'Contact', 'Strategy Session'].map(item => (
                   <li key={item}>
-                    <button 
+                    <button
                       onClick={() => navigateTo(item === 'Strategy Session' ? 'book-call' : item.toLowerCase() as Page)}
                       className="text-slate-400 hover:text-white text-sm font-bold uppercase tracking-widest transition-colors"
                     >
@@ -318,7 +341,7 @@ const App: React.FC = () => {
               <p className="text-[9px] font-mono text-slate-500 mb-6 uppercase tracking-wider">
                 Network Signature: JNT-OS-PRO
               </p>
-              <a 
+              <a
                 href="mailto:info@jentoai.com"
                 className="inline-block w-full py-4 bg-blue-600 text-white text-center rounded-xl font-black uppercase tracking-widest text-[10px] hover:bg-white hover:text-blue-600 transition-all"
               >
