@@ -48,7 +48,28 @@
     import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
 
     createChat({
-      webhookUrl: 'https://n8n.jentoaiautomation.online/webhook/a3b709ac-031d-423c-96a1-55cf1facf012/chat'
+      webhookUrl: 'https://n8n.jentoaiautomation.online/webhook/a3b709ac-031d-423c-96a1-55cf1facf012/chat',
+      title: 'Jento AI Architect',
+      subtitle: 'Autonomous Sync Node Active',
+      showWelcomeMessage: true,
+      initialMessages: [
+        'Protocol initialized. Jento AI Core is online.',
+        'How can I assist you with your automation architecture today?'
+      ],
+      i18n: {
+        en: {
+          title: 'Jento AI Architect',
+          subtitle: 'Sync Active',
+          placeholder: 'Message the architect...',
+          sendButtonTooltip: 'Transmit Protocol',
+        }
+      },
+      style: {
+        primaryColor: '#2563eb',
+        secondaryColor: '#1e40af',
+        backgroundColor: '#ffffff',
+        fontFamily: 'Inter, sans-serif',
+      }
     });
   </script>
 </head>
