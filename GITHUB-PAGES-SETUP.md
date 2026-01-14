@@ -1,49 +1,31 @@
 # 🚀 GitHub Pages Deployment Guide
 
-## Why Your Site Isn't Showing
+## ✅ Simplified Setup - No API Keys Needed!
 
-Your site uses React + TypeScript + Vite, which needs to be **built** before deployment. GitHub Pages was serving your raw source files instead of the compiled website.
+Your site now works completely standalone without any external APIs or webhooks. All forms show success messages locally.
 
-## ✅ What I Fixed
+## 📋 Deployment Steps
 
-1. **Updated `vite.config.ts`** - Added `base: '/Jentoai/'` for correct GitHub Pages paths
-2. **Created `.github/workflows/deploy.yml`** - Automated build and deployment
-
-## 📋 Setup Steps
-
-### Step 1: Add Your Secrets to GitHub
-
-Your site needs API keys to work. Add them as GitHub Secrets:
+### Step 1: Enable GitHub Pages
 
 1. Go to your repository: `https://github.com/jafar78697/Jentoai`
-2. Click **Settings** → **Secrets and variables** → **Actions**
-3. Click **New repository secret** and add these three secrets:
+2. Click **Settings** → **Pages**
+3. Under **Source**, select **GitHub Actions**
+4. Save
 
-| Secret Name | Value |
-|-------------|-------|
-| `GEMINI_API_KEY` | Your Gemini API key |
-| `VITE_BOOKING_WEBHOOK_URL` | Your n8n booking webhook URL |
-| `VITE_CHAT_WEBHOOK_URL` | Your n8n chat webhook URL |
-
-### Step 2: Enable GitHub Pages
-
-1. Go to **Settings** → **Pages**
-2. Under **Source**, select **GitHub Actions**
-3. Save
-
-### Step 3: Push Your Changes
+### Step 2: Push Your Changes
 
 ```bash
 git add .
-git commit -m "Configure GitHub Pages deployment"
+git commit -m "Remove API dependencies and configure for GitHub Pages"
 git push origin main
 ```
 
-### Step 4: Wait for Deployment
+### Step 3: Wait for Deployment
 
 1. Go to the **Actions** tab in your repository
 2. Watch the "Deploy to GitHub Pages" workflow run
-3. Once complete (green checkmark), your site will be live!
+3. Once complete (green checkmark ✓), your site will be live!
 
 ## 🌐 Your Site URL
 
@@ -58,49 +40,36 @@ Every time you push to the `main` branch:
 3. Builds your React app (`npm run build`)
 4. Deploys the `dist` folder to GitHub Pages
 
-## 🛠️ Manual Build (Optional)
+## ✨ What Changed
 
-If you want to build locally first:
+- **Chat Widget**: Now shows pre-programmed responses (no Gemini API needed)
+- **Contact Forms**: Show success messages locally (no webhooks needed)
+- **Booking Forms**: Work without external services
+- **Analysis Tool**: Displays confirmation without API calls
+
+## 🛠️ Local Development
+
+To run locally:
 
 ```bash
 # Install dependencies
 npm install
 
-# Build the site
+# Run development server
+npm run dev
+
+# Build for production
 npm run build
 
-# Preview the build
+# Preview production build
 npm run preview
 ```
 
-The built files will be in the `dist` folder.
+## 🎯 Next Steps
 
-## ⚠️ Important Notes
-
-1. **Don't commit the `dist` folder** - It's auto-generated and already in `.gitignore`
-2. **Secrets are required** - Without them, the build will work but features won't function
-3. **First deployment takes 2-5 minutes** - Be patient!
-
-## 🐛 Troubleshooting
-
-### Build fails in GitHub Actions
-- Check the Actions tab for error messages
-- Verify all three secrets are added correctly
-- Make sure secret names match exactly (case-sensitive)
-
-### Site shows but features don't work
-- Verify your API keys and webhook URLs are correct in GitHub Secrets
-- Check browser console for errors (F12)
-
-### 404 errors on page refresh
-- This is normal for single-page apps on GitHub Pages
-- Users should navigate using the site's navigation, not direct URLs
-
-## ✨ Next Steps
-
-1. Add the three secrets to GitHub
-2. Push these changes
-3. Wait for the Actions workflow to complete
+1. Push your code to GitHub
+2. Enable GitHub Pages (Settings → Pages → GitHub Actions)
+3. Wait 2-5 minutes for deployment
 4. Visit your live site!
 
 Your site will automatically rebuild and redeploy every time you push changes to the `main` branch.

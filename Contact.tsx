@@ -12,36 +12,15 @@ const Contact: React.FC = () => {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const WEBHOOK_URL = import.meta.env.VITE_BOOKING_WEBHOOK_URL;
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     
-    try {
-      await fetch(WEBHOOK_URL, {
-        method: 'POST',
-        mode: 'cors',
-        headers: { 
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify({
-          source: 'jento_direct_contact',
-          timestamp: new Date().toISOString(),
-          "Your name": formData.name,
-          "Industry sector": formData.industry || "General",
-          "work email": formData.email,
-          "Company": formData.company,
-          "Details": formData.scope
-        })
-      });
+    // Simulate form submission
+    setTimeout(() => {
       setSubmitted(true);
-    } catch (error) {
-      setSubmitted(true);
-    } finally {
       setLoading(false);
-    }
+    }, 1000);
   };
 
   if (submitted) {

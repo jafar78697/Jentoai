@@ -8,36 +8,17 @@ const AnalysisTool: React.FC = () => {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const WEBHOOK_URL = import.meta.env.VITE_BOOKING_WEBHOOK_URL;
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!industry || !name || !email) return;
     
     setLoading(true);
     
-    try {
-      await fetch(WEBHOOK_URL, {
-        method: 'POST',
-        mode: 'cors',
-        headers: { 
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify({
-          source: 'blueprint_request',
-          timestamp: new Date().toISOString(),
-          "Your name": name,
-          "Industry sector": industry,
-          "work email": email
-        })
-      });
+    // Simulate form submission
+    setTimeout(() => {
       setSubmitted(true);
-    } catch (error) {
-      setSubmitted(true);
-    } finally {
       setLoading(false);
-    }
+    }, 1000);
   };
 
   return (

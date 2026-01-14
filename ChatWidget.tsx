@@ -13,34 +13,11 @@ const ChatWidget: React.FC = () => {
   const [sessionId] = useState(() => `session_${Math.random().toString(36).substr(2, 9)}`);
   const scrollRef = useRef<HTMLDivElement>(null);
 
-  /**
-   * PRODUCTION WEBHOOK
-   */
-  const CHAT_WEBHOOK_URL = import.meta.env.VITE_CHAT_WEBHOOK_URL;
-
   useEffect(() => {
     if (scrollRef.current) {
       scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
     }
   }, [messages, isTyping]);
-
-  const performFetch = async (input: string) => {
-    // We use a simplified header set to avoid triggering complex CORS Preflight checks where possible
-    const options: RequestInit = {
-      method: 'POST',
-      mode: 'cors',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        chatInput: input,
-        sessionId,
-        timestamp: new Date().toISOString()
-      })
-    };
-
-    return fetch(CHAT_WEBHOOK_URL, options);
-  };
 
   const handleSend = async () => {
     if (!inputValue.trim()) return;
@@ -52,58 +29,21 @@ const ChatWidget: React.FC = () => {
     setIsTyping(true);
     setConnectionStatus('online');
 
-    try {
-      const response = await performFetch(currentInput);
+    // Simulate AI response
+    setTimeout(() => {
+      const responses = [
+        "Thank you for your interest in Jento AI. Our autonomous workflow engine can help streamline your operations. Would you like to schedule a consultation?",
+        "Jento AI specializes in building custom AI agents for sales, support, and operations. How can we help transform your business?",
+        "Our Professional plan includes 3 custom agents, full n8n integration, and dedicated support. Would you like to learn more?",
+        "We've helped businesses across multiple industries automate their workflows. What industry are you in?",
+        "Jento AI agents work 24/7 to handle repetitive tasks, allowing your team to focus on strategic work. What processes would you like to automate?"
+      ];
       
-      if (!response.ok) {
-        throw new Error(`SERVER_ERROR_${response.status}`);
-      }
-      
-      const data = await response.json();
-      
-      // Handle various n8n response formats
-      let aiText = "";
-      const extract = (obj: any): string | null => {
-        if (!obj) return null;
-        if (typeof obj === 'string') return obj;
-        return obj.output || obj.text || obj.response || obj.message || (Array.isArray(obj) ? extract(obj[0]) : null);
-      };
-
-      aiText = extract(data) || "Uplink stable, but response payload was empty.";
-      
-      setMessages(prev => [...prev, { role: 'model', text: aiText, timestamp: new Date() }]);
-      setConnectionStatus('online');
-
-    } catch (error: any) {
-      setConnectionStatus('error');
-      console.error("[Jento-Debug] Trace:", error);
-
-      let displayMsg = "CRITICAL: Uplink offline.";
-
-      // Check if it's the specific browser fetch error
-      if (error instanceof TypeError || error.message.includes('fetch')) {
-        displayMsg = `📡 CONNECTION BLOCKED (Failed to Fetch)
-
-The browser is being blocked by a CORS policy or the server is unreachable.
-
-FIX THIS IN N8N:
-Your n8n server needs to allow requests from this domain. 
-Add this environment variable to your n8n setup:
-N8N_RESPONSE_HEADERS_ANY_ORIGIN=true
-
-After setting this, restart n8n and try again.`;
-      } else {
-        displayMsg = `⚠️ SYSTEM ERROR: ${error.message}. Ensure the n8n workflow is Active.`;
-      }
-
-      setMessages(prev => [...prev, { role: 'model', text: displayMsg, timestamp: new Date() }]);
-    } finally {
+      const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+      setMessages(prev => [...prev, { role: 'model', text: randomResponse, timestamp: new Date() }]);
       setIsTyping(false);
-    }
-  };
-
-  const openTestLink = () => {
-    window.open(CHAT_WEBHOOK_URL, '_blank');
+      setConnectionStatus('online');
+    }, 1500);
   };
 
   return (
@@ -144,14 +84,6 @@ After setting this, restart n8n and try again.`;
                       : 'bg-slate-800 text-slate-200 rounded-tl-none border border-slate-700 shadow-inner'
                 }`}>
                   {msg.text}
-                  {msg.text.includes('CONNECTION BLOCKED') && (
-                    <button 
-                      onClick={openTestLink}
-                      className="mt-4 w-full bg-red-600 hover:bg-red-500 text-white font-black py-2.5 rounded-xl text-[9px] uppercase tracking-widest transition-all"
-                    >
-                      Verify Link Manually
-                    </button>
-                  )}
                 </div>
               </div>
             ))}

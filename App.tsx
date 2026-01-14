@@ -5,7 +5,6 @@ import Hero from './Hero';
 import AgentCard from './AgentCard';
 import ChatWidget from './ChatWidget';
 import AnalysisTool from './AnalysisTool';
-import Features from './Features';
 import Solutions from './Solutions';
 import Contact from './Contact';
 import ServicesPage from './Services';
@@ -13,7 +12,7 @@ import IndustriesPage from './Industries';
 import AboutPage from './About';
 import HolographicCore from './HolographicCore';
 import { Page } from './types';
-import { AGENTS, PRICING, SERVICES, INDUSTRIES } from './constants';
+import { AGENTS, PRICING } from './constants';
 
 const App: React.FC = () => {
   const [page, setPage] = useState<Page>('home');
@@ -47,30 +46,12 @@ const App: React.FC = () => {
     if (!email || !name || !industry) return;
     
     setIsSubmitting(true);
-    const BOOKING_WEBHOOK = import.meta.env.VITE_BOOKING_WEBHOOK_URL;
     
-    try {
-      await fetch(BOOKING_WEBHOOK, {
-        method: 'POST',
-        mode: 'cors',
-        headers: { 
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify({
-          source: 'jento_strategy_call',
-          timestamp: new Date().toISOString(),
-          "Your name": name,
-          "Industry sector": industry,
-          "work email": email
-        })
-      });
+    // Simulate form submission
+    setTimeout(() => {
       setBookingSubmitted(true);
-    } catch (err) {
-      setBookingSubmitted(true);
-    } finally {
       setIsSubmitting(false);
-    }
+    }, 1000);
   };
 
   const navigateTo = (p: Page) => {
