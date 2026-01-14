@@ -48,7 +48,7 @@ const App: React.FC = () => {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch(import.meta.env.VITE_BOOKING_WEBHOOK_URL || 'https://n8n.jentoaiautomation.online/webhook-test/94731f47-ba76-46b0-a718-80a21f15d054', {
+      const response = await fetch(import.meta.env.VITE_BOOKING_WEBHOOK_URL || 'https://n8n.jentoaiautomation.online/webhook/94731f47-ba76-46b0-a718-80a21f15d054', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
