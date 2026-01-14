@@ -63,36 +63,7 @@
       --n8n-chat-primary-color: #2563eb !important;
     }
   </style>
-  <script type="module">
-    import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
-
-    createChat({
-      webhookUrl: 'https://n8n.jentoaiautomation.online/webhook/a3b709ac-031d-423c-96a1-55cf1facf012/chat',
-      showWelcomeMessage: true,
-      initialMessages: [
-        'Protocol initialized. Jento AI Core is online.',
-        'How can I assist you with your automation architecture today?'
-      ],
-      i18n: {
-        en: {
-          title: 'Jento AI Architect',
-          subtitle: 'Sync Active',
-          placeholder: 'Message the architect...',
-          getStarted: 'Start Protocol',
-          inputPlaceholder: 'Message the architect...',
-        }
-      },
-      theme: {
-        '--chat--header--background': '#2563eb',
-        '--chat--header--color': '#ffffff',
-        '--chat--button--background': '#2563eb',
-        '--chat--message--user--background': '#2563eb',
-        '--chat--message--user--color': '#ffffff',
-        '--chat--message--bot--background': '#f8fafc',
-        '--chat--message--bot--color': '#0f172a',
-      }
-    });
-  </script>
+  <script type="module" src="/index.tsx"></script>
 </head>
 
 <body>

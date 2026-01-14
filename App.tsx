@@ -10,8 +10,9 @@ import ServicesPage from './Services';
 import IndustriesPage from './Industries';
 import AboutPage from './About';
 import HolographicCore from './HolographicCore';
+import N8nChatWidget from './N8nChatWidget';
 import { Page } from './types';
-import { AGENTS, PRICING } from './constants';
+import { AGENTS, PRICING, CONFIG } from './constants';
 
 const App: React.FC = () => {
   const [page, setPage] = useState<Page>('home');
@@ -47,7 +48,7 @@ const App: React.FC = () => {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch(import.meta.env.VITE_BOOKING_WEBHOOK_URL || 'https://n8n.jentoaiautomation.online/webhook-test/8043e91f-2572-4d66-ab6f-c67af2df978f', {
+      const response = await fetch(CONFIG.bookingWebhookUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -431,6 +432,7 @@ const App: React.FC = () => {
           </div>
         </div>
       </footer>
+      <N8nChatWidget />
     </div>
   );
 };
