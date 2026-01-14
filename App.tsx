@@ -48,29 +48,27 @@ const App: React.FC = () => {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch(CONFIG.bookingWebhookUrl, {
+      // Using a slightly more robust fetch approach for Google Apps Script
+      await fetch(CONFIG.bookingWebhookUrl, {
         method: 'POST',
+        mode: 'no-cors', // Apps Script requires no-cors for direct browser POSTs to bypass preflight issues
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           your_name: name,
-          work_email: email,
           industry_sector: industry,
+          work_email: email,
           timestamp: new Date().toISOString(),
-          source: 'Booking Form (Home)'
+          source: 'Home Booking'
         }),
       });
 
-      if (response.ok) {
-        setBookingSubmitted(true);
-      } else {
-        console.error('Submission failed');
-        alert('There was an issue sending your request. Please try again or contact us directly.');
-      }
+      // Since 'no-cors' doesn't return the response body, we assume success if no error is thrown
+      setBookingSubmitted(true);
     } catch (error) {
-      console.error('Error submitting form:', error);
-      alert('Network Error: Could not reach the strategy session engine. Please try again later.');
+      console.error('Submission Error:', error);
+      alert('Connection check: The automation node is busy. Please try again or email us directly.');
     } finally {
       setIsSubmitting(false);
     }

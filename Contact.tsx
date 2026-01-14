@@ -18,8 +18,9 @@ const Contact: React.FC = () => {
     setLoading(true);
 
     try {
-      const response = await fetch(CONFIG.bookingWebhookUrl, {
+      await fetch(CONFIG.bookingWebhookUrl, {
         method: 'POST',
+        mode: 'no-cors', // Bypasses preflight for Google Macro redirects
         headers: {
           'Content-Type': 'application/json',
         },
@@ -34,14 +35,10 @@ const Contact: React.FC = () => {
         }),
       });
 
-      if (response.ok) {
-        setSubmitted(true);
-      } else {
-        console.error('Webhook submission failed');
-        alert('Something went wrong. Please try again later.');
-      }
+      // In no-cors mode, we can't read the response, so we proceed to success state
+      setSubmitted(true);
     } catch (error) {
-      console.error('Error sending to webhook:', error);
+      console.error('Error sending to sheet:', error);
       alert('Network Error: Could not connect to the automation engine. Please check your internet or contact support.');
     } finally {
       setLoading(false);
