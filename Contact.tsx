@@ -41,8 +41,7 @@ const Contact: React.FC = () => {
       }
     } catch (error) {
       console.error('Error sending to webhook:', error);
-      // Fallback for user experience
-      setSubmitted(true);
+      alert('Network Error: Could not connect to the automation engine. Please check your internet or contact support.');
     } finally {
       setLoading(false);
     }

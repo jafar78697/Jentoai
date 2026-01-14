@@ -70,8 +70,7 @@ const App: React.FC = () => {
       }
     } catch (error) {
       console.error('Error submitting form:', error);
-      // Fallback: still show success to user but log error
-      setBookingSubmitted(true);
+      alert('Network Error: Could not reach the strategy session engine. Please try again later.');
     } finally {
       setIsSubmitting(false);
     }
