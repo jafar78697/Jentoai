@@ -61,39 +61,54 @@
           title: 'Jento AI Architect',
           subtitle: 'Sync Active',
           placeholder: 'Message the architect...',
-          sendButtonTooltip: 'Transmit Protocol',
+          getStarted: 'Start Protocol',
+          inputPlaceholder: 'Message the architect...',
         }
       },
-      style: {
+      theme: {
+        buttonColor: '#2563eb',
         primaryColor: '#2563eb',
-        secondaryColor: '#1e40af',
         backgroundColor: '#ffffff',
         fontFamily: 'Inter, sans-serif',
-      },
-      customCSS: `
-        .n8n-chat-widget {
-          --chat--header--background: #2563eb;
-          --chat--header--color: #ffffff;
-          --chat--message--user--background: #2563eb;
-          --chat--message--user--color: #ffffff;
-          --chat--message--bot--background: #f1f5f9;
-          --chat--message--bot--color: #0f172a;
-        }
-        .n8n-chat-widget-window {
-          border-radius: 2rem !important;
-          border: 1px solid rgba(255, 255, 255, 0.1) !important;
-          box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25) !important;
-          overflow: hidden !important;
-        }
-        .n8n-chat-widget-button {
-          border-radius: 1.5rem !important;
-          transition: transform 0.3s ease !important;
-          border: 4px solid rgba(255,255,255,0.1) !important;
-        }
-        .n8n-chat-widget-button:hover {
-          transform: scale(1.05) rotate(5deg) !important;
-        }
-      `
+        customCSS: `
+          :root {
+            --chat--header--background: #2563eb !important;
+            --chat--header--color: #ffffff !important;
+            --chat--message--user--background: #2563eb !important;
+            --chat--message--user--color: #ffffff !important;
+            --chat--message--bot--background: #f8fafc !important;
+            --chat--message--bot--color: #0f172a !important;
+            --chat--button--background: #2563eb !important;
+          }
+          .n8n-chat-widget {
+            font-family: 'Inter', sans-serif !important;
+          }
+          .n8n-chat-widget-window {
+            border-radius: 2.5rem !important;
+            border: 1px solid rgba(0, 0, 0, 0.05) !important;
+            box-shadow: 0 25px 50px -12px rgba(37, 99, 235, 0.2) !important;
+            overflow: hidden !important;
+            bottom: 100px !important;
+            right: 30px !important;
+          }
+          .n8n-chat-widget-header {
+            background: #2563eb !important;
+            padding: 24px !important;
+          }
+          .n8n-chat-widget-button {
+            border-radius: 1.8rem !important;
+            width: 65px !important;
+            height: 65px !important;
+            background: #2563eb !important;
+            box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.4) !important;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+          }
+          .n8n-chat-widget-button:hover {
+            transform: scale(1.1) rotate(5deg) !important;
+            background: #1e40af !important;
+          }
+        `
+      }
     });
   </script>
 </head>
