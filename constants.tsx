@@ -6,7 +6,7 @@ export const AGENTS: Agent[] = [
     id: 'sales-agent',
     name: 'Apollo',
     role: 'Autonomous Sales Architect',
-    description: 'Apollo is a high-performance prospecting engine built on n8n architecture. It identifies high-intent leads across LinkedIn and Apollo.io, crafts hyper-personalized outreach using advanced Gemini models, and autonomously manages the initial sales conversation to book qualified meetings, reducing manual prospecting by 90%.',
+    description: 'Apollo is a high-performance prospecting engine built on n8n architecture. It identifies high-intent leads across LinkedIn and Apollo.io, crafts hyper-personalized outreach using advanced Gemini models, and autonomously manages the initial sales conversation to book qualified meetings. Personality: Assertive, Professional, Data-Driven.',
     capabilities: [
       'Multi-channel Prospecting (Email/LinkedIn)',
       'High-Intent Lead Scraping & Verification',
@@ -22,7 +22,7 @@ export const AGENTS: Agent[] = [
     id: 'support-agent',
     name: 'Aura',
     role: 'Technical CX Specialist',
-    description: 'Aura provides enterprise-grade customer support automation by indexing your entire documentation and historical support tickets into a robust vector database. It resolves complex technical inquiries instantly with human-like reasoning, handling 70% of routine tickets autonomously while escalating high-stakes issues to your team.',
+    description: 'Aura provides enterprise-grade customer support automation by indexing your entire documentation and historical support tickets into a robust vector database. It resolves complex technical inquiries instantly with human-like reasoning, handling 70% of routine tickets autonomously. Personality: Empathetic, Concise, Highly-Knowledgeable.',
     capabilities: [
       'Zero-Latency FAQ & Support Resolution',
       'Technical Documentation Parsing (Vector Stores)',
@@ -38,7 +38,7 @@ export const AGENTS: Agent[] = [
     id: 'data-agent',
     name: 'Vantage',
     role: 'Operational Logistics Node',
-    description: 'Vantage is designed for high-volume data orchestration. It extracts structured data from messy PDFs, emails, and invoices, then autonomously updates your internal systems. It replaces the need for manual data entry staff, performing with 100% accuracy.',
+    description: 'Vantage is designed for high-volume data orchestration. It extracts structured data from messy PDFs, emails, and invoices, then autonomously updates your internal systems. It replaces the need for manual data entry staff, performing with 100% accuracy. Personality: Systematic, Invisible, Precision-Oriented.',
     capabilities: [
       'Intelligent Document OCR',
       'Automated Invoice Processing',

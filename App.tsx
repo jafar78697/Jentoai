@@ -99,6 +99,24 @@ const App: React.FC = () => {
                   </div>
                 ))}
               </div>
+
+              {/* Resilience & Maintenance Section */}
+              <div className="reveal p-12 md:p-20 bg-slate-950 rounded-[4rem] text-center">
+                <p className="text-blue-500 text-[10px] font-black uppercase tracking-[0.4em] mb-6">Mission Continuity</p>
+                <h3 className="text-4xl font-black text-white uppercase tracking-tighter mb-8">Agent Resilience & <span className="text-blue-500">Autonomous Health.</span></h3>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-left max-w-5xl mx-auto">
+                  {[
+                    { t: 'Self-Correction', d: 'Agents detect workflow errors in real-time and attempt autonomous recovery via retry-logic.' },
+                    { t: 'Active Monitoring', d: 'Every thought log is indexed and audited for bias or reasoning drift automatically.' },
+                    { t: 'Human-in-the-loop', d: 'High-stakes decisions are queued for human review if reasoning flags hit < 95%.' }
+                  ].map((item, i) => (
+                    <div key={i} className="p-8 bg-white/5 border border-white/10 rounded-3xl backdrop-blur-sm">
+                      <h4 className="text-[10px] font-black uppercase tracking-widest text-white mb-3 underline decoration-blue-500 underline-offset-8 decoration-2">{item.t}</h4>
+                      <p className="text-sm text-slate-400 font-medium leading-relaxed">{item.d}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           </section>
         );
@@ -113,6 +131,9 @@ const App: React.FC = () => {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-32">
                 {PRICING.map((plan, i) => (
                   <div key={i} className={`reveal delay-${(i + 1) * 100} relative bg-white p-12 rounded-[3rem] border-2 ${plan.recommended ? 'border-blue-600 shadow-2xl scale-105 z-10' : 'border-slate-100'} transition-all`}>
+                    {plan.recommended && (
+                      <div className="absolute -top-6 left-1/2 -translate-x-1/2 px-6 py-2 bg-blue-600 text-white text-[10px] font-black uppercase tracking-[0.3em] rounded-full shadow-xl">Best Value Protocol</div>
+                    )}
                     <h3 className="text-2xl font-black mb-4 uppercase text-slate-900">{plan.name}</h3>
                     <div className="flex items-center justify-center mb-10">
                       <span className="text-5xl font-black text-slate-900">{plan.price}</span>
@@ -125,11 +146,58 @@ const App: React.FC = () => {
                         </li>
                       ))}
                     </ul>
-                    <button onClick={() => navigateTo('book-call')} className="w-full py-5 rounded-2xl bg-blue-600 text-white font-black uppercase tracking-widest text-[10px] transition-all">
+                    <button onClick={() => navigateTo('book-call')} className="w-full py-5 rounded-2xl bg-blue-600 text-white font-black uppercase tracking-widest text-[10px] transition-all hover:bg-slate-900 shadow-lg shadow-blue-500/20">
                       Select Plan
                     </button>
                   </div>
                 ))}
+              </div>
+
+              {/* Enterprise Add-ons */}
+              <div className="reveal mb-40 text-left">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+                  <div>
+                    <p className="text-blue-600 text-[10px] font-black uppercase tracking-[0.4em] mb-4">Scale Extensions</p>
+                    <h3 className="text-4xl font-black text-slate-900 uppercase tracking-tighter mb-8 leading-tight">Enterprise <br /> <span className="text-blue-600">Infrastructure Add-ons.</span></h3>
+                    <p className="text-lg text-slate-500 font-medium leading-relaxed mb-10">
+                      Need specialized high-security or large-scale deployment? We offer custom architecture extensions for enterprise partners.
+                    </p>
+                  </div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {[
+                      { t: 'Private n8n Hosting', d: 'Secure, dedicated cloud instance.' },
+                      { t: 'SLA Support', d: '4-hour technical response time.' },
+                      { t: 'Dedicated Architect', d: 'Ongoing monthly optimization.' },
+                      { t: 'Custom LLM Training', d: 'Fine-tuned models on your data.' }
+                    ].map((item, i) => (
+                      <div key={i} className="p-6 bg-white border border-slate-100 rounded-2xl shadow-sm">
+                        <h4 className="text-xs font-black uppercase tracking-widest text-slate-900 mb-2">{item.t}</h4>
+                        <p className="text-[11px] text-slate-500 font-bold uppercase tracking-wider">{item.d}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* FAQ Section */}
+              <div className="reveal pb-20">
+                <div className="text-center mb-16">
+                  <p className="text-blue-600 text-[10px] font-black uppercase tracking-[0.4em] mb-4">Knowledge Base</p>
+                  <h3 className="text-5xl font-black text-slate-900 uppercase tracking-tighter">Common <span className="text-blue-600">Questions.</span></h3>
+                </div>
+                <div className="max-w-4xl mx-auto space-y-6 text-left">
+                  {[
+                    { q: 'Is there a monthly subscription?', a: 'We primarily focus on build-to-own models where you pay for the architecture upfront. Ongoing costs are typically tiny API usage fees paid directly to providers (Google/n8n/Pinecone).' },
+                    { q: 'How long does a typical build take?', a: 'Starter nodes take 1-3 days. Enterprise transformations depend on complexity but usually range from 2-4 weeks for full deployment.' },
+                    { q: 'Can I monitor what the agents are doing?', a: 'Yes. Our n8n architecture provides a visual execution log. You can see every thought, decision, and action taken by your agents in real-time.' },
+                    { q: 'Is my data secure?', a: 'Completely. We specialize in "Siloed Architecture" where your data never leaves your private cloud instance or vector database. We never use your data to train generic AI models.' }
+                  ].map((faq, i) => (
+                    <div key={i} className="p-8 bg-white border border-slate-100 rounded-[2rem] shadow-sm">
+                      <h4 className="text-lg font-black text-slate-900 uppercase tracking-tight mb-4">{faq.q}</h4>
+                      <p className="text-slate-500 font-medium leading-relaxed">{faq.a}</p>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </section>
