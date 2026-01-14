@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 import Navbar from './Navbar';
 import Hero from './Hero';
 import AgentCard from './AgentCard';
-import ChatWidget from './ChatWidget';
 import AnalysisTool from './AnalysisTool';
 import Solutions from './Solutions';
 import Contact from './Contact';
@@ -432,7 +431,6 @@ const App: React.FC = () => {
           </div>
         </div>
       </footer>
-      <ChatWidget />
     </div>
   );
 };
