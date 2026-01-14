@@ -152,5 +152,5 @@ export const INDUSTRIES = [
 
 export const CONFIG = {
   chatWebhookUrl: import.meta.env.VITE_CHAT_WEBHOOK_URL || 'https://n8n.jentoaiautomation.online/webhook/a3b709ac-031d-423c-96a1-55cf1facf012/chat',
-  bookingWebhookUrl: import.meta.env.VITE_BOOKING_WEBHOOK_URL || 'https://n8n.jentoaiautomation.online/webhook/formsubmission'
+  bookingWebhookUrl: import.meta.env.VITE_BOOKING_WEBHOOK_URL || 'https://script.google.com/macros/s/AKfycbzZeOEK1XReZCR5tldY8PzMqH7hYSP74w0Lun6_slbAFu-ukD4rjHdMoeKnuYM1DGc/exec'
 };
