@@ -101,6 +101,62 @@ const App: React.FC = () => {
     };
   }, []); // Run once on mount - the observers handle the rest
 
+  // 6. SPA Page View Tracker
+  useEffect(() => {
+    if (window.dataLayer) {
+      window.dataLayer.push({
+        event: 'page_view',
+        page_title: `Jento AI | ${page.charAt(0).toUpperCase() + page.slice(1)}`,
+        page_path: page === 'home' ? '/' : `/${page}`
+      });
+    }
+  }, [page]);
+
+  // 7. Scroll Depth Tracker
+  useEffect(() => {
+    let maxScroll = 0;
+    const scrollThresholds = [25, 50, 75, 90];
+    const sentThresholds = new Set<number>();
+
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+
+      // Avoid division by zero
+      if (docHeight <= 0) return;
+
+      const scrollPercent = (scrollTop / docHeight) * 100;
+
+      if (scrollPercent > maxScroll) maxScroll = scrollPercent;
+
+      scrollThresholds.forEach(threshold => {
+        if (maxScroll >= threshold && !sentThresholds.has(threshold)) {
+          sentThresholds.add(threshold);
+          if (window.dataLayer) {
+            window.dataLayer.push({
+              event: 'scroll_depth',
+              percent_scrolled: threshold,
+              page_current: page
+            });
+          }
+        }
+      });
+    };
+
+    // Debounce slightly for performance
+    let timeoutId: number;
+    const throttledScroll = () => {
+      if (timeoutId) return;
+      timeoutId = window.setTimeout(() => {
+        handleScroll();
+        timeoutId = 0;
+      }, 100);
+    };
+
+    window.addEventListener('scroll', throttledScroll);
+    return () => window.removeEventListener('scroll', throttledScroll);
+  }, [page]); // Reset scroll tracking on page change
+
   const handleBookingSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email || !name || !industry) return;
