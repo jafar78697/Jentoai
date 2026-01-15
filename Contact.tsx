@@ -18,21 +18,18 @@ const Contact: React.FC = () => {
     setLoading(true);
 
     try {
+      const params = new URLSearchParams();
+      params.append('name', formData.name);
+      params.append('industry', formData.industry);
+      params.append('email', formData.email);
+      params.append('company', formData.company);
+      params.append('scope', formData.scope);
+      params.append('source', 'Contact Form');
+
       await fetch(CONFIG.bookingWebhookUrl, {
         method: 'POST',
-        mode: 'no-cors', // Bypasses preflight for Google Macro redirects
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          your_name: formData.name,
-          industry_sector: formData.industry,
-          work_email: formData.email,
-          company: formData.company,
-          scope: formData.scope,
-          timestamp: new Date().toISOString(),
-          source: 'Contact Form'
-        }),
+        mode: 'no-cors',
+        body: params
       });
 
       // In no-cors mode, we can't read the response, so we proceed to success state

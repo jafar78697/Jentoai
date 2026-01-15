@@ -48,20 +48,17 @@ const App: React.FC = () => {
     setIsSubmitting(true);
 
     try {
-      // Using a slightly more robust fetch approach for Google Apps Script
+      // Using URLSearchParams for robust Google Apps Script compatibility
+      const params = new URLSearchParams();
+      params.append('name', name);
+      params.append('industry', industry);
+      params.append('email', email);
+      params.append('source', 'Home Booking');
+
       await fetch(CONFIG.bookingWebhookUrl, {
         method: 'POST',
-        mode: 'no-cors', // Apps Script requires no-cors for direct browser POSTs to bypass preflight issues
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          your_name: name,
-          industry_sector: industry,
-          work_email: email,
-          timestamp: new Date().toISOString(),
-          source: 'Home Booking'
-        }),
+        mode: 'no-cors',
+        body: params
       });
 
       // Since 'no-cors' doesn't return the response body, we assume success if no error is thrown
@@ -73,6 +70,7 @@ const App: React.FC = () => {
       setIsSubmitting(false);
     }
   };
+
 
   const navigateTo = (p: Page) => {
     setPage(p);
