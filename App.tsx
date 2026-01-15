@@ -34,20 +34,55 @@ const App: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
-    const observerOptions = { threshold: 0.05, rootMargin: "0px 0px -50px 0px" };
-    const observer = new IntersectionObserver((entries) => {
+    // 1. Setup Intersection Observer for the actual animation
+    const revealCallback: IntersectionObserverCallback = (entries, observer) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('reveal-visible');
-          observer.unobserve(entry.target);
+          observer.unobserve(entry.target); // Run once
         }
       });
-    }, observerOptions);
+    };
 
-    const elements = document.querySelectorAll('.reveal');
-    elements.forEach(el => observer.observe(el));
-    return () => observer.disconnect();
-  }, [page]);
+    const revealObserver = new IntersectionObserver(revealCallback, {
+      threshold: 0.1,
+      rootMargin: "0px 0px -50px 0px"
+    });
+
+    // 2. Setup Mutation Observer to catch lazy-loaded elements
+    const mutationCallback: MutationCallback = (mutations) => {
+      mutations.forEach(mutation => {
+        mutation.addedNodes.forEach(node => {
+          if (node instanceof Element) {
+            // Check the node itself
+            if (node.classList.contains('reveal')) {
+              revealObserver.observe(node);
+            }
+            // Check children of the node
+            const children = node.querySelectorAll('.reveal');
+            children.forEach(child => revealObserver.observe(child));
+          }
+        });
+      });
+    };
+
+    const docObserver = new MutationObserver(mutationCallback);
+
+    // 3. Initial scan (for elements already there)
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    // 4. Start watching for changes (lazy loads)
+    const root = document.getElementById('root') || document.body;
+    docObserver.observe(root, {
+      childList: true,
+      subtree: true
+    });
+
+    return () => {
+      revealObserver.disconnect();
+      docObserver.disconnect();
+    };
+  }, []); // Run once on mount - the observers handle the rest
 
   const handleBookingSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
