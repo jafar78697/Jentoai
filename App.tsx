@@ -22,6 +22,12 @@ const PageLoader = () => (
   </div>
 );
 
+declare global {
+  interface Window {
+    dataLayer: any[];
+  }
+}
+
 const App: React.FC = () => {
   const [page, setPage] = useState<Page>('home');
 
@@ -78,9 +84,20 @@ const App: React.FC = () => {
       subtree: true
     });
 
+    // 5. Chat Interaction Tracker (Delegated Listener)
+    const handleChatClick = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (target.closest('.chat-window-toggle')) {
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({ event: 'chat_started' });
+      }
+    };
+    document.body.addEventListener('click', handleChatClick);
+
     return () => {
       revealObserver.disconnect();
       docObserver.disconnect();
+      document.body.removeEventListener('click', handleChatClick);
     };
   }, []); // Run once on mount - the observers handle the rest
 
@@ -103,6 +120,15 @@ const App: React.FC = () => {
         mode: 'no-cors',
         body: params
       });
+
+      // Track Lead Generation Event
+      if (window.dataLayer) {
+        window.dataLayer.push({
+          event: 'generate_lead',
+          form_name: 'contact_form',
+          industry: industry
+        });
+      }
 
       // Since 'no-cors' doesn't return the response body, we assume success if no error is thrown
       setBookingSubmitted(true);
