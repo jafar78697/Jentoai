@@ -1,5 +1,6 @@
 
 import React, { useState } from 'react';
+import { CONFIG } from './constants';
 
 const AnalysisTool: React.FC = () => {
   const [name, setName] = useState('');
@@ -11,14 +12,29 @@ const AnalysisTool: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!industry || !name || !email) return;
-    
+
     setLoading(true);
-    
-    // Simulate form submission
-    setTimeout(() => {
+
+    try {
+      const params = new URLSearchParams();
+      params.append('name', name);
+      params.append('industry', industry);
+      params.append('email', email);
+      params.append('source', 'AI Blueprint Form');
+
+      await fetch(CONFIG.bookingWebhookUrl, {
+        method: 'POST',
+        mode: 'no-cors',
+        body: params
+      });
+
       setSubmitted(true);
+    } catch (error) {
+      console.error('Error sending to sheet:', error);
+      alert('Network Error: Could not connect. Please try again.');
+    } finally {
       setLoading(false);
-    }, 1000);
+    }
   };
 
   return (
@@ -37,8 +53,8 @@ const AnalysisTool: React.FC = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <label className="text-[9px] font-black uppercase tracking-widest text-slate-500 ml-4">Full Name</label>
-                    <input 
-                      type="text" 
+                    <input
+                      type="text"
                       placeholder="Your Name"
                       className="w-full bg-slate-950/80 border border-slate-800 rounded-2xl px-8 py-5 text-white focus:outline-none focus:ring-2 focus:ring-blue-600 transition-all font-bold text-sm"
                       value={name}
@@ -48,8 +64,8 @@ const AnalysisTool: React.FC = () => {
                   </div>
                   <div className="space-y-2">
                     <label className="text-[9px] font-black uppercase tracking-widest text-slate-500 ml-4">Industry Sector</label>
-                    <input 
-                      type="text" 
+                    <input
+                      type="text"
                       placeholder="e.g. E-commerce"
                       className="w-full bg-slate-950/80 border border-slate-800 rounded-2xl px-8 py-5 text-white focus:outline-none focus:ring-2 focus:ring-blue-600 transition-all font-bold text-sm"
                       value={industry}
@@ -60,19 +76,19 @@ const AnalysisTool: React.FC = () => {
                 </div>
 
                 <div className="space-y-2">
-                    <label className="text-[9px] font-black uppercase tracking-widest text-slate-500 ml-4">Work Email</label>
-                    <input 
-                      type="email" 
-                      placeholder="name@company.com"
-                      className="w-full bg-slate-950/80 border border-slate-800 rounded-2xl px-8 py-5 text-white focus:outline-none focus:ring-2 focus:ring-blue-600 transition-all font-bold text-sm"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      required
-                    />
+                  <label className="text-[9px] font-black uppercase tracking-widest text-slate-500 ml-4">Work Email</label>
+                  <input
+                    type="email"
+                    placeholder="name@company.com"
+                    className="w-full bg-slate-950/80 border border-slate-800 rounded-2xl px-8 py-5 text-white focus:outline-none focus:ring-2 focus:ring-blue-600 transition-all font-bold text-sm"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                  />
                 </div>
-                
+
                 <div className="pt-6">
-                  <button 
+                  <button
                     type="submit"
                     disabled={loading}
                     className="w-full py-6 bg-blue-600 text-white font-black uppercase tracking-widest text-[11px] rounded-[1.8rem] transition-all hover:bg-white hover:text-blue-600 shadow-2xl shadow-blue-600/20 active:scale-95 disabled:opacity-50"
@@ -86,16 +102,16 @@ const AnalysisTool: React.FC = () => {
         ) : (
           <div className="text-center py-20 animate-in fade-in zoom-in duration-700">
             <div className="w-24 h-24 bg-blue-600 rounded-[2rem] flex items-center justify-center mx-auto mb-10 shadow-2xl shadow-blue-600/40">
-                <svg className="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7"></path>
-                </svg>
+              <svg className="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7"></path>
+              </svg>
             </div>
             <h2 className="text-5xl font-black uppercase tracking-tighter mb-6">Analysis Initiated.</h2>
             <p className="text-slate-400 text-xl font-medium max-w-xl mx-auto leading-relaxed mb-10">
-              Our architects have received your industry profile for <span className="text-blue-500 font-black">{industry}</span>. 
+              Our architects have received your industry profile for <span className="text-blue-500 font-black">{industry}</span>.
               We will send your blueprint to <span className="text-white font-bold">{email}</span> within 24 hours.
             </p>
-            <button 
+            <button
               onClick={() => setSubmitted(false)}
               className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-500 hover:text-blue-600 transition-colors"
             >

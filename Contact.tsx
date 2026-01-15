@@ -5,9 +5,7 @@ import { CONFIG } from './constants';
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
     name: '',
-    company: '',
     email: '',
-    scope: '',
     industry: ''
   });
   const [submitted, setSubmitted] = useState(false);
@@ -22,8 +20,6 @@ const Contact: React.FC = () => {
       params.append('name', formData.name);
       params.append('industry', formData.industry);
       params.append('email', formData.email);
-      params.append('company', formData.company);
-      params.append('scope', formData.scope);
       params.append('source', 'Contact Form');
 
       await fetch(CONFIG.bookingWebhookUrl, {
@@ -92,8 +88,6 @@ const Contact: React.FC = () => {
               }, 1000);
             }}
           >
-            <input type="hidden" name="company" value={formData.company} />
-            <input type="hidden" name="scope" value={formData.scope} />
             <input type="hidden" name="source" value="Contact Form" />
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
