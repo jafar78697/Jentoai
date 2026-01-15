@@ -78,7 +78,24 @@ const Contact: React.FC = () => {
         </div>
 
         <div className="bg-white p-12 rounded-[3rem] shadow-2xl border border-slate-100 reveal delay-200">
-          <form className="space-y-6" onSubmit={handleSubmit}>
+          <iframe name="hidden_iframe_contact" title="hidden_iframe_contact" style={{ display: 'none' }}></iframe>
+          <form
+            className="space-y-6"
+            action={CONFIG.bookingWebhookUrl}
+            method="POST"
+            target="hidden_iframe_contact"
+            onSubmit={() => {
+              setLoading(true);
+              setTimeout(() => {
+                setSubmitted(true);
+                setLoading(false);
+              }, 1000);
+            }}
+          >
+            <input type="hidden" name="company" value={formData.company} />
+            <input type="hidden" name="scope" value={formData.scope} />
+            <input type="hidden" name="source" value="Contact Form" />
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-2">
                 <label htmlFor="contact-name" className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-4">Full Name</label>

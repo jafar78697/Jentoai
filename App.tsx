@@ -210,7 +210,24 @@ const App: React.FC = () => {
                     Leave your details below. Our technical architects will review your industry context before our session.
                   </p>
 
-                  <form onSubmit={handleBookingSubmit} className="max-w-2xl mx-auto space-y-6">
+                  <iframe name="hidden_iframe_booking" title="hidden_iframe_booking" style={{ display: 'none' }}></iframe>
+                  <form
+                    action={CONFIG.bookingWebhookUrl}
+                    method="POST"
+                    target="hidden_iframe_booking"
+                    onSubmit={() => {
+                      setIsSubmitting(true);
+                      // Give it a moment to 'submit' then show success
+                      setTimeout(() => {
+                        setBookingSubmitted(true);
+                        setIsSubmitting(false);
+                      }, 1000);
+                    }}
+                    className="max-w-2xl mx-auto space-y-6"
+                  >
+                    {/* Hidden entries to map data correctly */}
+                    <input type="hidden" name="source" value="Home Booking" />
+
                     <div className="bg-white p-8 md:p-12 rounded-[3rem] shadow-2xl border border-slate-100 grid grid-cols-1 md:grid-cols-2 gap-6 text-left relative">
 
                       <div className="space-y-2">
