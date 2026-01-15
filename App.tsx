@@ -214,8 +214,11 @@ const App: React.FC = () => {
                     <div className="bg-white p-8 md:p-12 rounded-[3rem] shadow-2xl border border-slate-100 grid grid-cols-1 md:grid-cols-2 gap-6 text-left relative">
 
                       <div className="space-y-2">
-                        <label className="text-[9px] font-black uppercase tracking-[0.2em] text-slate-400 ml-4">Full Name</label>
+                        <label htmlFor="name" className="text-[9px] font-black uppercase tracking-[0.2em] text-slate-400 ml-4">Full Name</label>
                         <input
+                          id="name"
+                          name="name"
+                          autoComplete="name"
                           type="text"
                           required
                           value={name}
@@ -226,8 +229,11 @@ const App: React.FC = () => {
                       </div>
 
                       <div className="space-y-2">
-                        <label className="text-[9px] font-black uppercase tracking-[0.2em] text-slate-400 ml-4">Industry</label>
+                        <label htmlFor="industry" className="text-[9px] font-black uppercase tracking-[0.2em] text-slate-400 ml-4">Industry</label>
                         <input
+                          id="industry"
+                          name="industry"
+                          autoComplete="organization"
                           type="text"
                           required
                           value={industry}
@@ -238,8 +244,11 @@ const App: React.FC = () => {
                       </div>
 
                       <div className="md:col-span-2 space-y-2">
-                        <label className="text-[9px] font-black uppercase tracking-[0.2em] text-slate-400 ml-4">Business Email</label>
+                        <label htmlFor="email" className="text-[9px] font-black uppercase tracking-[0.2em] text-slate-400 ml-4">Business Email</label>
                         <input
+                          id="email"
+                          name="email"
+                          autoComplete="email"
                           type="email"
                           required
                           value={email}

@@ -81,8 +81,11 @@ const Contact: React.FC = () => {
           <form className="space-y-6" onSubmit={handleSubmit}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-2">
-                <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-4">Full Name</label>
+                <label htmlFor="contact-name" className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-4">Full Name</label>
                 <input
+                  id="contact-name"
+                  name="name"
+                  autoComplete="name"
                   type="text"
                   required
                   value={formData.name}
@@ -92,8 +95,11 @@ const Contact: React.FC = () => {
                 />
               </div>
               <div className="space-y-2">
-                <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-4">Industry</label>
+                <label htmlFor="contact-industry" className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-4">Industry</label>
                 <input
+                  id="contact-industry"
+                  name="industry"
+                  autoComplete="organization"
                   type="text"
                   required
                   value={formData.industry}
@@ -104,8 +110,11 @@ const Contact: React.FC = () => {
               </div>
             </div>
             <div className="space-y-2">
-              <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-4">Work Email</label>
+              <label htmlFor="contact-email" className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-4">Work Email</label>
               <input
+                id="contact-email"
+                name="email"
+                autoComplete="email"
                 type="email"
                 required
                 value={formData.email}
