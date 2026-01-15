@@ -52,6 +52,7 @@ const Hero: React.FC<HeroProps> = ({ setPage }) => {
               <img
                 src="https://images.unsplash.com/photo-1639322537228-f710d846310a?auto=format&fit=crop&q=80&w=1200"
                 alt="Jento Node Builder"
+                loading="lazy"
                 className="w-full h-full object-cover opacity-60 mix-blend-screen"
               />
               <div className="absolute inset-0 p-8 flex flex-col justify-center">
@@ -82,7 +83,7 @@ const Hero: React.FC<HeroProps> = ({ setPage }) => {
           <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 bg-white px-8 py-4 rounded-2xl shadow-2xl border border-slate-100 flex items-center space-x-4">
             <div className="flex -space-x-3">
               {[1, 2, 3, 4].map(i => (
-                <img key={i} src={`https://i.pravatar.cc/100?u=${i + 25}`} className="w-8 h-8 rounded-full border-2 border-white shadow-md" />
+                <img key={i} src={`https://i.pravatar.cc/100?u=${i + 25}`} loading="lazy" className="w-8 h-8 rounded-full border-2 border-white shadow-md" />
               ))}
             </div>
             <p className="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em]">Trusted by growing teams & agencies worldwide</p>

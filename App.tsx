@@ -1,18 +1,26 @@
-
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense, lazy } from 'react';
 import Navbar from './Navbar';
 import Hero from './Hero';
-import AgentCard from './AgentCard';
-import AnalysisTool from './AnalysisTool';
-import Solutions from './Solutions';
-import Contact from './Contact';
-import ServicesPage from './Services';
-import IndustriesPage from './Industries';
-import AboutPage from './About';
-import HolographicCore from './HolographicCore';
 import N8nChatWidget from './N8nChatWidget';
 import { Page } from './types';
 import { AGENTS, PRICING, CONFIG } from './constants';
+
+// Lazy Load Heavy Components
+const AgentCard = lazy(() => import('./AgentCard'));
+const AnalysisTool = lazy(() => import('./AnalysisTool'));
+const Solutions = lazy(() => import('./Solutions'));
+const Contact = lazy(() => import('./Contact'));
+const ServicesPage = lazy(() => import('./Services'));
+const IndustriesPage = lazy(() => import('./Industries'));
+const AboutPage = lazy(() => import('./About'));
+const HolographicCore = lazy(() => import('./HolographicCore'));
+
+// Loading Fallback Component
+const PageLoader = () => (
+  <div className="flex items-center justify-center min-h-[50vh]">
+    <div className="w-8 h-8 border-4 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
+  </div>
+);
 
 const App: React.FC = () => {
   const [page, setPage] = useState<Page>('home');
@@ -360,7 +368,9 @@ const App: React.FC = () => {
     <div className="min-h-screen bg-white flex flex-col">
       <Navbar currentPage={page} setPage={setPage} />
       <main className="flex-grow">
-        {renderPage()}
+        <Suspense fallback={<PageLoader />}>
+          {renderPage()}
+        </Suspense>
       </main>
 
       {/* PROFESSIONAL MULTI-COLUMN FOOTER */}

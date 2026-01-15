@@ -82,6 +82,7 @@ const About: React.FC = () => {
                 src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800"
                 className="w-full h-full object-cover opacity-50 grayscale hover:grayscale-0 transition-all duration-1000"
                 alt="Tech Stack"
+                loading="lazy"
               />
               <div className="absolute inset-0 bg-blue-600/20 mix-blend-multiply"></div>
               <div className="absolute inset-0 flex items-center justify-center p-12">
@@ -102,6 +103,7 @@ const About: React.FC = () => {
             src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=1200"
             alt="The Studio"
             className="w-full h-full object-cover grayscale"
+            loading="lazy"
           />
           <div className="absolute inset-0 bg-blue-600/20 mix-blend-multiply"></div>
           <div className="absolute inset-0 flex items-center justify-center">

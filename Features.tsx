@@ -27,25 +27,25 @@ const Features: React.FC = () => {
             </div>
           ))}
         </div>
-        
+
         <div className="reveal mt-32 p-12 bg-gradient-to-br from-blue-900/40 to-slate-900 rounded-[3rem] border border-blue-500/20 flex flex-col lg:flex-row items-center justify-between gap-12">
-            <div className="max-w-xl">
-                <h3 className="text-3xl font-black mb-6 leading-tight uppercase">Unlimited Nodes. <br /> Zero Latency.</h3>
-                <p className="text-slate-400 mb-8">Our proprietary execution fabric ensures that even the most complex 100-node workflows process in milliseconds.</p>
-                <div className="flex space-x-6">
-                    <div className="text-center">
-                        <p className="text-3xl font-black text-blue-500">12ms</p>
-                        <p className="text-[10px] uppercase font-bold text-slate-500 tracking-widest">Avg Latency</p>
-                    </div>
-                    <div className="text-center">
-                        <p className="text-3xl font-black text-blue-500">99.99%</p>
-                        <p className="text-[10px] uppercase font-bold text-slate-500 tracking-widest">Uptime Core</p>
-                    </div>
-                </div>
+          <div className="max-w-xl">
+            <h3 className="text-3xl font-black mb-6 leading-tight uppercase">Unlimited Nodes. <br /> Zero Latency.</h3>
+            <p className="text-slate-400 mb-8">Our proprietary execution fabric ensures that even the most complex 100-node workflows process in milliseconds.</p>
+            <div className="flex space-x-6">
+              <div className="text-center">
+                <p className="text-3xl font-black text-blue-500">12ms</p>
+                <p className="text-[10px] uppercase font-bold text-slate-500 tracking-widest">Avg Latency</p>
+              </div>
+              <div className="text-center">
+                <p className="text-3xl font-black text-blue-500">99.99%</p>
+                <p className="text-[10px] uppercase font-bold text-slate-500 tracking-widest">Uptime Core</p>
+              </div>
             </div>
-            <div className="w-full lg:w-1/2 rounded-2xl overflow-hidden border border-slate-700 shadow-2xl">
-                <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc51?auto=format&fit=crop&q=80&w=800" alt="Server Infrastructure" className="w-full h-auto grayscale hover:grayscale-0 transition-all duration-700" />
-            </div>
+          </div>
+          <div className="w-full lg:w-1/2 rounded-2xl overflow-hidden border border-slate-700 shadow-2xl">
+            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc51?auto=format&fit=crop&q=80&w=800" alt="Server Infrastructure" loading="lazy" className="w-full h-auto grayscale hover:grayscale-0 transition-all duration-700" />
+          </div>
         </div>
       </div>
     </section>
