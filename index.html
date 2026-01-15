@@ -47,19 +47,23 @@
   <style>
     /* Force styles via CSS Parts and Global Variables */
     /* Force styles via CSS Parts and Global Variables */
-    n8n-chat::part(window) {
+    /* Force styles via CSS Parts and Global Variables */
+
+    /* Override n8n chat styles (Light DOM) */
+    .chat-window {
       border-radius: 2rem !important;
       box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25) !important;
       overflow: hidden !important;
+      border: 1px solid rgba(255, 255, 255, 0.1) !important;
     }
 
-    n8n-chat::part(header) {
+    .chat-header {
       background-color: #2563eb !important;
       border-radius: 2rem 2rem 0 0 !important;
       padding: 1.5rem !important;
     }
 
-    n8n-chat::part(button) {
+    .chat-window-toggle {
       background-color: #2563eb !important;
       border-radius: 2rem !important;
       width: 4rem !important;
@@ -67,10 +71,16 @@
       box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3) !important;
     }
 
-    n8n-chat::part(input) {
+    .chat-input {
       border-radius: 1.5rem !important;
       background-color: #f8fafc !important;
       border: 1px solid #e2e8f0 !important;
+    }
+
+    /* Fallbacks for Shadow DOM just in case (some versions use it) */
+    n8n-chat::part(window) {
+      border-radius: 2rem !important;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25) !important;
     }
 
     :root {
