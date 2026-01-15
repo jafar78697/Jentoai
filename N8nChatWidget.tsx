@@ -29,13 +29,17 @@ const N8nChatWidget: React.FC = () => {
                         }
                     },
                     theme: {
-                        '--chat--header--background': '#2563eb',
+                        '--chat--header--background': '#0f172a',
                         '--chat--header--color': '#ffffff',
+                        '--chat--window--background': '#020617',
                         '--chat--button--background': '#2563eb',
+                        '--chat--button--color': '#ffffff',
                         '--chat--message--user--background': '#2563eb',
                         '--chat--message--user--color': '#ffffff',
-                        '--chat--message--bot--background': '#f8fafc',
-                        '--chat--message--bot--color': '#0f172a',
+                        '--chat--message--bot--background': '#1e293b',
+                        '--chat--message--bot--color': '#f8fafc',
+                        '--chat--input--background': '#1e293b',
+                        '--chat--input--color': '#ffffff',
                     }
                 });
             } catch (err) {

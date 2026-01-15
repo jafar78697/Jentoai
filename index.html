@@ -52,20 +52,23 @@
     /* Override n8n chat styles (Light DOM) */
     .chat-window {
       border-radius: 2rem !important;
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25) !important;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5) !important;
       overflow: hidden !important;
       border: 1px solid rgba(255, 255, 255, 0.1) !important;
+      background-color: #020617 !important;
     }
 
     .chat-header {
-      background-color: #2563eb !important;
+      background-color: #0f172a !important;
       border-radius: 2rem 2rem 0 0 !important;
       padding: 1.5rem !important;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
     }
 
     .chat-footer {
       padding-bottom: 20px !important;
       padding-top: 10px !important;
+      background-color: #020617 !important;
     }
 
     .chat-window-toggle {
@@ -73,29 +76,36 @@
       border-radius: 2rem !important;
       width: 4rem !important;
       height: 4rem !important;
-      box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3) !important;
+      box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.4) !important;
+      border: 2px solid rgba(255, 255, 255, 0.1) !important;
     }
 
     .chat-input {
       border-radius: 1.5rem !important;
-      background-color: #f8fafc !important;
-      border: 1px solid #e2e8f0 !important;
+      background-color: #1e293b !important;
+      border: 1px solid rgba(255, 255, 255, 0.1) !important;
+      color: #ffffff !important;
+    }
+
+    .chat-input::placeholder {
+      color: #94a3b8 !important;
     }
 
     /* Fallbacks for Shadow DOM just in case (some versions use it) */
     n8n-chat::part(window) {
       border-radius: 2rem !important;
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25) !important;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5) !important;
+      background-color: #020617 !important;
     }
 
     :root {
-      --chat--header--background: #2563eb !important;
+      --chat--header--background: #0f172a !important;
       --chat--header--color: #ffffff !important;
       --chat--button--background: #2563eb !important;
       --chat--message--user--background: #2563eb !important;
       --chat--message--user--color: #ffffff !important;
-      --chat--message--bot--background: #f1f5f9 !important;
-      --chat--message--bot--color: #0f172a !important;
+      --chat--message--bot--background: #1e293b !important;
+      --chat--message--bot--color: #f8fafc !important;
       --chat--window--height: 600px !important;
       --chat--window--width: 400px !important;
     }
