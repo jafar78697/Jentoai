@@ -46,13 +46,31 @@
   <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
   <style>
     /* Force styles via CSS Parts and Global Variables */
+    /* Force styles via CSS Parts and Global Variables */
+    n8n-chat::part(window) {
+      border-radius: 2rem !important;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25) !important;
+      overflow: hidden !important;
+    }
+
     n8n-chat::part(header) {
       background-color: #2563eb !important;
+      border-radius: 2rem 2rem 0 0 !important;
+      padding: 1.5rem !important;
     }
 
     n8n-chat::part(button) {
       background-color: #2563eb !important;
+      border-radius: 2rem !important;
+      width: 4rem !important;
+      height: 4rem !important;
+      box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3) !important;
+    }
+
+    n8n-chat::part(input) {
       border-radius: 1.5rem !important;
+      background-color: #f8fafc !important;
+      border: 1px solid #e2e8f0 !important;
     }
 
     :root {
@@ -60,7 +78,11 @@
       --chat--header--color: #ffffff !important;
       --chat--button--background: #2563eb !important;
       --chat--message--user--background: #2563eb !important;
-      --n8n-chat-primary-color: #2563eb !important;
+      --chat--message--user--color: #ffffff !important;
+      --chat--message--bot--background: #f1f5f9 !important;
+      --chat--message--bot--color: #0f172a !important;
+      --chat--window--height: 600px !important;
+      --chat--window--width: 400px !important;
     }
   </style>
   <script type="module" src="/index.tsx"></script>
