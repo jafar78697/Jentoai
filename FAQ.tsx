@@ -125,13 +125,81 @@ const FAQPage: React.FC<FAQPageProps> = ({ setPage }) => {
                     </div>
                 </div>
 
-                <div className="space-y-6 mb-16">
+                <div className="reveal mb-32">
+                    <div className="text-center mb-16">
+                        <p className="text-blue-600 text-[10px] font-black uppercase tracking-[0.4em] mb-4">What We Build</p>
+                        <h2 className="text-3xl md:text-5xl font-black text-slate-900 uppercase tracking-tighter mb-6">The Automation <span className="text-blue-600">Capability Matrix.</span></h2>
+                        <p className="text-lg text-slate-500 max-w-2xl mx-auto">We don't just "do AI". We build specific, powerful tools that solve exact business problems. Here is what we can build for you:</p>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {[
+                            { cat: "Growth Engine", tools: ["LinkedIn Lead Scraper", "Cold Email Sentient Bot", "CRM Data Enricher", "Meeting Scheduler Agent"] },
+                            { cat: "Operations", tools: ["Invoice PDF Parser", "Contract Legal Analyzer", "Inventory Sync Bot", "Employee Onboarding Agent"] },
+                            { cat: "Support", tools: ["24/7 WhatsApp Concierge", "Ticket Triage & Routing", "Refund Processing Node", "Multilingual Chatbot"] },
+                            { cat: "Marketing", tools: ["SEO Content Generator", "Social Media Scheduler", "Ad Performance Analyst", "Competitor Price Tracker"] },
+                            { cat: "Data & Analytics", tools: ["Weekly KPI Reporter", "Customer Churn Predictor", "Market Trend Scanner", "Sentiment Analysis Node"] },
+                            { cat: "Custom Logic", tools: ["Legacy System Bridge", "API-to-API Connector", "Custom Database Sync", "Compliance Audit Bot"] }
+                        ].map((sector, i) => (
+                            <div key={i} className="p-8 bg-slate-50 rounded-3xl border border-slate-100 hover:border-blue-200 transition-colors">
+                                <h3 className="text-blue-600 font-black uppercase tracking-widest text-xs mb-6">{sector.cat}</h3>
+                                <ul className="space-y-3">
+                                    {sector.tools.map((tool, j) => (
+                                        <li key={j} className="flex items-center gap-3 text-sm font-bold text-slate-700">
+                                            <svg className="w-4 h-4 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7" /></svg>
+                                            {tool}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+
+                <div className="space-y-8 mb-24">
+                    <div className="text-center mb-12">
+                        <h2 className="text-3xl font-black text-slate-900 uppercase tracking-tighter">Deep Dive <span className="text-slate-400">Q&A.</span></h2>
+                    </div>
                     {faqs.map((faq, i) => (
-                        <div key={i} className="reveal p-6 md:p-8 bg-white border border-slate-100 rounded-[2rem] shadow-sm">
-                            <h2 className="text-lg md:text-xl font-black text-slate-900 mb-4">{faq.question}</h2>
-                            <p className="text-slate-600 font-medium leading-relaxed">{faq.answer}</p>
+                        <div key={i} className="reveal p-8 md:p-10 bg-white border border-slate-200 rounded-[2.5rem] shadow-sm hover:shadow-xl transition-all duration-500">
+                            <h2 className="text-xl md:text-2xl font-black text-slate-900 mb-6">{faq.question}</h2>
+                            <div className="prose prose-slate max-w-none">
+                                <p className="text-slate-600 font-medium leading-relaxed text-lg">{faq.answer}</p>
+                            </div>
                         </div>
                     ))}
+                </div>
+
+                {/* Collaboration Process */}
+                <div className="reveal mb-32 bg-slate-950 rounded-[3rem] p-10 md:p-20 text-white relative overflow-hidden">
+                    <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-600/20 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3"></div>
+
+                    <div className="relative z-10">
+                        <div className="text-center mb-20">
+                            <p className="text-blue-500 text-[10px] font-black uppercase tracking-[0.4em] mb-6">The Process</p>
+                            <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tighter mb-8">How We Build <span className="text-blue-500">Together.</span></h2>
+                            <p className="text-slate-400 text-lg max-w-2xl mx-auto">We don't send you a manual. We partner with you to build the exact custom tool your business needs to scale.</p>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
+                            {/* Connector Line */}
+                            <div className="hidden md:block absolute top-[24px] left-[16%] right-[16%] h-0.5 bg-slate-800 -z-10"></div>
+
+                            {[
+                                { step: "01", title: "Discovery", desc: "You tell us the bottleneck. We map the logic." },
+                                { step: "02", title: "Construction", desc: "We build the n8n workflows & test rigorously." },
+                                { step: "03", title: "Handover", desc: "We deploy the 'Black Box' & give you the keys." }
+                            ].map((s, i) => (
+                                <div key={i} className="text-center group">
+                                    <div className="w-12 h-12 mx-auto bg-slate-900 border border-slate-700 rounded-2xl flex items-center justify-center text-blue-500 font-black mb-8 group-hover:bg-blue-600 group-hover:text-white group-hover:border-blue-500 transition-all duration-300 shadow-xl shadow-black/50 relative z-10">
+                                        {s.step}
+                                    </div>
+                                    <h3 className="text-xl font-black uppercase tracking-wide mb-4">{s.title}</h3>
+                                    <p className="text-slate-400 font-medium leading-relaxed max-w-xs mx-auto">{s.desc}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
                 </div>
 
                 <div className="reveal text-center p-8 md:p-12 bg-blue-600 rounded-[2rem] text-white">
