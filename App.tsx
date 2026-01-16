@@ -17,6 +17,7 @@ const HolographicCore = lazy(() => import('./HolographicCore'));
 const FAQPage = lazy(() => import('./FAQ'));
 const CaseStudies = lazy(() => import('./CaseStudies'));
 const Legal = lazy(() => import('./Legal'));
+const ROICalculator = lazy(() => import('./ROICalculator'));
 
 // Loading Fallback Component
 const PageLoader = () => (
@@ -575,49 +576,20 @@ const App: React.FC = () => {
               </div>
             </section>
 
-            {/* Risk-Free Guarantee Section */}
-            <section className="py-24 md:py-32 bg-gradient-to-br from-slate-900 via-slate-950 to-blue-950 text-white relative overflow-hidden">
-              <div className="absolute inset-0 opacity-30">
-                <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-blue-600 rounded-full blur-[150px]"></div>
-                <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-indigo-600 rounded-full blur-[120px]"></div>
-              </div>
-
-              <div className="max-w-5xl mx-auto px-6 relative z-10">
+            {/* ROI Calculator Section */}
+            <section className="py-24 md:py-32 bg-white relative overflow-hidden">
+              <div className="max-w-7xl mx-auto px-6 relative z-10">
                 <div className="text-center mb-16 reveal">
-                  <div className="inline-flex items-center gap-2 px-6 py-3 bg-blue-500/10 border border-blue-500/30 rounded-full mb-8">
-                    <svg className="w-5 h-5 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
-                    <span className="text-blue-400 text-xs font-black uppercase tracking-widest">Zero Risk Partnership</span>
-                  </div>
-                  <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-8 leading-none">
-                    30-Day <span className="text-blue-400">ROI Guarantee.</span>
+                  <p className="text-blue-600 text-[10px] font-black uppercase tracking-[0.4em] mb-4">Calculate Your Savings</p>
+                  <h2 className="text-4xl md:text-6xl font-black text-slate-900 uppercase tracking-tighter mb-6 leading-none">
+                    See how much <span className="text-blue-600">manual work</span> <br /> is costing you.
                   </h2>
-                  <p className="text-xl text-slate-300 font-medium max-w-2xl mx-auto leading-relaxed">
-                    If you don't see measurable time or cost savings within the first 30 days of deployment, we'll refund your pilot investment. No questions asked.
-                  </p>
                 </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16 reveal">
-                  {[
-                    { icon: '🛡️', title: 'Full Refund', desc: 'Get 100% of your pilot fee back if results don\'t meet expectations.' },
-                    { icon: '📊', title: 'Transparent Metrics', desc: 'We track time saved & costs reduced together. No hidden data.' },
-                    { icon: '🤝', title: 'Extended Support', desc: '60 days of post-deployment optimization included free.' }
-                  ].map((item, i) => (
-                    <div key={i} className="p-8 bg-white/5 backdrop-blur-sm border border-white/10 rounded-[2rem] hover:bg-white/10 transition-all">
-                      <div className="text-4xl mb-6">{item.icon}</div>
-                      <h3 className="text-lg font-black uppercase tracking-tight mb-3">{item.title}</h3>
-                      <p className="text-slate-400 text-sm font-medium leading-relaxed">{item.desc}</p>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="text-center reveal">
-                  <button
-                    onClick={() => setPage('book-call')}
-                    className="px-16 py-6 bg-blue-600 text-white rounded-3xl font-black uppercase tracking-widest text-sm hover:bg-blue-500 transition-all shadow-2xl shadow-blue-500/30 hover:-translate-y-1"
-                  >
-                    Start Your Risk-Free Pilot
-                  </button>
-                  <p className="text-slate-500 text-xs mt-6 font-medium">No contracts. Cancel anytime.</p>
+                <div className="reveal">
+                  {/* Override shadow to make it pop on white */}
+                  <div className="shadow-2xl shadow-blue-900/20 rounded-[3rem]">
+                    <ROICalculator />
+                  </div>
                 </div>
               </div>
             </section>
