@@ -484,26 +484,62 @@ const App: React.FC = () => {
               <div className="relative">
                 <div className="flex animate-marquee whitespace-nowrap">
                   {[
-                    'Slack', 'HubSpot', 'Notion', 'Airtable', 'Google Sheets', 'OpenAI', 'Salesforce', 'WhatsApp',
-                    'Discord', 'Gmail', 'Stripe', 'Shopify', 'LinkedIn', 'GitHub', 'Jira', 'Asana', 'Pipedrive', 'Zapier'
+                    { name: 'Slack', slug: 'slack' },
+                    { name: 'HubSpot', slug: 'hubspot' },
+                    { name: 'Notion', slug: 'notion' },
+                    { name: 'Airtable', slug: 'airtable' },
+                    { name: 'Google Sheets', slug: 'googlesheets' },
+                    { name: 'OpenAI', slug: 'openai' },
+                    { name: 'Salesforce', slug: 'salesforce' },
+                    { name: 'WhatsApp', slug: 'whatsapp' },
+                    { name: 'Discord', slug: 'discord' },
+                    { name: 'Gmail', slug: 'gmail' },
+                    { name: 'Stripe', slug: 'stripe' },
+                    { name: 'Shopify', slug: 'shopify' },
+                    { name: 'LinkedIn', slug: 'linkedin' },
+                    { name: 'GitHub', slug: 'github' },
+                    { name: 'Jira', slug: 'jira' },
+                    { name: 'Asana', slug: 'asana' },
+                    { name: 'Pipedrive', slug: 'pipedrive' },
+                    { name: 'Zapier', slug: 'zapier' }
                   ].map((tool, i) => (
-                    <div key={i} className="mx-8 flex items-center gap-3 group">
-                      <div className="w-10 h-10 bg-slate-100 rounded-xl flex items-center justify-center text-slate-400 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 shadow-sm">
-                        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
-                      </div>
-                      <span className="text-sm font-black text-slate-600 uppercase tracking-widest group-hover:text-blue-600 transition-colors">{tool}</span>
+                    <div key={i} className="mx-8 group flex flex-col items-center justify-center gap-3 opacity-50 hover:opacity-100 transition-opacity duration-300 bg-white">
+                      <img
+                        src={`https://cdn.simpleicons.org/${tool.slug}/3b82f6`}
+                        alt={tool.name}
+                        className="h-10 w-10 object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300"
+                      />
+                      <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest group-hover:text-blue-600 transition-colors">{tool.name}</span>
                     </div>
                   ))}
                   {/* Duplicate for seamless loop */}
                   {[
-                    'Slack', 'HubSpot', 'Notion', 'Airtable', 'Google Sheets', 'OpenAI', 'Salesforce', 'WhatsApp',
-                    'Discord', 'Gmail', 'Stripe', 'Shopify', 'LinkedIn', 'GitHub', 'Jira', 'Asana', 'Pipedrive', 'Zapier'
+                    { name: 'Slack', slug: 'slack' },
+                    { name: 'HubSpot', slug: 'hubspot' },
+                    { name: 'Notion', slug: 'notion' },
+                    { name: 'Airtable', slug: 'airtable' },
+                    { name: 'Google Sheets', slug: 'googlesheets' },
+                    { name: 'OpenAI', slug: 'openai' },
+                    { name: 'Salesforce', slug: 'salesforce' },
+                    { name: 'WhatsApp', slug: 'whatsapp' },
+                    { name: 'Discord', slug: 'discord' },
+                    { name: 'Gmail', slug: 'gmail' },
+                    { name: 'Stripe', slug: 'stripe' },
+                    { name: 'Shopify', slug: 'shopify' },
+                    { name: 'LinkedIn', slug: 'linkedin' },
+                    { name: 'GitHub', slug: 'github' },
+                    { name: 'Jira', slug: 'jira' },
+                    { name: 'Asana', slug: 'asana' },
+                    { name: 'Pipedrive', slug: 'pipedrive' },
+                    { name: 'Zapier', slug: 'zapier' }
                   ].map((tool, i) => (
-                    <div key={`dup-${i}`} className="mx-8 flex items-center gap-3 group">
-                      <div className="w-10 h-10 bg-slate-100 rounded-xl flex items-center justify-center text-slate-400 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 shadow-sm">
-                        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
-                      </div>
-                      <span className="text-sm font-black text-slate-600 uppercase tracking-widest group-hover:text-blue-600 transition-colors">{tool}</span>
+                    <div key={`dup-${i}`} className="mx-8 group flex flex-col items-center justify-center gap-3 opacity-50 hover:opacity-100 transition-opacity duration-300 bg-white">
+                      <img
+                        src={`https://cdn.simpleicons.org/${tool.slug}/3b82f6`}
+                        alt={tool.name}
+                        className="h-10 w-10 object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300"
+                      />
+                      <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest group-hover:text-blue-600 transition-colors">{tool.name}</span>
                     </div>
                   ))}
                 </div>
