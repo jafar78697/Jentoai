@@ -64,7 +64,7 @@ const CaseStudies: React.FC<CaseStudiesProps> = ({ setPage }) => {
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center bg-white rounded-[3rem] p-8 md:p-12 border border-slate-100 shadow-xl hover:shadow-2xl transition-all duration-500">
                         <div className="relative h-[400px] rounded-[2.5rem] overflow-hidden">
                             <img
-                                src="https://images.unsplash.com/photo-1556742049-0cfed4f7a07d?auto=format&fit=crop&q=80&w=800"
+                                src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&q=80&w=800"
                                 className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                                 alt="E-commerce"
                             />
