@@ -475,6 +475,41 @@ const App: React.FC = () => {
         return (
           <>
             <Hero setPage={setPage} />
+
+            {/* Integration Marquee */}
+            <section className="py-12 bg-white border-y border-slate-100 overflow-hidden">
+              <div className="max-w-7xl mx-auto px-6 mb-8">
+                <p className="text-center text-slate-400 text-[10px] font-black uppercase tracking-[0.4em]">Seamlessly Connects With Your Stack</p>
+              </div>
+              <div className="relative">
+                <div className="flex animate-marquee whitespace-nowrap">
+                  {[
+                    'Slack', 'HubSpot', 'Notion', 'Airtable', 'Google Sheets', 'OpenAI', 'Salesforce', 'WhatsApp',
+                    'Discord', 'Gmail', 'Stripe', 'Shopify', 'LinkedIn', 'GitHub', 'Jira', 'Asana', 'Pipedrive', 'Zapier'
+                  ].map((tool, i) => (
+                    <div key={i} className="mx-8 flex items-center gap-3 group">
+                      <div className="w-10 h-10 bg-slate-100 rounded-xl flex items-center justify-center text-slate-400 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 shadow-sm">
+                        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                      </div>
+                      <span className="text-sm font-black text-slate-600 uppercase tracking-widest group-hover:text-blue-600 transition-colors">{tool}</span>
+                    </div>
+                  ))}
+                  {/* Duplicate for seamless loop */}
+                  {[
+                    'Slack', 'HubSpot', 'Notion', 'Airtable', 'Google Sheets', 'OpenAI', 'Salesforce', 'WhatsApp',
+                    'Discord', 'Gmail', 'Stripe', 'Shopify', 'LinkedIn', 'GitHub', 'Jira', 'Asana', 'Pipedrive', 'Zapier'
+                  ].map((tool, i) => (
+                    <div key={`dup-${i}`} className="mx-8 flex items-center gap-3 group">
+                      <div className="w-10 h-10 bg-slate-100 rounded-xl flex items-center justify-center text-slate-400 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 shadow-sm">
+                        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                      </div>
+                      <span className="text-sm font-black text-slate-600 uppercase tracking-widest group-hover:text-blue-600 transition-colors">{tool}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </section>
+
             <Solutions />
             <AnalysisTool />
             <section className="py-16 md:py-32 bg-slate-50 overflow-hidden">
@@ -500,6 +535,53 @@ const App: React.FC = () => {
                 </div>
                 <div className="reveal delay-300 flex-[1.5] w-full lg:w-auto h-full min-h-[500px] flex items-center justify-center">
                   <HolographicCore />
+                </div>
+              </div>
+            </section>
+
+            {/* Risk-Free Guarantee Section */}
+            <section className="py-24 md:py-32 bg-gradient-to-br from-slate-900 via-slate-950 to-blue-950 text-white relative overflow-hidden">
+              <div className="absolute inset-0 opacity-30">
+                <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-blue-600 rounded-full blur-[150px]"></div>
+                <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-indigo-600 rounded-full blur-[120px]"></div>
+              </div>
+
+              <div className="max-w-5xl mx-auto px-6 relative z-10">
+                <div className="text-center mb-16 reveal">
+                  <div className="inline-flex items-center gap-2 px-6 py-3 bg-green-500/10 border border-green-500/30 rounded-full mb-8">
+                    <svg className="w-5 h-5 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
+                    <span className="text-green-400 text-xs font-black uppercase tracking-widest">Zero Risk Partnership</span>
+                  </div>
+                  <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-8 leading-none">
+                    30-Day <span className="text-green-400">ROI Guarantee.</span>
+                  </h2>
+                  <p className="text-xl text-slate-300 font-medium max-w-2xl mx-auto leading-relaxed">
+                    If you don't see measurable time or cost savings within the first 30 days of deployment, we'll refund your pilot investment. No questions asked.
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16 reveal">
+                  {[
+                    { icon: '🛡️', title: 'Full Refund', desc: 'Get 100% of your pilot fee back if results don\'t meet expectations.' },
+                    { icon: '📊', title: 'Transparent Metrics', desc: 'We track time saved & costs reduced together. No hidden data.' },
+                    { icon: '🤝', title: 'Extended Support', desc: '60 days of post-deployment optimization included free.' }
+                  ].map((item, i) => (
+                    <div key={i} className="p-8 bg-white/5 backdrop-blur-sm border border-white/10 rounded-[2rem] hover:bg-white/10 transition-all">
+                      <div className="text-4xl mb-6">{item.icon}</div>
+                      <h3 className="text-lg font-black uppercase tracking-tight mb-3">{item.title}</h3>
+                      <p className="text-slate-400 text-sm font-medium leading-relaxed">{item.desc}</p>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="text-center reveal">
+                  <button
+                    onClick={() => setPage('book-call')}
+                    className="px-16 py-6 bg-green-500 text-slate-900 rounded-3xl font-black uppercase tracking-widest text-sm hover:bg-green-400 transition-all shadow-2xl shadow-green-500/30 hover:-translate-y-1"
+                  >
+                    Start Your Risk-Free Pilot
+                  </button>
+                  <p className="text-slate-500 text-xs mt-6 font-medium">No contracts. Cancel anytime.</p>
                 </div>
               </div>
             </section>
