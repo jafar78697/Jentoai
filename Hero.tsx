@@ -8,7 +8,7 @@ interface HeroProps {
 
 const Hero: React.FC<HeroProps> = ({ setPage }) => {
   return (
-    <section className="relative pt-40 pb-32 overflow-hidden bg-white">
+    <section className="relative pt-24 md:pt-40 pb-16 md:pb-32 overflow-hidden bg-white">
       {/* Premium Gradient Background Elements */}
       <div className="absolute top-0 right-0 w-[50%] h-[50%] bg-blue-50 rounded-full blur-[120px] opacity-60"></div>
       <div className="absolute bottom-0 left-0 w-[40%] h-[40%] bg-indigo-50 rounded-full blur-[100px] opacity-40"></div>
@@ -19,7 +19,7 @@ const Hero: React.FC<HeroProps> = ({ setPage }) => {
           <span>Next Generation Autonomous Architecture</span>
         </div>
 
-        <h1 className="text-5xl md:text-8xl font-black tracking-tight text-slate-900 mb-8 leading-[1.1] md:leading-[0.95] reveal">
+        <h1 className="text-4xl sm:text-5xl md:text-8xl font-black tracking-tight text-slate-900 mb-8 leading-[1.1] md:leading-[0.95] reveal">
           BUILD AI AGENTS THAT <br />
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-sky-500">
             WORK WHILE YOU SLEEP.

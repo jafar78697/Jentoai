@@ -206,11 +206,11 @@ const App: React.FC = () => {
     switch (page) {
       case 'agents':
         return (
-          <section className="py-32 bg-slate-50">
+          <section className="py-16 md:py-32 bg-slate-50">
             <div className="max-w-7xl mx-auto px-6">
-              <div className="text-center mb-24 reveal">
+              <div className="text-center mb-16 md:mb-24 reveal">
                 <p className="text-blue-600 text-[10px] font-black uppercase tracking-[0.3em] mb-4">The Workforce of the Future</p>
-                <h2 className="text-6xl font-black text-slate-900 uppercase tracking-tighter mb-4 leading-none">High-Performance <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Autonomous Nodes.</span></h2>
+                <h2 className="text-4xl md:text-6xl font-black text-slate-900 uppercase tracking-tighter mb-4 leading-none">High-Performance <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Autonomous Nodes.</span></h2>
                 <p className="text-xl text-slate-500 max-w-2xl mx-auto font-medium">Jento Agents execute business logic through direct system integration, synchronized in real-time to your central industry ledger.</p>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mb-32">
@@ -222,9 +222,9 @@ const App: React.FC = () => {
               </div>
 
               {/* Resilience & Maintenance Section */}
-              <div className="reveal p-12 md:p-20 bg-slate-950 rounded-[4rem] text-center">
+              <div className="reveal p-8 md:p-20 bg-slate-950 rounded-[2.5rem] md:rounded-[4rem] text-center">
                 <p className="text-blue-500 text-[10px] font-black uppercase tracking-[0.4em] mb-6">Mission Continuity</p>
-                <h3 className="text-4xl font-black text-white uppercase tracking-tighter mb-8">Agent Resilience & <span className="text-blue-500">Autonomous Health.</span></h3>
+                <h3 className="text-3xl md:text-4xl font-black text-white uppercase tracking-tighter mb-8">Agent Resilience & <span className="text-blue-500">Autonomous Health.</span></h3>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-left max-w-5xl mx-auto">
                   {[
                     { t: 'Self-Correction', d: 'Agents detect workflow errors in real-time and attempt autonomous recovery via retry-logic.' },
@@ -243,10 +243,10 @@ const App: React.FC = () => {
         );
       case 'pricing':
         return (
-          <section className="py-32 bg-slate-50">
+          <section className="py-16 md:py-32 bg-slate-50">
             <div className="max-w-7xl mx-auto px-6 text-center">
               <p className="text-blue-600 text-[10px] font-black uppercase tracking-[0.3em] mb-4 reveal">Investment Model</p>
-              <h2 className="text-6xl font-black text-slate-900 uppercase tracking-tighter mb-8 reveal">Transparent <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Workflow Pricing.</span></h2>
+              <h2 className="text-4xl md:text-6xl font-black text-slate-900 uppercase tracking-tighter mb-8 reveal">Transparent <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Workflow Pricing.</span></h2>
               <p className="text-xl text-slate-500 font-medium max-w-2xl mx-auto mb-20 reveal">Bespoke setup per workflow node. Each solution is built to own, not to rent.</p>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-32">
@@ -301,10 +301,10 @@ const App: React.FC = () => {
               </div>
 
               {/* FAQ Section */}
-              <div className="reveal pb-20">
-                <div className="text-center mb-16">
+              <div className="reveal pb-12 md:pb-20">
+                <div className="text-center mb-12 md:mb-16">
                   <p className="text-blue-600 text-[10px] font-black uppercase tracking-[0.4em] mb-4">Knowledge Base</p>
-                  <h3 className="text-5xl font-black text-slate-900 uppercase tracking-tighter">Common <span className="text-blue-600">Questions.</span></h3>
+                  <h3 className="text-4xl md:text-5xl font-black text-slate-900 uppercase tracking-tighter">Common <span className="text-blue-600">Questions.</span></h3>
                 </div>
                 <div className="max-w-4xl mx-auto space-y-6 text-left">
                   {[
@@ -325,12 +325,12 @@ const App: React.FC = () => {
         );
       case 'book-call':
         return (
-          <section className="py-32 md:py-48 bg-slate-50 min-h-screen flex items-center">
+          <section className="py-24 md:py-48 bg-slate-50 min-h-screen flex items-center">
             <div className="max-w-4xl mx-auto px-6 text-center">
               {!bookingSubmitted ? (
                 <div className="reveal">
                   <p className="text-blue-600 text-[10px] font-black uppercase tracking-[0.4em] mb-4">Consultation Access</p>
-                  <h2 className="text-6xl md:text-7xl font-black text-slate-900 uppercase tracking-tighter mb-8 leading-none">Schedule Your <br /> <span className="text-blue-600">Strategy Session.</span></h2>
+                  <h2 className="text-4xl md:text-7xl font-black text-slate-900 uppercase tracking-tighter mb-8 leading-none">Schedule Your <br /> <span className="text-blue-600">Strategy Session.</span></h2>
                   <p className="text-lg text-slate-500 font-medium mb-16 max-w-xl mx-auto leading-relaxed">
                     Leave your details below. Our technical architects will review your industry context before our session.
                   </p>
@@ -450,11 +450,11 @@ const App: React.FC = () => {
             <Hero setPage={setPage} />
             <Solutions />
             <AnalysisTool />
-            <section className="py-32 bg-slate-50 overflow-hidden">
+            <section className="py-16 md:py-32 bg-slate-50 overflow-hidden">
               <div className="max-w-7xl mx-auto px-6 flex flex-col lg:flex-row items-center justify-between gap-16 lg:gap-32">
                 <div className="reveal flex-1 w-full lg:max-w-md">
                   <p className="text-blue-600 text-[10px] font-black uppercase tracking-[0.4em] mb-4">The Engine</p>
-                  <h2 className="text-4xl font-black text-slate-900 uppercase tracking-tighter mb-6 leading-tight">The Jento <br /> <span className="text-blue-600">Autonomous Core.</span></h2>
+                  <h2 className="text-3xl md:text-4xl font-black text-slate-900 uppercase tracking-tighter mb-6 leading-tight">The Jento <br /> <span className="text-blue-600">Autonomous Core.</span></h2>
                   <ul className="space-y-4">
                     {[
                       { t: 'Decision Node', d: 'High-Level Reasoning' },
