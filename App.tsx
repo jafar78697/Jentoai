@@ -491,22 +491,22 @@ const App: React.FC = () => {
                     { name: 'Airtable', slug: 'airtable' },
                     { name: 'Google Sheets', slug: 'googlesheets' },
                     { name: 'OpenAI', slug: 'openai' },
-                    { name: 'Salesforce', slug: 'salesforce' },
+                    { name: 'Salesforce', url: 'https://www.google.com/s2/favicons?domain=salesforce.com&sz=128' },
                     { name: 'WhatsApp', slug: 'whatsapp' },
                     { name: 'Discord', slug: 'discord' },
                     { name: 'Gmail', slug: 'gmail' },
                     { name: 'Stripe', slug: 'stripe' },
                     { name: 'Shopify', slug: 'shopify' },
-                    { name: 'LinkedIn', slug: 'linkedin' },
+                    { name: 'LinkedIn', url: 'https://www.google.com/s2/favicons?domain=linkedin.com&sz=128' },
                     { name: 'GitHub', slug: 'github' },
                     { name: 'Jira', slug: 'jira' },
                     { name: 'Asana', slug: 'asana' },
-                    { name: 'Pipedrive', slug: 'pipedrive' },
+                    { name: 'Pipedrive', url: 'https://www.google.com/s2/favicons?domain=pipedrive.com&sz=128' },
                     { name: 'Zapier', slug: 'zapier' }
-                  ].map((tool, i) => (
+                  ].map((tool: any, i) => (
                     <div key={i} className="mx-8 group flex flex-col items-center justify-center gap-3 bg-white">
                       <img
-                        src={`https://cdn.simpleicons.org/${tool.slug}`}
+                        src={tool.url || `https://cdn.simpleicons.org/${tool.slug}`}
                         alt={tool.name}
                         className="h-12 w-12 object-contain transition-all duration-300 group-hover:scale-110"
                       />
@@ -521,22 +521,22 @@ const App: React.FC = () => {
                     { name: 'Airtable', slug: 'airtable' },
                     { name: 'Google Sheets', slug: 'googlesheets' },
                     { name: 'OpenAI', slug: 'openai' },
-                    { name: 'Salesforce', slug: 'salesforce' },
+                    { name: 'Salesforce', url: 'https://www.google.com/s2/favicons?domain=salesforce.com&sz=128' },
                     { name: 'WhatsApp', slug: 'whatsapp' },
                     { name: 'Discord', slug: 'discord' },
                     { name: 'Gmail', slug: 'gmail' },
                     { name: 'Stripe', slug: 'stripe' },
                     { name: 'Shopify', slug: 'shopify' },
-                    { name: 'LinkedIn', slug: 'linkedin' },
+                    { name: 'LinkedIn', url: 'https://www.google.com/s2/favicons?domain=linkedin.com&sz=128' },
                     { name: 'GitHub', slug: 'github' },
                     { name: 'Jira', slug: 'jira' },
                     { name: 'Asana', slug: 'asana' },
-                    { name: 'Pipedrive', slug: 'pipedrive' },
+                    { name: 'Pipedrive', url: 'https://www.google.com/s2/favicons?domain=pipedrive.com&sz=128' },
                     { name: 'Zapier', slug: 'zapier' }
-                  ].map((tool, i) => (
+                  ].map((tool: any, i) => (
                     <div key={`dup-${i}`} className="mx-8 group flex flex-col items-center justify-center gap-3 bg-white">
                       <img
-                        src={`https://cdn.simpleicons.org/${tool.slug}`}
+                        src={tool.url || `https://cdn.simpleicons.org/${tool.slug}`}
                         alt={tool.name}
                         className="h-12 w-12 object-contain transition-all duration-300 group-hover:scale-110"
                       />
