@@ -16,16 +16,16 @@ const N8nChatWidget: React.FC = () => {
                     webhookUrl: CONFIG.chatWebhookUrl,
                     showWelcomeMessage: true,
                     initialMessages: [
-                        'Protocol initialized. Jento AI Core is online.',
-                        'How can I assist you with your automation architecture today?'
+                        '👋 **Protocol initialized.** Jento AI Core is online.',
+                        'I can build custom automation agents for you. How can I help? 🚀'
                     ],
                     i18n: {
                         en: {
-                            title: 'Jento AI Architect',
-                            subtitle: 'Sync Active',
-                            placeholder: 'Message the architect...',
-                            getStarted: 'Start Protocol',
-                            inputPlaceholder: 'Message the architect...',
+                            title: 'Jento Architect 🧠',
+                            subtitle: '🟢 Value Stream Online',
+                            placeholder: 'Type your challenge...',
+                            getStarted: 'Start Protocol ⚡',
+                            inputPlaceholder: 'Type your challenge...',
                         }
                     },
                     theme: {
@@ -34,10 +34,10 @@ const N8nChatWidget: React.FC = () => {
                         '--chat--window--background': '#020617',
                         '--chat--button--background': '#2563eb',
                         '--chat--button--color': '#ffffff',
-                        '--chat--message--user--background': '#2563eb',
+                        '--chat--message--user--background': '#3b82f6', // Brighter Blue
                         '--chat--message--user--color': '#ffffff',
                         '--chat--message--bot--background': '#1e293b',
-                        '--chat--message--bot--color': '#f8fafc',
+                        '--chat--message--bot--color': '#f1f5f9',
                         '--chat--input--background': '#1e293b',
                         '--chat--input--color': '#ffffff',
                     }

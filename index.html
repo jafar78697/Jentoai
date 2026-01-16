@@ -103,17 +103,19 @@
     /* Force styles via CSS Parts and Global Variables */
 
     /* Override n8n chat styles (Light DOM) */
+    /* Override n8n chat styles (Light DOM) */
     .chat-window {
-      border-radius: 2rem !important;
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5) !important;
+      border-radius: 2.5rem !important;
+      /* Extra Roundy */
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.1) !important;
       overflow: hidden !important;
-      border: 1px solid rgba(255, 255, 255, 0.1) !important;
+      border: none !important;
       background-color: #020617 !important;
     }
 
     .chat-header {
       background-color: #0f172a !important;
-      border-radius: 2rem 2rem 0 0 !important;
+      border-radius: 2.5rem 2.5rem 0 0 !important;
       padding: 1.5rem !important;
       border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
     }
@@ -126,10 +128,11 @@
 
     .chat-window-toggle {
       background-color: #2563eb !important;
-      border-radius: 2rem !important;
+      border-radius: 50% !important;
+      /* Perfect Circle */
       width: 4rem !important;
       height: 4rem !important;
-      box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.4) !important;
+      box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.4), 0 0 0 4px rgba(37, 99, 235, 0.2) !important;
       border: 2px solid rgba(255, 255, 255, 0.1) !important;
     }
 
