@@ -23,6 +23,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentPage, setPage }) => {
     { label: 'Use Cases', value: 'use-cases' },
     { label: 'Industries', value: 'industries' },
     { label: 'Pricing', value: 'pricing' },
+    { label: 'Case Studies', value: 'case-studies' },
     { label: 'FAQ', value: 'faq' },
   ];
 

@@ -54,6 +54,32 @@ const About: React.FC = () => {
           </div>
         </div>
 
+        {/* Team Section */}
+        <div className="mb-40 reveal">
+          <div className="text-center mb-20">
+            <p className="text-blue-600 text-[10px] font-black uppercase tracking-[0.4em] mb-4">The Architects</p>
+            <h3 className="text-5xl font-black text-slate-900 uppercase tracking-tighter">Meet The <span className="text-blue-600">Minds.</span></h3>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+            {[
+              { name: 'Dr. Sarah Jen', role: 'Lead Architect', img: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=600' },
+              { name: 'Marcus Chen', role: 'n8n Specialist', img: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=600' },
+              { name: 'Elena R.', role: 'AI Ethics Lead', img: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=600' }
+            ].map((member, i) => (
+              <div key={i} className="group text-center">
+                <div className="relative aspect-[3/4] mb-6 rounded-[2.5rem] overflow-hidden shadow-xl">
+                  <img src={member.img} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 filter grayscale group-hover:grayscale-0" alt={member.name} />
+                  <div className="absolute inset-x-0 bottom-0 p-6 bg-gradient-to-t from-slate-900 to-transparent">
+                    <p className="text-white font-black uppercase tracking-widest text-lg">{member.name}</p>
+                    <p className="text-blue-400 text-[10px] font-black uppercase tracking-[0.2em]">{member.role}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
         {/* Tech Stack Blueprint */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center mb-40">
           <div className="reveal">

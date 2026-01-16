@@ -1,5 +1,5 @@
 
-export type Page = 'home' | 'agents' | 'services' | 'use-cases' | 'industries' | 'pricing' | 'about' | 'contact' | 'book-call' | 'faq';
+export type Page = 'home' | 'agents' | 'services' | 'use-cases' | 'industries' | 'pricing' | 'about' | 'contact' | 'book-call' | 'faq' | 'legal' | 'case-studies';
 
 export interface Agent {
   id: string;

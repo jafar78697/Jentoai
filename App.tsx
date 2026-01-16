@@ -15,6 +15,8 @@ const IndustriesPage = lazy(() => import('./Industries'));
 const AboutPage = lazy(() => import('./About'));
 const HolographicCore = lazy(() => import('./HolographicCore'));
 const FAQPage = lazy(() => import('./FAQ'));
+const CaseStudies = lazy(() => import('./CaseStudies'));
+const Legal = lazy(() => import('./Legal'));
 
 // Loading Fallback Component
 const PageLoader = () => (
@@ -115,7 +117,9 @@ const App: React.FC = () => {
       'about': 'About Jento AI | Enterprise AI Automation Experts',
       'contact': 'Contact Us | Get Started with AI Automation | Jento AI',
       'book-call': 'Book a Free Strategy Call | Jento AI',
-      'faq': 'FAQ | AI Automation Questions Answered | Jento AI'
+      'faq': 'FAQ | AI Automation Questions Answered | Jento AI',
+      'legal': 'Legal & Compliance | Privacy Policy | Jento AI',
+      'case-studies': 'Case Studies | Real AI Automation Results | Jento AI'
     };
 
     document.title = pageTitles[page] || 'Jento AI';
@@ -463,6 +467,10 @@ const App: React.FC = () => {
         return <AboutPage />;
       case 'faq':
         return <FAQPage setPage={setPage} />;
+      case 'legal':
+        return <Legal />;
+      case 'case-studies':
+        return <CaseStudies setPage={setPage} />;
       default:
         return (
           <>
@@ -594,8 +602,8 @@ const App: React.FC = () => {
               © 2025 JENTO AI SYSTEMS | ENTERPRISE AI AUTOMATION
             </p>
             <div className="flex items-center space-x-8">
-              <button className="text-slate-600 hover:text-white text-[9px] font-black uppercase tracking-widest transition-colors">Security Protocol</button>
-              <button className="text-slate-600 hover:text-white text-[9px] font-black uppercase tracking-widest transition-colors">Terms of Service</button>
+              <button onClick={() => setPage('legal')} className="text-slate-600 hover:text-white text-[9px] font-black uppercase tracking-widest transition-colors">Security Protocol</button>
+              <button onClick={() => setPage('legal')} className="text-slate-600 hover:text-white text-[9px] font-black uppercase tracking-widest transition-colors">Terms of Service</button>
             </div>
           </div>
         </div>
