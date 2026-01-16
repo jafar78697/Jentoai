@@ -504,11 +504,11 @@ const App: React.FC = () => {
                     { name: 'Pipedrive', slug: 'pipedrive' },
                     { name: 'Zapier', slug: 'zapier' }
                   ].map((tool, i) => (
-                    <div key={i} className="mx-8 group flex flex-col items-center justify-center gap-3 opacity-50 hover:opacity-100 transition-opacity duration-300 bg-white">
+                    <div key={i} className="mx-8 group flex flex-col items-center justify-center gap-3 bg-white">
                       <img
-                        src={`https://cdn.simpleicons.org/${tool.slug}/3b82f6`}
+                        src={`https://cdn.simpleicons.org/${tool.slug}`}
                         alt={tool.name}
-                        className="h-10 w-10 object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300"
+                        className="h-12 w-12 object-contain transition-all duration-300 group-hover:scale-110"
                       />
                       <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest group-hover:text-blue-600 transition-colors">{tool.name}</span>
                     </div>
@@ -534,11 +534,11 @@ const App: React.FC = () => {
                     { name: 'Pipedrive', slug: 'pipedrive' },
                     { name: 'Zapier', slug: 'zapier' }
                   ].map((tool, i) => (
-                    <div key={`dup-${i}`} className="mx-8 group flex flex-col items-center justify-center gap-3 opacity-50 hover:opacity-100 transition-opacity duration-300 bg-white">
+                    <div key={`dup-${i}`} className="mx-8 group flex flex-col items-center justify-center gap-3 bg-white">
                       <img
-                        src={`https://cdn.simpleicons.org/${tool.slug}/3b82f6`}
+                        src={`https://cdn.simpleicons.org/${tool.slug}`}
                         alt={tool.name}
-                        className="h-10 w-10 object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300"
+                        className="h-12 w-12 object-contain transition-all duration-300 group-hover:scale-110"
                       />
                       <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest group-hover:text-blue-600 transition-colors">{tool.name}</span>
                     </div>
