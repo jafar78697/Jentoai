@@ -23,7 +23,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentPage, setPage }) => {
     { label: 'Use Cases', value: 'use-cases' },
     { label: 'Industries', value: 'industries' },
     { label: 'Pricing', value: 'pricing' },
-    { label: 'About', value: 'about' },
+    { label: 'FAQ', value: 'faq' },
   ];
 
   const handleNavClick = (page: Page) => {
@@ -36,7 +36,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentPage, setPage }) => {
     <nav className={`fixed top-0 left-0 w-full z-[100] transition-all duration-500 ${scrolled || mobileMenuOpen ? 'glass py-3 shadow-2xl' : 'bg-transparent py-6'}`}>
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         {/* Logo */}
-        <div 
+        <div
           className="flex items-center space-x-3 cursor-pointer group z-[110]"
           onClick={() => handleNavClick('home')}
         >
@@ -50,11 +50,11 @@ const Navbar: React.FC<NavbarProps> = ({ currentPage, setPage }) => {
             Jento<span className="text-blue-600 font-light">AI</span>
           </span>
         </div>
-        
+
         {/* Desktop Navigation - Visible from Medium screens up */}
         <div className="hidden lg:flex items-center space-x-10">
           {navItems.map((item) => (
-            <button 
+            <button
               key={item.value}
               onClick={() => handleNavClick(item.value)}
               className={`text-[11px] font-black uppercase tracking-widest transition-all hover:text-blue-600 relative group ${currentPage === item.value ? 'text-blue-600' : 'text-slate-600'}`}
@@ -63,7 +63,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentPage, setPage }) => {
               <span className={`absolute -bottom-1 left-0 h-0.5 bg-blue-600 transition-all duration-300 ${currentPage === item.value ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
             </button>
           ))}
-          <button 
+          <button
             onClick={() => handleNavClick('book-call')}
             className="bg-blue-600 text-white px-8 py-3.5 rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-slate-900 transition-all shadow-xl hover:shadow-blue-500/20 active:scale-95"
           >
@@ -72,7 +72,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentPage, setPage }) => {
         </div>
 
         {/* Mobile Menu Toggle */}
-        <button 
+        <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           className="lg:hidden p-2 text-slate-900 z-[110] hover:bg-slate-100 rounded-xl transition-colors"
         >
@@ -86,7 +86,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentPage, setPage }) => {
         {/* Mobile Navigation Overlay */}
         <div className={`fixed inset-0 bg-white/95 backdrop-blur-2xl flex flex-col items-center justify-center space-y-8 transition-all duration-500 lg:hidden ${mobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none translate-y-[-10px]'}`}>
           {navItems.map((item) => (
-            <button 
+            <button
               key={item.value}
               onClick={() => handleNavClick(item.value)}
               className={`text-2xl font-black uppercase tracking-tighter transition-all ${currentPage === item.value ? 'text-blue-600 scale-110' : 'text-slate-400 hover:text-slate-900'}`}
@@ -94,7 +94,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentPage, setPage }) => {
               {item.label}
             </button>
           ))}
-          <button 
+          <button
             onClick={() => handleNavClick('book-call')}
             className="bg-blue-600 text-white px-10 py-5 rounded-3xl text-sm font-black uppercase tracking-widest shadow-2xl shadow-blue-500/30"
           >

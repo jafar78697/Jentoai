@@ -14,6 +14,7 @@ const ServicesPage = lazy(() => import('./Services'));
 const IndustriesPage = lazy(() => import('./Industries'));
 const AboutPage = lazy(() => import('./About'));
 const HolographicCore = lazy(() => import('./HolographicCore'));
+const FAQPage = lazy(() => import('./FAQ'));
 
 // Loading Fallback Component
 const PageLoader = () => (
@@ -101,12 +102,28 @@ const App: React.FC = () => {
     };
   }, []); // Run once on mount - the observers handle the rest
 
-  // 6. SPA Page View Tracker
+  // 6. SPA Page View Tracker + Dynamic Document Title for SEO
   useEffect(() => {
+    // SEO-optimized page titles
+    const pageTitles: Record<Page, string> = {
+      'home': 'Jento AI | Autonomous AI Agents & n8n Business Automation',
+      'agents': 'AI Agents | Custom Autonomous Workforce | Jento AI',
+      'services': 'AI Automation Services | n8n Workflows | Jento AI',
+      'use-cases': 'AI Automation Use Cases | Solve Business Problems | Jento AI',
+      'industries': 'Industry Solutions | AI for Real Estate, SaaS, HR | Jento AI',
+      'pricing': 'Pricing | Transparent AI Automation Costs | Jento AI',
+      'about': 'About Jento AI | Enterprise AI Automation Experts',
+      'contact': 'Contact Us | Get Started with AI Automation | Jento AI',
+      'book-call': 'Book a Free Strategy Call | Jento AI',
+      'faq': 'FAQ | AI Automation Questions Answered | Jento AI'
+    };
+
+    document.title = pageTitles[page] || 'Jento AI';
+
     if (window.dataLayer) {
       window.dataLayer.push({
         event: 'page_view',
-        page_title: `Jento AI | ${page.charAt(0).toUpperCase() + page.slice(1)}`,
+        page_title: document.title,
         page_path: page === 'home' ? '/' : `/${page}`
       });
     }
@@ -444,6 +461,8 @@ const App: React.FC = () => {
         return <IndustriesPage />;
       case 'about':
         return <AboutPage />;
+      case 'faq':
+        return <FAQPage setPage={setPage} />;
       default:
         return (
           <>

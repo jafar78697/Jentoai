@@ -4,44 +4,50 @@ import React from 'react';
 const Solutions: React.FC = () => {
   const solutions = [
     {
-      title: 'Automated Sales Pipeline',
+      title: 'How to Automate Lead Generation',
+      problem: 'Spending 35+ hours/week on manual prospecting?',
       industry: 'For Agencies',
-      desc: 'Autonomous agents that find leads, verify data, and start multi-channel conversations. Saves an average of 35 hours per week on manual prospecting.',
+      desc: 'Our autonomous agents find leads, verify data, and start multi-channel conversations automatically. Stop wasting time on repetitive outreach.',
       metrics: ['-90% Manual Outreach', '+400% Lead Volume'],
       img: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&q=80&w=800'
     },
     {
-      title: 'Property Concierge Agent',
+      title: 'AI Customer Support That Works 24/7',
+      problem: 'Leads going cold because you can\'t respond fast enough?',
       industry: 'Real Estate',
-      desc: 'Qualify buyers 24/7 and book viewings via WhatsApp API. Reduces lead response time from hours to seconds.',
+      desc: 'Qualify buyers around the clock and book viewings via WhatsApp API. Reduce lead response time from hours to seconds.',
       metrics: ['< 2s Response Time', '100% Lead Coverage'],
       img: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&q=80&w=800'
     },
     {
-      title: 'Invoice Intelligence Node',
+      title: 'How to Automate Invoice Processing',
+      problem: 'Manual data entry causing errors and delays?',
       industry: 'Finance & Ops',
-      desc: 'AI that extracts data from invoices and fillings systems autonomously. Achieves 99.9% accuracy with zero manual entry.',
+      desc: 'AI that extracts data from invoices and fills systems autonomously. Achieve 99.9% accuracy with zero manual entry.',
       metrics: ['0% Error Rate', 'Instant Processing'],
       img: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=800'
     },
     {
-      title: 'RetainBot Churn Sentry',
+      title: 'How to Reduce Customer Churn with AI',
+      problem: 'Losing customers before you even know they\'re unhappy?',
       industry: 'SaaS Software',
-      desc: 'Predictive churn analysis that triggers automated retention flows. Increases LTV by capturing disengaged users before they cancel.',
+      desc: 'Predictive churn analysis that triggers automated retention flows. Capture disengaged users before they cancel.',
       metrics: ['-25% Churn Rate', 'Real-time Alerts'],
       img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800'
     },
     {
-      title: 'RecruiteX Talent Sourcing',
+      title: 'AI Recruiting: Hire 4x Faster',
+      problem: 'Talent pipeline moving too slowly?',
       industry: 'HR & Recruiting',
-      desc: 'Sourcing agents that scan LinkedIn and screen resumes based on technical benchmarks. Fills pipelines 4x faster than human recruiters.',
+      desc: 'Sourcing agents that scan LinkedIn and screen resumes based on technical benchmarks. Fill pipelines 4x faster than human recruiters.',
       metrics: ['4x Talent Speed', '-70% Cost per Hire'],
       img: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&q=80&w=800'
     },
     {
-      title: 'Technical Support Aura',
+      title: 'Automate Customer Support Without Losing Quality',
+      problem: 'Support team overwhelmed with repetitive tickets?',
       industry: 'Customer Success',
-      desc: 'Human-like reasoning for complex support tickets using vector stores. Deflects 70%+ of tickets from your human support team.',
+      desc: 'Human-like reasoning for complex support tickets using vector stores. Deflect 70%+ of tickets from your human support team.',
       metrics: ['70% Deflection', 'Instant Satisfaction'],
       img: 'https://images.unsplash.com/photo-1534536281715-e28d76689b4d?auto=format&fit=crop&q=80&w=800'
     }
@@ -75,11 +81,12 @@ const Solutions: React.FC = () => {
                   }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-80"></div>
-                <div className="absolute bottom-8 left-8">
+                <div className="absolute bottom-8 left-8 right-8">
                   <span className="px-3 py-1 bg-blue-600 text-white text-[8px] font-black uppercase tracking-widest rounded-full">{s.industry}</span>
-                  <h3 className="text-white text-2xl font-black mt-2 leading-tight uppercase tracking-tight">{s.title}</h3>
+                  <h3 className="text-white text-xl md:text-2xl font-black mt-2 leading-tight tracking-tight">{s.title}</h3>
                 </div>
               </div>
+              <p className="text-blue-600 font-bold text-sm px-4 mb-2">{s.problem}</p>
               <p className="text-slate-600 font-medium px-4 leading-relaxed mb-6">{s.desc}</p>
               <div className="px-4 flex flex-wrap gap-2">
                 {s.metrics.map((m, j) => (
