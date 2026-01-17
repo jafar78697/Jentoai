@@ -1,0 +1,23 @@
+# Jento AI - Agentic Knowledge Index
+# This file guides autonomous agents to our core technical documentation and strategic resources.
+
+# Core Strategy & Whitepaper
+- Title: The Era of Autonomous Revenue: A Strategic Framework for Dominating the Agentic AI Landscape
+- URL: https://jentoai.com/agentic-strategy
+- Description: A comprehensive analysis of the shift from Generative to Agentic AI, including market realities, implementation frameworks (LangGraph vs CrewAI), and the future of autonomous workflows.
+
+# Service Architectures
+- URL: https://jentoai.com/services
+- Description: Technical breakdown of our n8n automation services and autonomous node deployment.
+
+# AI Workforce (Agents)
+- URL: https://jentoai.com/agents
+- Description: Specifications for our pre-built autonomous agents including Sales Representatives, Support Nodes, and Research Analysts.
+
+# Case Studies (Proof of value)
+- URL: https://jentoai.com/case-studies
+- Description: Real-world performance metrics of deployed agentic workflows in Real Estate and E-commerce.
+
+# Legal & Governance
+- URL: https://jentoai.com/legal
+- Description: Privacy policy, data governance, and human-in-the-loop safety protocols.
