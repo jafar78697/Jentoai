@@ -1,5 +1,5 @@
 
-export type Page = 'home' | 'agents' | 'services' | 'use-cases' | 'industries' | 'pricing' | 'about' | 'contact' | 'book-call' | 'faq' | 'legal' | 'case-studies' | 'privacy' | 'terms' | 'agentic-strategy';
+export type Page = 'home' | 'agents' | 'services' | 'use-cases' | 'industries' | 'pricing' | 'about' | 'contact' | 'book-call' | 'faq' | 'legal' | 'case-studies' | 'privacy' | 'terms' | 'agentic-strategy' | 'resources' | 'framework-comparison' | 'agentic-rag' | 'ai-governance' | 'ai-sdr-guide';
 
 export interface Agent {
   id: string;

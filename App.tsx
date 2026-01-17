@@ -19,6 +19,11 @@ const CaseStudies = lazy(() => import('./CaseStudies'));
 const Legal = lazy(() => import('./Legal'));
 const ROICalculator = lazy(() => import('./ROICalculator'));
 const AgenticStrategy = lazy(() => import('./AgenticStrategy'));
+const ResourcesHub = lazy(() => import('./ResourcesHub'));
+const FrameworkComparison = lazy(() => import('./FrameworkComparison'));
+const AgenticRAG = lazy(() => import('./AgenticRAG'));
+const AIGovernance = lazy(() => import('./AIGovernance'));
+const AISDRGuide = lazy(() => import('./AISDRGuide'));
 
 // Loading Fallback Component
 const PageLoader = () => (
@@ -122,7 +127,14 @@ const App: React.FC = () => {
       'faq': 'FAQ | AI Automation Questions Answered | Jento AI',
       'legal': 'Legal & Compliance | Privacy Policy | Jento AI',
       'case-studies': 'Case Studies | Real AI Automation Results | Jento AI',
-      'agentic-strategy': 'Agentic AI Strategy: The Era of Autonomous Revenue | Jento AI'
+      'agentic-strategy': 'Agentic AI Strategy: The Era of Autonomous Revenue | Jento AI',
+      'resources': 'Resources | AI Automation Guides & Frameworks | Jento AI',
+      'framework-comparison': 'LangGraph vs CrewAI vs AutoGen: 2026 Decision Matrix | Jento AI',
+      'agentic-rag': 'Beyond Vector DBs: Implementing Agentic RAG | Jento AI',
+      'ai-governance': 'Governance Guide for Enterprise AI Agents | Jento AI',
+      'ai-sdr-guide': 'The 2026 Guide to AI SDRs | Jento AI',
+      'privacy': 'Privacy Policy | Jento AI',
+      'terms': 'Terms of Service | Jento AI'
     };
 
     document.title = pageTitles[page] || 'Jento AI';
@@ -476,6 +488,16 @@ const App: React.FC = () => {
         return <CaseStudies setPage={setPage} />;
       case 'agentic-strategy':
         return <AgenticStrategy setPage={setPage} />;
+      case 'resources':
+        return <ResourcesHub setPage={setPage} />;
+      case 'framework-comparison':
+        return <FrameworkComparison setPage={setPage} />;
+      case 'agentic-rag':
+        return <AgenticRAG setPage={setPage} />;
+      case 'ai-governance':
+        return <AIGovernance setPage={setPage} />;
+      case 'ai-sdr-guide':
+        return <AISDRGuide setPage={setPage} />;
       default:
         return (
           <>
