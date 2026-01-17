@@ -18,6 +18,7 @@ const FAQPage = lazy(() => import('./FAQ'));
 const CaseStudies = lazy(() => import('./CaseStudies'));
 const Legal = lazy(() => import('./Legal'));
 const ROICalculator = lazy(() => import('./ROICalculator'));
+const AgenticStrategy = lazy(() => import('./AgenticStrategy'));
 
 // Loading Fallback Component
 const PageLoader = () => (
@@ -120,7 +121,8 @@ const App: React.FC = () => {
       'book-call': 'Book a Free Strategy Call | Jento AI',
       'faq': 'FAQ | AI Automation Questions Answered | Jento AI',
       'legal': 'Legal & Compliance | Privacy Policy | Jento AI',
-      'case-studies': 'Case Studies | Real AI Automation Results | Jento AI'
+      'case-studies': 'Case Studies | Real AI Automation Results | Jento AI',
+      'agentic-strategy': 'Agentic AI Strategy: The Era of Autonomous Revenue | Jento AI'
     };
 
     document.title = pageTitles[page] || 'Jento AI';
@@ -472,6 +474,8 @@ const App: React.FC = () => {
         return <Legal />;
       case 'case-studies':
         return <CaseStudies setPage={setPage} />;
+      case 'agentic-strategy':
+        return <AgenticStrategy setPage={setPage} />;
       default:
         return (
           <>
