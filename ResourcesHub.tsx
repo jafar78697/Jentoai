@@ -55,6 +55,15 @@ const ResourcesHub: React.FC<ResourcesHubProps> = ({ setPage }) => {
             tagColor: 'green',
             page: 'ai-sdr-guide' as Page,
             featured: false
+        },
+        {
+            title: 'The Ultimate Guide to AI Agents',
+            subtitle: '2026 Definitive Edition',
+            description: 'Everything you need to know. Meaning, examples, tools, and how to start building your own autonomous workforce.',
+            tag: 'Guide',
+            tagColor: 'purple',
+            page: 'ai-agents-guide' as Page,
+            featured: false
         }
     ];
 

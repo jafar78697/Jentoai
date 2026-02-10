@@ -98,21 +98,54 @@ const Solutions: React.FC = () => {
         </div>
 
         {/* Technical Deep Dive Block */}
-        <div className="reveal p-12 md:p-24 bg-slate-50 rounded-[4rem] border border-slate-100 text-center relative overflow-hidden">
-          <div className="relative z-10 max-w-3xl mx-auto">
-            <p className="text-blue-600 text-[10px] font-black uppercase tracking-[0.4em] mb-6">Inside the Engine</p>
-            <h3 className="text-5xl font-black text-slate-900 uppercase tracking-tighter mb-8">Architected for <span className="text-blue-600">Predictability.</span></h3>
-            <p className="text-xl text-slate-500 font-medium leading-relaxed mb-12">
-              Every solution we build follows a strict "Reasoning + Persistence" model. We don't rely on probabilistic AI outputs; we build deterministic logic gates that ensure 100% accuracy for your business data.
+        <div className="reveal relative overflow-hidden rounded-[3rem] bg-slate-900 p-12 md:p-24 text-center shadow-2xl">
+          {/* Animated Background Mesh */}
+          <div className="absolute inset-0 z-0 opacity-20">
+            <svg className="h-full w-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+              <defs>
+                <pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse">
+                  <path d="M 10 0 L 0 0 0 10" fill="none" stroke="currentColor" strokeWidth="0.5" className="text-blue-500" />
+                </pattern>
+              </defs>
+              <rect width="100" height="100" fill="url(#grid)" />
+            </svg>
+          </div>
+          <div className="absolute -top-24 -right-24 h-96 w-96 rounded-full bg-blue-600/30 blur-[100px]"></div>
+          <div className="absolute -bottom-24 -left-24 h-96 w-96 rounded-full bg-purple-600/20 blur-[100px]"></div>
+
+          <div className="relative z-10 max-w-4xl mx-auto">
+            <div className="inline-flex items-center gap-2 rounded-full bg-blue-900/50 px-4 py-2 mb-8 border border-blue-500/30 backdrop-blur-sm">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+              </span>
+              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-blue-300">Inside the Engine</span>
+            </div>
+
+            <h3 className="mb-8 text-5xl font-black uppercase tracking-tighter text-white md:text-7xl">
+              Architected for <br />
+              <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Predictability.</span>
+            </h3>
+
+            <p className="mb-16 text-lg font-medium leading-relaxed text-slate-400 md:text-xl">
+              Every solution we build follows a strict "Reasoning + Persistence" model. We don't rely on probabilistic AI outputs; we build <span className="text-white font-bold">deterministic logic gates</span> that ensure 100% accuracy for your business data.
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
-              <div className="p-8 bg-white rounded-[2rem] border border-slate-200 shadow-sm">
-                <h4 className="text-xs font-black uppercase tracking-widest text-slate-950 mb-4">Memory Indexing</h4>
-                <p className="text-sm text-slate-500 font-medium">Agents use RAG (Retrieval Augmented Generation) to access your proprietary data without ever halluncinating.</p>
+
+            <div className="grid gap-6 md:grid-cols-2 text-left">
+              <div className="group relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 p-8 backdrop-blur-md transition-all hover:bg-white/10 hover:border-white/20">
+                <div className="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-blue-600/20 text-blue-400 shadow-lg shadow-blue-900/20 group-hover:scale-110 transition-transform">
+                  <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" /></svg>
+                </div>
+                <h4 className="mb-3 text-sm font-black uppercase tracking-widest text-white">Memory Indexing (RAG)</h4>
+                <p className="text-sm font-medium leading-relaxed text-slate-400">Agents retrieve specific context from your proprietary data (PDFs, SQL, Notion) without ever hallucinating or leaking privacy.</p>
               </div>
-              <div className="p-8 bg-white rounded-[2rem] border border-slate-200 shadow-sm">
-                <h4 className="text-xs font-black uppercase tracking-widest text-slate-950 mb-4">Tool Orchestration</h4>
-                <p className="text-sm text-slate-500 font-medium">Direct n8n connections allow agents to write, read, and delete data across 400+ SaaS applications.</p>
+
+              <div className="group relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 p-8 backdrop-blur-md transition-all hover:bg-white/10 hover:border-white/20">
+                <div className="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-purple-600/20 text-purple-400 shadow-lg shadow-purple-900/20 group-hover:scale-110 transition-transform">
+                  <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                </div>
+                <h4 className="mb-3 text-sm font-black uppercase tracking-widest text-white">Tool Orchestration</h4>
+                <p className="text-sm font-medium leading-relaxed text-slate-400">Direct n8n connections allow agents to write, read, and delete data across <span className="text-white">400+ SaaS applications</span> with transaction safety.</p>
               </div>
             </div>
           </div>

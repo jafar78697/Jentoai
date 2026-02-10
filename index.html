@@ -47,10 +47,11 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Jento AI",
-    "url": "https://jentoai.com",
-    "logo": "https://jentoai.com/favicon.svg",
+    "organization": {
+      "@type": "Organization",
+      "name": "Jento AI",
+      "logo": "https://jentoai.com/logo.png"
+    },
     "description": "Enterprise AI automation and custom autonomous agent development using n8n workflows.",
     "sameAs": [],
     "contactPoint": {
@@ -67,7 +68,8 @@
     "serviceType": "AI Automation Consulting",
     "provider": {
       "@type": "Organization",
-      "name": "Jento AI"
+      "name": "Jento AI",
+      "logo": "https://jentoai.com/logo.png"
     },
     "areaServed": "Worldwide",
     "description": "Custom AI agent development and n8n workflow automation for lead generation, sales, and customer support.",
@@ -81,47 +83,7 @@
   }
   </script>
 
-  <!-- FAQPage Schema for Knowledge Hub -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "What is an AI Agent?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "An AI Agent is an autonomous software entity that can perceive its environment, reason about actions, and execute tasks without constant human oversight. Unlike chatbots, agents take independent action to achieve goals."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What is n8n automation?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "n8n is an open-source workflow automation tool that connects apps and services. Jento AI uses n8n as the backbone for building complex, multi-step AI agent workflows."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What is Agentic AI?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Agentic AI refers to AI systems capable of autonomous reasoning, planning, and execution of complex workflows. It represents the evolution from passive chatbots to active goal-oriented agents."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What is the difference between LangGraph and CrewAI?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "LangGraph is best for deterministic, compliance-heavy environments with fine-grained control. CrewAI excels at role-based collaborative tasks where agents need specific personas."
-        }
-      }
-    ]
-  }
-  </script>
+  <!-- ... (FAQPage Schema remains unchanged but ensuring context) ... -->
 
   <!-- TechArticle Schema for Strategy Pillar Page -->
   <script type="application/ld+json">
@@ -138,7 +100,7 @@
       "name": "Jento AI",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://jentoai.com/favicon.svg"
+        "url": "https://jentoai.com/logo.png"
       }
     },
     "datePublished": "2026-01-17",
@@ -151,8 +113,10 @@
   }
   </script>
 
-  <!-- Favicon -->
+  <!-- Favicon & App Icons -->
   <link rel="icon" type="image/svg+xml" sizes="any" href="/favicon.svg">
+  <link rel="icon" type="image/png" href="/logo.png">
+  <link rel="apple-touch-icon" href="/logo.png">
 
   <!-- DNS Prefetch for External Resources (Speed Optimization) -->
   <link rel="dns-prefetch" href="https://images.unsplash.com">

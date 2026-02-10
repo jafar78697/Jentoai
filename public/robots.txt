@@ -2,19 +2,7 @@
 # https://jentoai.com
 
 User-agent: *
-Allow: /
-
-# AI Crawlers Welcome
-User-agent: GPTBot
-Allow: /
-
-User-agent: ClaudeBot
-Allow: /
-
-User-agent: Bingbot
-Allow: /
-
-User-agent: Googlebot
+Disallow:
 Allow: /
 
 # Sitemap Location

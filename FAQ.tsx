@@ -51,6 +51,14 @@ const FAQPage: React.FC<FAQPageProps> = ({ setPage }) => {
         {
             question: 'Is my data secure with AI automation?',
             answer: 'Absolutely. We use "Siloed Architecture" where your data never leaves your private cloud instance. We self-host n8n on your infrastructure, ensuring complete data sovereignty. Your data is never used to train external AI models.'
+        },
+        {
+            question: 'What is the difference between AI Agents and Agentic AI?',
+            answer: '"AI Agent" typically refers to the specific software entity (e.g., a Customer Support Agent), while "Agentic AI" refers to the broader technological shift from Generative AI (chatbots) to Autonomous AI (systems that act). We specialize in building Agentic workflows.'
+        },
+        {
+            question: 'Are there courses to learn about AI Agents?',
+            answer: 'Yes. For deep technical skills, we recommend the Google "Generative AI for Developers" path or DeepLearning.AI courses. However, Jento AI allows you to skip the learning curve by deploying pre-built, enterprise-grade agents instantly.'
         }
     ];
 

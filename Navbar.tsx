@@ -21,6 +21,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentPage, setPage }) => {
     { label: 'AI Agents', value: 'agents' },
     { label: 'Services', value: 'services' },
     { label: 'Resources', value: 'resources' },
+    { label: 'Reviews', value: 'reviews' },
     { label: 'Use Cases', value: 'use-cases' },
     { label: 'Case Studies', value: 'case-studies' },
     { label: 'FAQ', value: 'faq' },

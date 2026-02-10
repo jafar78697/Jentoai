@@ -24,6 +24,8 @@ const FrameworkComparison = lazy(() => import('./FrameworkComparison'));
 const AgenticRAG = lazy(() => import('./AgenticRAG'));
 const AIGovernance = lazy(() => import('./AIGovernance'));
 const AISDRGuide = lazy(() => import('./AISDRGuide'));
+const AIAgentsGuide = lazy(() => import('./AIAgentsGuide'));
+const Reviews = lazy(() => import('./Reviews'));
 
 // Loading Fallback Component
 const PageLoader = () => (
@@ -38,8 +40,37 @@ declare global {
   }
 }
 
+
+// Helper to validate simple paths
+const isValidPage = (path: string): boolean => {
+  const validPages = [
+    'home', 'agents', 'services', 'use-cases', 'industries', 'pricing', 'about',
+    'contact', 'book-call', 'faq', 'legal', 'case-studies', 'agentic-strategy',
+    'contact', 'book-call', 'faq', 'legal', 'case-studies', 'agentic-strategy',
+    'resources', 'framework-comparison', 'agentic-rag', 'ai-governance', 'ai-sdr-guide', 'ai-agents-guide', 'reviews'
+  ];
+  return validPages.includes(path);
+};
+
 const App: React.FC = () => {
-  const [page, setPage] = useState<Page>('home');
+  const [page, setPage] = useState<Page>(() => {
+    // 1. Check for 404 redirect param (GitHub Pages workaround)
+    const params = new URLSearchParams(window.location.search);
+    const redirectPath = params.get('p');
+
+    if (redirectPath) {
+      // Clean up the URL
+      window.history.replaceState(null, '', redirectPath);
+      const path = redirectPath.substring(1); // remove leading slash
+      if (isValidPage(path)) return path as Page;
+    }
+
+    // 2. Check direct path
+    const path = window.location.pathname.substring(1);
+    if (isValidPage(path)) return path as Page;
+
+    return 'home';
+  });
 
   // Lead Capture State
   const [name, setName] = useState('');
@@ -111,38 +142,158 @@ const App: React.FC = () => {
     };
   }, []); // Run once on mount - the observers handle the rest
 
-  // 6. SPA Page View Tracker + Dynamic Document Title for SEO
   useEffect(() => {
-    // SEO-optimized page titles
-    const pageTitles: Record<Page, string> = {
-      'home': 'Jento AI | Autonomous AI Agents & n8n Business Automation',
-      'agents': 'AI Agents | Custom Autonomous Workforce | Jento AI',
-      'services': 'AI Automation Services | n8n Workflows | Jento AI',
-      'use-cases': 'AI Automation Use Cases | Solve Business Problems | Jento AI',
-      'industries': 'Industry Solutions | AI for Real Estate, SaaS, HR | Jento AI',
-      'pricing': 'Pricing | Transparent AI Automation Costs | Jento AI',
-      'about': 'About Jento AI | Enterprise AI Automation Experts',
-      'contact': 'Contact Us | Get Started with AI Automation | Jento AI',
-      'book-call': 'Book a Free Strategy Call | Jento AI',
-      'faq': 'FAQ | AI Automation Questions Answered | Jento AI',
-      'legal': 'Legal & Compliance | Privacy Policy | Jento AI',
-      'case-studies': 'Case Studies | Real AI Automation Results | Jento AI',
-      'agentic-strategy': 'Agentic AI Strategy: The Era of Autonomous Revenue | Jento AI',
-      'resources': 'Resources | AI Automation Guides & Frameworks | Jento AI',
-      'framework-comparison': 'LangGraph vs CrewAI vs AutoGen: 2026 Decision Matrix | Jento AI',
-      'agentic-rag': 'Beyond Vector DBs: Implementing Agentic RAG | Jento AI',
-      'ai-governance': 'Governance Guide for Enterprise AI Agents | Jento AI',
-      'ai-sdr-guide': 'The 2026 Guide to AI SDRs | Jento AI',
-      'privacy': 'Privacy Policy | Jento AI',
-      'terms': 'Terms of Service | Jento AI'
+    const handlePopState = () => {
+      const path = window.location.pathname.substring(1);
+      if (isValidPage(path)) {
+        setPage(path as Page);
+      } else if (path === '') {
+        setPage('home');
+      }
     };
 
-    document.title = pageTitles[page] || 'Jento AI';
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
+
+
+  const SEO_DATA: Record<Page, { title: string; desc: string; keywords?: string }> = {
+    'home': {
+      title: 'Jento AI | Autonomous AI Agents & n8n Business Automation',
+      desc: 'Transform your business with Jento AI. We specialize in custom autonomous AI agent development and enterprise n8n automation. Scale lead generation, sales, and support.'
+    },
+    'agents': {
+      title: 'AI Agents | Custom Autonomous Workforce | Jento AI',
+      desc: 'Deploy custom AI agents for sales, support, and data entry. Jento AI builds high-performance autonomous nodes that work 24/7 without supervision.'
+    },
+    'services': {
+      title: 'AI Automation Services | n8n Workflows | Jento AI',
+      desc: 'Expert n8n consulting and workflow automation. We build low-code/no-code operational architectures that connect your entire tech stack.'
+    },
+    'use-cases': {
+      title: 'AI Automation Use Cases | Solve Business Problems | Jento AI',
+      desc: 'Discover how AI agents solve real-world problems in Real Estate, SaaS, HR, and Logistics. Automate 80% of manual repetitive work.'
+    },
+    'industries': {
+      title: 'Industry Solutions | AI for Real Estate, SaaS, HR | Jento AI',
+      desc: 'Tailored AI automation strategies for your industry. From property management to e-commerce fulfillment, see exactly how we save you time.'
+    },
+    'pricing': {
+      title: 'Pricing | Transparent AI Automation Costs | Jento AI',
+      desc: 'Clear, transparent pricing for AI agent development. No hidden monthly fees—you own the architecture we build. One-time setup costs.'
+    },
+    'about': {
+      title: 'About Jento AI | Enterprise AI Automation Experts',
+      desc: 'Meet the team building the future of work. Jento AI is a collective of automation architects dedicated to eliminating manual drudgery.'
+    },
+    'contact': {
+      title: 'Contact Us | Get Started with AI Automation | Jento AI',
+      desc: 'Ready to automate? Contact Jento AI today. Speak with an automation architect about your project requirements.'
+    },
+    'book-call': {
+      title: 'Book a Free Strategy Call | Jento AI',
+      desc: 'Schedule a free 30-minute automation strategy session. Let\'s map out your current workflows and identify where AI can save you money.'
+    },
+    'faq': {
+      title: 'FAQ | AI Automation Questions Answered | Jento AI',
+      desc: 'Have questions about AI agents or n8n? Read our FAQ to understand security, pricing, and how our autonomous systems work.'
+    },
+    'legal': {
+      title: 'Legal & Compliance | Privacy Policy | Jento AI',
+      desc: 'Read Jento AI\'s terms of service and privacy policy. We are committed to data security and enterprise-grade compliance.'
+    },
+    'case-studies': {
+      title: 'Case Studies | Real AI Automation Results | Jento AI',
+      desc: 'See real results. How we saved a Real Estate agency 40 hours/week and helped a SaaS company reduce churn by 15% with AI agents.'
+    },
+    'agentic-strategy': {
+      title: 'Agentic AI Strategy: The Era of Autonomous Revenue | Jento AI',
+      desc: 'A deep dive into the shift from Generative to Agentic AI. Learn why Autonomous Revenue is the next frontier for forward-thinking enterprises.'
+    },
+    'resources': {
+      title: 'Resources | AI Automation Guides & Frameworks | Jento AI',
+      desc: 'Free guides, whitepapers, and frameworks for implementing AI automation in your business. Learn best practices for n8n.'
+    },
+    'framework-comparison': {
+      title: 'LangGraph vs CrewAI vs AutoGen: 2026 Decision Matrix | Jento AI',
+      desc: 'Technical comparison of the top agentic frameworks. We break down when to use LangGraph, CrewAI, or AutoGen for your project.'
+    },
+    'agentic-rag': {
+      title: 'Beyond Vector DBs: Implementing Agentic RAG | Jento AI',
+      desc: 'Learn how to build "Agentic RAG" systems that don\'t just retrieve data, but reason about it. Advanced techniques for better AI answers.'
+    },
+    'ai-governance': {
+      title: 'Governance Guide for Enterprise AI Agents | Jento AI',
+      desc: 'How to control autonomous agents. A framework for permissions, oversight, and kill-switches in enterprise AI deployments.'
+    },
+    'ai-sdr-guide': {
+      title: 'The 2026 Guide to AI SDRs | Jento AI',
+      desc: 'How to replace your outbound sales team with autonomous AI SDRs. Tools, strategies, and ethical considerations for automated prospecting.'
+    },
+    'privacy': {
+      title: 'Privacy Policy | Jento AI',
+      desc: 'Jento AI Privacy Policy.'
+    },
+    'terms': {
+      title: 'Terms of Service | Jento AI',
+      desc: 'Jento AI Terms of Service.'
+    },
+    'ai-agents-guide': {
+      title: 'The Ultimate Guide to AI Agents (2026) | Meaning, Tools, Examples',
+      desc: 'What is an AI Agent? The complete guide to autonomous agents, agentic AI, tools (LangGraph, CrewAI), and use cases for business leaders and developers.',
+      keywords: 'ai agents, agentic ai, ai agents explained, ai agents examples, ai agents tools, ai agents course'
+    },
+    'reviews': {
+      title: 'Lab-Tested Reviews | Jento AI Award Winners',
+      desc: 'Independent, lab-verified product reviews. We test quality, ROI, and durability to find the 1% worth your investment.'
+    }
+  };
+
+  // 6. SPA Page View Tracker + Dynamic Document Title for SEO
+  useEffect(() => {
+    const data = SEO_DATA[page] || SEO_DATA['home'];
+
+    // 1. Update Title
+    document.title = data.title;
+
+    // 2. Update Meta Description
+    let metaDesc = document.querySelector('meta[name="description"]');
+    if (!metaDesc) {
+      metaDesc = document.createElement('meta');
+      metaDesc.setAttribute('name', 'description');
+      document.head.appendChild(metaDesc);
+    }
+    metaDesc.setAttribute('content', data.desc);
+
+    // 3. Update Open Graph Tags
+    const updateMeta = (property: string, content: string) => {
+      let element = document.querySelector(`meta[property="${property}"]`);
+      if (!element) {
+        element = document.createElement('meta');
+        element.setAttribute('property', property);
+        document.head.appendChild(element);
+      }
+      element.setAttribute('content', content);
+    };
+
+    updateMeta('og:title', data.title);
+    updateMeta('og:description', data.desc);
+
+    // Canonical URL Logic (Critical for SEO with Redirects)
+    let canonical = document.querySelector('link[rel="canonical"]');
+    if (!canonical) {
+      canonical = document.createElement('link');
+      canonical.setAttribute('rel', 'canonical');
+      document.head.appendChild(canonical);
+    }
+    const currentPath = page === 'home' ? '' : page;
+    canonical.setAttribute('href', `https://jentoai.com/${currentPath}`);
+    updateMeta('og:url', `https://jentoai.com/${currentPath}`);
 
     if (window.dataLayer) {
       window.dataLayer.push({
         event: 'page_view',
-        page_title: document.title,
+        page_title: data.title,
         page_path: page === 'home' ? '/' : `/${page}`
       });
     }
@@ -235,6 +386,8 @@ const App: React.FC = () => {
 
   const navigateTo = (p: Page) => {
     setPage(p);
+    const url = p === 'home' ? '/' : `/${p}`;
+    window.history.pushState(null, '', url);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -498,6 +651,10 @@ const App: React.FC = () => {
         return <AIGovernance setPage={setPage} />;
       case 'ai-sdr-guide':
         return <AISDRGuide setPage={setPage} />;
+      case 'reviews':
+        return <Reviews setPage={setPage} />;
+      case 'ai-agents-guide':
+        return <AIAgentsGuide setPage={setPage} />;
       default:
         return (
           <>
