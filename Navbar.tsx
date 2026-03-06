@@ -18,7 +18,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentPage, setPage }) => {
   }, []);
 
   const navItems: { label: string; value: Page }[] = [
-    { label: 'AI Agents', value: 'agents' },
+    { label: 'AI Agents', value: 'aiagent' },
     { label: 'Services', value: 'services' },
     { label: 'Resources', value: 'resources' },
     { label: 'Reviews', value: 'reviews' },
@@ -27,8 +27,10 @@ const Navbar: React.FC<NavbarProps> = ({ currentPage, setPage }) => {
     { label: 'FAQ', value: 'faq' },
   ];
 
-  const handleNavClick = (page: Page) => {
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>, page: Page) => {
+    e.preventDefault();
     setPage(page);
+    window.history.pushState(null, '', `/${page === 'home' ? '' : page}`);
     setMobileMenuOpen(false);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -37,9 +39,10 @@ const Navbar: React.FC<NavbarProps> = ({ currentPage, setPage }) => {
     <nav className={`fixed top-0 left-0 w-full z-[100] transition-all duration-500 ${scrolled || mobileMenuOpen ? 'glass py-3 shadow-2xl' : 'bg-transparent py-6'}`}>
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         {/* Logo */}
-        <div
+        <a
+          href="/"
           className="flex items-center space-x-3 cursor-pointer group z-[110]"
-          onClick={() => handleNavClick('home')}
+          onClick={(e) => handleNavClick(e, 'home')}
         >
           <div className="relative w-10 h-10 flex items-center justify-center bg-blue-600 rounded-xl shadow-lg shadow-blue-500/30 group-hover:scale-110 transition-transform">
             <svg viewBox="0 0 100 100" className="w-6 h-6 fill-white">
@@ -50,22 +53,23 @@ const Navbar: React.FC<NavbarProps> = ({ currentPage, setPage }) => {
           <span className="text-2xl font-black tracking-tighter text-slate-900 group-hover:text-blue-600 transition-colors uppercase">
             Jento<span className="text-blue-600 font-light">AI</span>
           </span>
-        </div>
+        </a>
 
         {/* Desktop Navigation - Visible from Medium screens up */}
         <div className="hidden lg:flex items-center space-x-10">
           {navItems.map((item) => (
-            <button
+            <a
               key={item.value}
-              onClick={() => handleNavClick(item.value)}
+              href={`/${item.value}`}
+              onClick={(e) => handleNavClick(e, item.value)}
               className={`text-[11px] font-black uppercase tracking-widest transition-all hover:text-blue-600 relative group ${currentPage === item.value ? 'text-blue-600' : 'text-slate-600'}`}
             >
               {item.label}
               <span className={`absolute -bottom-1 left-0 h-0.5 bg-blue-600 transition-all duration-300 ${currentPage === item.value ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
-            </button>
+            </a>
           ))}
           <button
-            onClick={() => handleNavClick('book-call')}
+            onClick={(e) => handleNavClick(e, 'book-call')}
             className="bg-blue-600 text-white px-8 py-3.5 rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-slate-900 transition-all shadow-xl hover:shadow-blue-500/20 active:scale-95"
           >
             Schedule Call
@@ -87,16 +91,17 @@ const Navbar: React.FC<NavbarProps> = ({ currentPage, setPage }) => {
         {/* Mobile Navigation Overlay */}
         <div className={`fixed inset-0 bg-white/95 backdrop-blur-2xl flex flex-col items-center justify-center space-y-8 transition-all duration-500 lg:hidden ${mobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none translate-y-[-10px]'}`}>
           {navItems.map((item) => (
-            <button
+            <a
               key={item.value}
-              onClick={() => handleNavClick(item.value)}
+              href={`/${item.value}`}
+              onClick={(e) => handleNavClick(e, item.value)}
               className={`text-2xl font-black uppercase tracking-tighter transition-all ${currentPage === item.value ? 'text-blue-600 scale-110' : 'text-slate-400 hover:text-slate-900'}`}
             >
               {item.label}
-            </button>
+            </a>
           ))}
           <button
-            onClick={() => handleNavClick('book-call')}
+            onClick={(e) => handleNavClick(e, 'book-call')}
             className="bg-blue-600 text-white px-10 py-5 rounded-3xl text-sm font-black uppercase tracking-widest shadow-2xl shadow-blue-500/30"
           >
             Schedule Call

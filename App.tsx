@@ -41,15 +41,13 @@ declare global {
 }
 
 
-// Helper to validate simple paths
 const isValidPage = (path: string): boolean => {
   const validPages = [
-    'home', 'agents', 'services', 'use-cases', 'industries', 'pricing', 'about',
-    'contact', 'book-call', 'faq', 'legal', 'case-studies', 'agentic-strategy',
+    'home', 'aiagent', 'services', 'use-cases', 'industries', 'pricing', 'about',
     'contact', 'book-call', 'faq', 'legal', 'case-studies', 'agentic-strategy',
     'resources', 'framework-comparison', 'agentic-rag', 'ai-governance', 'ai-sdr-guide', 'ai-agents-guide', 'reviews'
   ];
-  return validPages.includes(path);
+  return validPages.includes(path.toLowerCase());
 };
 
 const App: React.FC = () => {
@@ -61,12 +59,12 @@ const App: React.FC = () => {
     if (redirectPath) {
       // Clean up the URL
       window.history.replaceState(null, '', redirectPath);
-      const path = redirectPath.substring(1); // remove leading slash
+      const path = redirectPath.substring(1).toLowerCase(); // remove leading slash
       if (isValidPage(path)) return path as Page;
     }
 
     // 2. Check direct path
-    const path = window.location.pathname.substring(1);
+    const path = window.location.pathname.substring(1).toLowerCase();
     if (isValidPage(path)) return path as Page;
 
     return 'home';
@@ -144,7 +142,7 @@ const App: React.FC = () => {
 
   useEffect(() => {
     const handlePopState = () => {
-      const path = window.location.pathname.substring(1);
+      const path = window.location.pathname.substring(1).toLowerCase();
       if (isValidPage(path)) {
         setPage(path as Page);
       } else if (path === '') {
@@ -162,7 +160,7 @@ const App: React.FC = () => {
       title: 'Jento AI | Autonomous AI Agents & n8n Business Automation',
       desc: 'Transform your business with Jento AI. We specialize in custom autonomous AI agent development and enterprise n8n automation. Scale lead generation, sales, and support.'
     },
-    'agents': {
+    'aiagent': {
       title: 'AI Agents | Custom Autonomous Workforce | Jento AI',
       desc: 'Deploy custom AI agents for sales, support, and data entry. Jento AI builds high-performance autonomous nodes that work 24/7 without supervision.'
     },
@@ -393,7 +391,7 @@ const App: React.FC = () => {
 
   const renderPage = () => {
     switch (page) {
-      case 'agents':
+      case 'aiagent':
         return (
           <section className="py-16 md:py-32 bg-slate-50">
             <div className="max-w-7xl mx-auto px-6">
@@ -825,7 +823,7 @@ const App: React.FC = () => {
                 {['AI Agents', 'Use Cases', 'Pricing', 'Infrastructure'].map(item => (
                   <li key={item}>
                     <button
-                      onClick={() => navigateTo(item.toLowerCase().replace(' ', '-') as Page)}
+                      onClick={() => navigateTo(item === 'AI Agents' ? 'aiagent' : item.toLowerCase().replace(' ', '-') as Page)}
                       className="text-slate-400 hover:text-white text-sm font-bold uppercase tracking-widest transition-colors"
                     >
                       {item}
