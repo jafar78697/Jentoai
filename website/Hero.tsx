@@ -19,8 +19,8 @@ const Hero: React.FC<HeroProps> = ({ setPage }) => {
           <span>Next Generation Autonomous Architecture</span>
         </div>
 
-        <h1 className="text-4xl sm:text-5xl md:text-8xl font-black tracking-tight text-slate-900 mb-8 leading-[1.1] md:leading-[0.95] reveal">
-          BUILD AI AGENTS THAT <br />
+        <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black tracking-tight text-slate-900 mb-8 leading-[1.1] md:leading-[0.95] reveal">
+          BUILD AI AGENTS & N8N WORKFLOWS THAT <br />
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-sky-500">
             WORK WHILE YOU SLEEP.
           </span>
@@ -83,7 +83,7 @@ const Hero: React.FC<HeroProps> = ({ setPage }) => {
           <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 bg-white px-8 py-4 rounded-2xl shadow-2xl border border-slate-100 flex items-center space-x-4">
             <div className="flex -space-x-3">
               {[1, 2, 3, 4].map(i => (
-                <img key={i} src={`https://i.pravatar.cc/100?u=${i + 25}`} loading="lazy" className="w-8 h-8 rounded-full border-2 border-white shadow-md" />
+                <img key={i} src={`https://i.pravatar.cc/100?u=${i + 25}`} alt={`Trusted Client ${i+1}`} loading="lazy" className="w-8 h-8 rounded-full border-2 border-white shadow-md" />
               ))}
             </div>
             <p className="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em]">Trusted by growing teams & agencies worldwide</p>

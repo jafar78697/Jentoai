@@ -91,6 +91,7 @@ const Reviews: React.FC<ReviewsProps> = ({ setPage }) => {
                                     src={product.image}
                                     alt={product.name}
                                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                                    loading="lazy"
                                 />
                                 <div className="absolute top-4 left-4 bg-slate-900 text-white text-[9px] font-black px-3 py-1.5 rounded-full uppercase tracking-widest">
                                     {product.tag}

@@ -52,7 +52,8 @@ const CaseStudies: React.FC<CaseStudiesProps> = ({ setPage }) => {
                             <img
                                 src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&q=80&w=800"
                                 className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                                alt="Real Estate"
+                                alt="Real Estate Agency Lead Generation AI Agent Case Study"
+                                loading="lazy"
                             />
                             <div className="absolute inset-0 bg-blue-900/20 mix-blend-multiply"></div>
                         </div>
@@ -66,7 +67,8 @@ const CaseStudies: React.FC<CaseStudiesProps> = ({ setPage }) => {
                             <img
                                 src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&q=80&w=800"
                                 className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                                alt="E-commerce"
+                                alt="E-commerce AI Autonomous Refund Manager Case Study"
+                                loading="lazy"
                             />
                             <div className="absolute inset-0 bg-indigo-900/20 mix-blend-multiply"></div>
                         </div>

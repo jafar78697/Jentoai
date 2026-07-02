@@ -19,6 +19,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentPage, setPage }) => {
 
   const navItems: { label: string; value: Page }[] = [
     { label: 'AI Agents', value: 'aiagent' },
+    { label: 'Tools', value: 'tool/image-alt-text-generator' },
     { label: 'Services', value: 'services' },
     { label: 'Resources', value: 'resources' },
     { label: 'Reviews', value: 'reviews' },

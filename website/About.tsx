@@ -69,7 +69,7 @@ const About: React.FC = () => {
             ].map((member, i) => (
               <div key={i} className="group text-center">
                 <div className="relative aspect-[3/4] mb-6 rounded-[2.5rem] overflow-hidden shadow-xl">
-                  <img src={member.img} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 filter grayscale group-hover:grayscale-0" alt={member.name} />
+                  <img src={member.img} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 filter grayscale group-hover:grayscale-0" alt={member.name} loading="lazy" />
                   <div className="absolute inset-x-0 bottom-0 p-6 bg-gradient-to-t from-slate-900 to-transparent">
                     <p className="text-white font-black uppercase tracking-widest text-lg">{member.name}</p>
                     <p className="text-blue-400 text-[10px] font-black uppercase tracking-[0.2em]">{member.role}</p>
@@ -107,7 +107,7 @@ const About: React.FC = () => {
               <img
                 src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800"
                 className="w-full h-full object-cover opacity-50 grayscale hover:grayscale-0 transition-all duration-1000"
-                alt="Tech Stack"
+                alt="Jento AI Enterprise Tech Stack Blueprint"
                 loading="lazy"
               />
               <div className="absolute inset-0 bg-blue-600/20 mix-blend-multiply"></div>
@@ -127,7 +127,7 @@ const About: React.FC = () => {
         <div className="reveal delay-300 relative rounded-[3rem] overflow-hidden aspect-[21/9] shadow-2xl">
           <img
             src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=1200"
-            alt="The Studio"
+            alt="Jento AI Autonomous Architecture Studio"
             className="w-full h-full object-cover grayscale"
             loading="lazy"
           />

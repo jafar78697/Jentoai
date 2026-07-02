@@ -4,6 +4,7 @@ import Hero from './Hero';
 import N8nChatWidget from './N8nChatWidget';
 import { Page } from './types';
 import { AGENTS, PRICING, CONFIG } from './constants';
+import SERVICE_PAGES from './servicePageData';
 
 // Lazy Load Heavy Components
 const AgentCard = lazy(() => import('./AgentCard'));
@@ -26,6 +27,8 @@ const AIGovernance = lazy(() => import('./AIGovernance'));
 const AISDRGuide = lazy(() => import('./AISDRGuide'));
 const AIAgentsGuide = lazy(() => import('./AIAgentsGuide'));
 const Reviews = lazy(() => import('./Reviews'));
+const ServicePageTemplate = lazy(() => import('./ServicePageTemplate'));
+const ImageAltTextGeneratorPage = lazy(() => import('./ImageAltTextGeneratorPage'));
 
 // Loading Fallback Component
 const PageLoader = () => (
@@ -45,7 +48,9 @@ const isValidPage = (path: string): boolean => {
   const validPages = [
     'home', 'aiagent', 'services', 'use-cases', 'industries', 'pricing', 'about',
     'contact', 'book-call', 'faq', 'legal', 'case-studies', 'agentic-strategy',
-    'resources', 'framework-comparison', 'agentic-rag', 'ai-governance', 'ai-sdr-guide', 'ai-agents-guide', 'reviews'
+    'resources', 'framework-comparison', 'agentic-rag', 'ai-governance', 'ai-sdr-guide', 'ai-agents-guide', 'reviews',
+    'ai-receptionist-for-small-business', 'ai-answering-service', 'ai-voice-agent', 'tool/image-alt-text-generator',
+    'ai-virtual-receptionist', 'ai-phone-receptionist', 'ai-call-answering-service'
   ];
   return validPages.includes(path.toLowerCase());
 };
@@ -64,7 +69,10 @@ const App: React.FC = () => {
     }
 
     // 2. Check direct path
-    const path = window.location.pathname.substring(1).toLowerCase();
+    let path = window.location.pathname.substring(1).toLowerCase();
+    if (path.endsWith('/')) {
+      path = path.slice(0, -1);
+    }
     if (isValidPage(path)) return path as Page;
 
     return 'home';
@@ -142,7 +150,8 @@ const App: React.FC = () => {
 
   useEffect(() => {
     const handlePopState = () => {
-      const path = window.location.pathname.substring(1).toLowerCase();
+      let path = window.location.pathname.substring(1).toLowerCase();
+      if (path.endsWith('/')) path = path.slice(0, -1);
       if (isValidPage(path)) {
         setPage(path as Page);
       } else if (path === '') {
@@ -157,11 +166,11 @@ const App: React.FC = () => {
 
   const SEO_DATA: Record<Page, { title: string; desc: string; keywords?: string }> = {
     'home': {
-      title: 'Jento AI | Autonomous AI Agents & n8n Business Automation',
+      title: 'Jento AI | AI Agent Development Company & n8n Automation Experts',
       desc: 'Transform your business with Jento AI. We specialize in custom autonomous AI agent development and enterprise n8n automation. Scale lead generation, sales, and support.'
     },
     'aiagent': {
-      title: 'AI Agents | Custom Autonomous Workforce | Jento AI',
+      title: 'AI Agents | Custom Autonomous Workforce & n8n Workflows | Jento AI',
       desc: 'Deploy custom AI agents for sales, support, and data entry. Jento AI builds high-performance autonomous nodes that work 24/7 without supervision.'
     },
     'services': {
@@ -244,6 +253,39 @@ const App: React.FC = () => {
     'reviews': {
       title: 'Lab-Tested Reviews | Jento AI Award Winners',
       desc: 'Independent, lab-verified product reviews. We test quality, ROI, and durability to find the 1% worth your investment.'
+    },
+    'ai-receptionist-for-small-business': {
+      title: 'AI Receptionist for Small Business | 24/7 Phone Answering Agent',
+      desc: 'Jento AI builds AI receptionists for small businesses that answer calls, qualify leads, book appointments, and follow up with customers 24/7.'
+    },
+    'ai-answering-service': {
+      title: 'AI Answering Service | 24/7 Automated Call Handling | Jento AI',
+      desc: 'Jento AI provides a custom AI answering service that handles inbound calls, qualifies leads, and books appointments for your business around the clock.'
+    },
+    'ai-voice-agent': {
+      title: 'AI Voice Agent | Custom AI Voice Agent for Business Calls | Jento AI',
+      desc: 'Jento AI builds custom AI voice agents that handle inbound and outbound calls, qualify leads, answer questions, and automate your phone-based workflows.'
+    },
+    'ai-virtual-receptionist': {
+      title: 'AI Virtual Receptionist | Never Miss a Business Call | Jento AI',
+      desc: 'Jento AI builds AI virtual receptionists that answer every call, greet customers professionally, collect lead details, and route queries — 24/7.'
+    },
+    'ai-phone-receptionist': {
+      title: 'AI Phone Receptionist | Automated Phone Answering Agent | Jento AI',
+      desc: 'Jento AI builds AI phone receptionists that automatically answer your business phone, qualify incoming leads, and connect hot prospects to your team.'
+    },
+    'ai-call-answering-service': {
+      title: 'AI Call Answering Service | Never Miss an Inbound Call | Jento AI',
+      desc: 'Jento AI provides an AI call answering service that picks up every inbound call, qualifies the caller, books appointments, and syncs to your CRM automatically.'
+    },
+    'tool/image-alt-text-generator': {
+      title: 'Free AI Image Alt Text Generator | SEO & Accessibility Alt Text',
+      desc: 'Generate SEO-friendly and accessibility-friendly image alt text with AI. Upload an image, add an optional keyword, and get short, SEO, accessibility, and e-commerce alt text versions.',
+      keywords: 'ai image alt text generator, alt text generator, image seo tool, accessibility alt text'
+    },
+    'ai-receptionist': {
+      title: 'AI Receptionist | 24/7 Phone Answering Agent | Jento AI',
+      desc: 'Jento AI builds AI receptionists that answer calls, qualify leads, book appointments, and follow up with customers 24/7.'
     }
   };
 
@@ -276,6 +318,16 @@ const App: React.FC = () => {
 
     updateMeta('og:title', data.title);
     updateMeta('og:description', data.desc);
+
+    let metaKeywords = document.querySelector('meta[name="keywords"]');
+    if (data.keywords) {
+      if (!metaKeywords) {
+        metaKeywords = document.createElement('meta');
+        metaKeywords.setAttribute('name', 'keywords');
+        document.head.appendChild(metaKeywords);
+      }
+      metaKeywords.setAttribute('content', data.keywords);
+    }
 
     // Canonical URL Logic (Critical for SEO with Redirects)
     let canonical = document.querySelector('link[rel="canonical"]');
@@ -653,6 +705,17 @@ const App: React.FC = () => {
         return <Reviews setPage={setPage} />;
       case 'ai-agents-guide':
         return <AIAgentsGuide setPage={setPage} />;
+      case 'ai-receptionist-for-small-business':
+      case 'ai-answering-service':
+      case 'ai-voice-agent':
+      case 'ai-virtual-receptionist':
+      case 'ai-phone-receptionist':
+      case 'ai-call-answering-service': {
+        const spData = SERVICE_PAGES.find(p => p.id === page);
+        return spData ? <ServicePageTemplate data={spData} setPage={setPage} /> : null;
+      }
+      case 'tool/image-alt-text-generator':
+        return <ImageAltTextGeneratorPage setPage={setPage} />;
       default:
         return (
           <>
@@ -820,13 +883,18 @@ const App: React.FC = () => {
             <div>
               <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-blue-500 mb-8">Solutions</h4>
               <ul className="space-y-4">
-                {['AI Agents', 'Use Cases', 'Pricing', 'Infrastructure'].map(item => (
-                  <li key={item}>
+                {[
+                  { label: 'AI Agents', page: 'aiagent' as Page },
+                  { label: 'Free Tools', page: 'tool/image-alt-text-generator' as Page },
+                  { label: 'Use Cases', page: 'use-cases' as Page },
+                  { label: 'Pricing', page: 'pricing' as Page },
+                ].map(item => (
+                  <li key={item.label}>
                     <button
-                      onClick={() => navigateTo(item === 'AI Agents' ? 'aiagent' : item.toLowerCase().replace(' ', '-') as Page)}
+                      onClick={() => navigateTo(item.page)}
                       className="text-slate-400 hover:text-white text-sm font-bold uppercase tracking-widest transition-colors"
                     >
-                      {item}
+                      {item.label}
                     </button>
                   </li>
                 ))}
