@@ -8,7 +8,7 @@ interface HeroProps {
 
 const Hero: React.FC<HeroProps> = ({ setPage }) => {
   return (
-    <section className="relative pt-24 md:pt-40 pb-16 md:pb-32 overflow-hidden bg-white">
+    <header className="relative pt-24 md:pt-40 pb-16 md:pb-32 overflow-hidden bg-white">
       {/* Premium Gradient Background Elements */}
       <div className="absolute top-0 right-0 w-[50%] h-[50%] bg-blue-50 rounded-full blur-[120px] opacity-60"></div>
       <div className="absolute bottom-0 left-0 w-[40%] h-[40%] bg-indigo-50 rounded-full blur-[100px] opacity-40"></div>
@@ -51,7 +51,7 @@ const Hero: React.FC<HeroProps> = ({ setPage }) => {
             <div className="bg-slate-950 rounded-2xl overflow-hidden aspect-video relative">
               <img
                 src="https://images.unsplash.com/photo-1639322537228-f710d846310a?auto=format&fit=crop&q=80&w=1200"
-                alt="Jento Node Builder"
+                alt="Jento AI Node Builder Architecture representing autonomous n8n workflows"
                 loading="lazy"
                 className="w-full h-full object-cover opacity-60 mix-blend-screen"
               />
@@ -96,7 +96,7 @@ const Hero: React.FC<HeroProps> = ({ setPage }) => {
           100% { transform: translateX(100%); }
         }
       `}</style>
-    </section>
+    </header>
   );
 };
 

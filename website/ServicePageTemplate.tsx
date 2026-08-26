@@ -37,10 +37,10 @@ const ServicePageTemplate: React.FC<Props> = ({ data, setPage }) => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   return (
-    <div className="bg-white min-h-screen">
+    <article className="bg-white min-h-screen">
 
       {/* ── HERO ──────────────────────────────────────────────────────────── */}
-      <section className="relative pt-28 pb-24 bg-white overflow-hidden">
+      <header className="relative pt-28 pb-24 bg-white overflow-hidden">
         {/* Background gradient blobs */}
         <div className="absolute top-0 right-0 w-[60%] h-[60%] bg-blue-100 rounded-full blur-[160px] opacity-40 pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-[40%] h-[40%] bg-indigo-100 rounded-full blur-[120px] opacity-40 pointer-events-none" />
@@ -77,7 +77,7 @@ const ServicePageTemplate: React.FC<Props> = ({ data, setPage }) => {
             </button>
           </div>
         </div>
-      </section>
+      </header>
 
       {/* ── CALCULATOR ────────────────────────────────────────────────────── */}
       <section className="py-24 bg-slate-50 overflow-hidden">
@@ -423,7 +423,7 @@ const ServicePageTemplate: React.FC<Props> = ({ data, setPage }) => {
         </div>
       </section>
 
-    </div>
+    </article>
   );
 };
 

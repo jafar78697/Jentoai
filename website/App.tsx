@@ -340,6 +340,73 @@ const App: React.FC = () => {
     canonical.setAttribute('href', `https://jentoai.com/${currentPath}`);
     updateMeta('og:url', `https://jentoai.com/${currentPath}`);
 
+    // 4. JSON-LD Schema Injection for GEO
+    let schemaScript = document.querySelector('script[type="application/ld+json"]');
+    if (!schemaScript) {
+      schemaScript = document.createElement('script');
+      schemaScript.setAttribute('type', 'application/ld+json');
+      document.head.appendChild(schemaScript);
+    }
+    
+    let schema: any = {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": data.title,
+      "description": data.desc,
+      "url": `https://jentoai.com/${currentPath}`
+    };
+
+    if (page === 'home') {
+      schema = {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Jento AI",
+        "url": "https://jentoai.com/",
+        "logo": "https://jentoai.com/logo.png",
+        "description": data.desc,
+        "sameAs": [
+          "https://www.linkedin.com/company/jentoai"
+        ]
+      };
+    } else if (page === 'faq') {
+      schema = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Is there a monthly subscription?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "We primarily focus on build-to-own models where you pay for the architecture upfront."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How long does a typical build take?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Starter nodes take 1-3 days. Enterprise transformations depend on complexity but usually range from 2-4 weeks."
+            }
+          }
+        ]
+      };
+    } else if (['ai-receptionist-for-small-business', 'ai-answering-service', 'ai-voice-agent', 'ai-virtual-receptionist', 'ai-phone-receptionist', 'ai-call-answering-service', 'services', 'aiagent'].includes(page)) {
+      schema = {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "serviceType": data.title.split('|')[0].trim(),
+        "provider": {
+          "@type": "Organization",
+          "name": "Jento AI"
+        },
+        "description": data.desc,
+        "url": `https://jentoai.com/${currentPath}`
+      };
+    }
+
+    schemaScript.textContent = JSON.stringify(schema);
+
     if (window.dataLayer) {
       window.dataLayer.push({
         event: 'page_view',
