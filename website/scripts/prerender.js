@@ -124,6 +124,15 @@ const SEO_DATA = {
     title: 'Free AI Image Alt Text Generator | SEO & Accessibility Alt Text',
     desc: 'Generate SEO-friendly and accessibility-friendly image alt text with AI. Upload an image, add an optional keyword, and get short, SEO, accessibility, and e-commerce alt text versions.',
     keywords: 'ai image alt text generator, alt text generator, image seo tool, accessibility alt text'
+  },
+  'tool/voice-to-crm-extractor': {
+    title: 'AI Voice to CRM Data Extractor | Automated Lead Entry',
+    desc: 'Extract contact details and meeting notes from voice recordings directly into your CRM. Automate data entry for sales and support teams.'
+  },
+  'tools': {
+    title: 'Free AI Tools | Jento AI',
+    desc: 'Explore our suite of free AI automation tools including Image Alt Text Generator and Voice-to-CRM Data Extractor.',
+    keywords: 'free ai tools, ai image alt text, voice to crm, jento ai tools'
   }
 };
 

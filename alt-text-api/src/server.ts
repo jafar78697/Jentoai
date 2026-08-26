@@ -5,6 +5,7 @@ import rateLimit from 'express-rate-limit';
 import helmet from 'helmet';
 import pino from 'pino';
 import { createAltTextRouter } from './routes/alt-text.js';
+import { createVoiceToCrmRouter } from './routes/voice-to-crm.js';
 import { UsageService } from './services/usage.service.js';
 
 const logger = pino({ level: process.env.NODE_ENV === 'production' ? 'info' : 'debug' });
@@ -77,6 +78,15 @@ app.use(
     legacyHeaders: false,
   })
 );
+app.use(
+  '/api/extract-crm-data',
+  rateLimit({
+    windowMs: 10 * 60 * 1000,
+    max: 10,
+    standardHeaders: true,
+    legacyHeaders: false,
+  })
+);
 
 app.get('/health', (_request, response) => {
   response.status(200).json({ ok: true });
@@ -89,6 +99,14 @@ app.use(
     vertexClient,
     vertexModel,
     ipHashSalt,
+  })
+);
+
+app.use(
+  '/api/extract-crm-data',
+  createVoiceToCrmRouter({
+    vertexClient,
+    vertexModel,
   })
 );
 

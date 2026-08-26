@@ -29,6 +29,8 @@ const AIAgentsGuide = lazy(() => import('./AIAgentsGuide'));
 const Reviews = lazy(() => import('./Reviews'));
 const ServicePageTemplate = lazy(() => import('./ServicePageTemplate'));
 const ImageAltTextGeneratorPage = lazy(() => import('./ImageAltTextGeneratorPage'));
+const VoiceToCrmTool = lazy(() => import('./VoiceToCrmTool').then(module => ({ default: module.VoiceToCrmTool })));
+const ToolsPage = lazy(() => import('./Tools').then(module => ({ default: module.ToolsPage })));
 
 // Loading Fallback Component
 const PageLoader = () => (
@@ -50,7 +52,7 @@ const isValidPage = (path: string): boolean => {
     'contact', 'book-call', 'faq', 'legal', 'case-studies', 'agentic-strategy',
     'resources', 'framework-comparison', 'agentic-rag', 'ai-governance', 'ai-sdr-guide', 'ai-agents-guide', 'reviews',
     'ai-receptionist-for-small-business', 'ai-answering-service', 'ai-voice-agent', 'tool/image-alt-text-generator',
-    'ai-virtual-receptionist', 'ai-phone-receptionist', 'ai-call-answering-service'
+    'tool/voice-to-crm-extractor', 'ai-virtual-receptionist', 'ai-phone-receptionist', 'ai-call-answering-service', 'tools'
   ];
   return validPages.includes(path.toLowerCase());
 };
@@ -282,6 +284,16 @@ const App: React.FC = () => {
       title: 'Free AI Image Alt Text Generator | SEO & Accessibility Alt Text',
       desc: 'Generate SEO-friendly and accessibility-friendly image alt text with AI. Upload an image, add an optional keyword, and get short, SEO, accessibility, and e-commerce alt text versions.',
       keywords: 'ai image alt text generator, alt text generator, image seo tool, accessibility alt text'
+    },
+    'tool/voice-to-crm-extractor': {
+      title: 'Free AI Voice to CRM Data Extractor | Sales Meeting Notes Automation',
+      desc: 'Upload your sales call recording and let AI instantly transcribe and extract structured CRM fields (Budget, Pain Points, Next Steps) in seconds.',
+      keywords: 'ai meeting notes, voice to crm, sales call data extractor AI, automated sales notes, hubspot meeting AI'
+    },
+    'tools': {
+      title: 'Free AI Tools | Jento AI',
+      desc: 'Explore our suite of free AI automation tools including Image Alt Text Generator and Voice-to-CRM Data Extractor.',
+      keywords: 'free ai tools, ai image alt text, voice to crm, jento ai tools'
     },
     'ai-receptionist': {
       title: 'AI Receptionist | 24/7 Phone Answering Agent | Jento AI',
@@ -783,6 +795,10 @@ const App: React.FC = () => {
       }
       case 'tool/image-alt-text-generator':
         return <ImageAltTextGeneratorPage setPage={setPage} />;
+      case 'tool/voice-to-crm-extractor':
+        return <VoiceToCrmTool setPage={setPage} />;
+      case 'tools':
+        return <ToolsPage setPage={setPage} />;
       default:
         return (
           <>

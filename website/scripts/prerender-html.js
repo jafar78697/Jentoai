@@ -37,7 +37,9 @@ const PAGES = [
   '/ai-virtual-receptionist',
   '/ai-phone-receptionist',
   '/ai-call-answering-service',
-  '/tool/image-alt-text-generator'
+  '/tool/image-alt-text-generator',
+  '/tool/voice-to-crm-extractor',
+  '/tools'
 ];
 
 const distDir = path.resolve(__dirname, '../dist');
