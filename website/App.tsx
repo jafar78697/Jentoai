@@ -1,7 +1,7 @@
 import React, { useState, useEffect, Suspense, lazy } from 'react';
 import Navbar from './Navbar';
 import Hero from './Hero';
-import N8nChatWidget from './N8nChatWidget';
+import ChatWidget from './ChatWidget';
 import { Page } from './types';
 import { AGENTS, PRICING, CONFIG } from './constants';
 import SERVICE_PAGES from './servicePageData';
@@ -1030,7 +1030,7 @@ const App: React.FC = () => {
           </div>
         </div>
       </footer>
-      <N8nChatWidget />
+      <ChatWidget />
     </div>
   );
 };
