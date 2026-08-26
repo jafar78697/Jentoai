@@ -475,23 +475,29 @@ const App: React.FC = () => {
 
   const handleBookingSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email || !name || !industry) return;
+    if (!email || !name || !industry) {
+      alert('Please fill out all fields.');
+      return;
+    }
 
     setIsSubmitting(true);
 
     try {
-      // Using URLSearchParams for robust Google Apps Script compatibility
-      const params = new URLSearchParams();
-      params.append('name', name);
-      params.append('industry', industry);
-      params.append('email', email);
-      params.append('source', 'Home Booking');
-
-      await fetch(CONFIG.bookingWebhookUrl, {
+      const baseUrl = import.meta.env.VITE_API_URL || 'http://localhost:8080';
+      const response = await fetch(`${baseUrl}/api/book-call`, {
         method: 'POST',
-        mode: 'no-cors',
-        body: params
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name,
+          industry,
+          email,
+          source: 'Home Booking'
+        })
       });
+
+      if (!response.ok) {
+        throw new Error('Failed to submit booking');
+      }
 
       // Track Lead Generation Event
       if (window.dataLayer) {
@@ -502,7 +508,6 @@ const App: React.FC = () => {
         });
       }
 
-      // Since 'no-cors' doesn't return the response body, we assume success if no error is thrown
       setBookingSubmitted(true);
     } catch (error) {
       console.error('Submission Error:', error);
@@ -653,19 +658,8 @@ const App: React.FC = () => {
                     Leave your details below. Our technical architects will review your industry context before our session.
                   </p>
 
-                  <iframe name="hidden_iframe_booking" title="hidden_iframe_booking" style={{ display: 'none' }}></iframe>
                   <form
-                    action={CONFIG.bookingWebhookUrl}
-                    method="POST"
-                    target="hidden_iframe_booking"
-                    onSubmit={() => {
-                      setIsSubmitting(true);
-                      // Give it a moment to 'submit' then show success
-                      setTimeout(() => {
-                        setBookingSubmitted(true);
-                        setIsSubmitting(false);
-                      }, 1000);
-                    }}
+                    onSubmit={handleBookingSubmit}
                     className="max-w-2xl mx-auto space-y-6"
                   >
                     {/* Hidden entries to map data correctly */}

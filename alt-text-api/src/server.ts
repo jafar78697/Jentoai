@@ -7,6 +7,7 @@ import pino from 'pino';
 import { createAltTextRouter } from './routes/alt-text.js';
 import { createVoiceToCrmRouter } from './routes/voice-to-crm.js';
 import { createChatRouter } from './routes/chat.js';
+import { createBookCallRouter } from './routes/book-call.js';
 import { UsageService } from './services/usage.service.js';
 
 const logger = pino({ level: process.env.NODE_ENV === 'production' ? 'info' : 'debug' });
@@ -97,6 +98,15 @@ app.use(
     legacyHeaders: false,
   })
 );
+app.use(
+  '/api/book-call',
+  rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 5, // limit each IP to 5 booking requests per windowMs
+    standardHeaders: true,
+    legacyHeaders: false,
+  })
+);
 
 app.get('/health', (_request, response) => {
   response.status(200).json({ ok: true });
@@ -127,6 +137,8 @@ app.use(
     vertexModel,
   })
 );
+
+app.use('/api/book-call', createBookCallRouter());
 
 app.use((error: Error, _request: express.Request, response: express.Response, _next: express.NextFunction) => {
   if ((error as any)?.code === 'LIMIT_FILE_SIZE') {
