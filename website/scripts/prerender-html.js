@@ -40,6 +40,7 @@ const PAGES = [
   '/tool/image-alt-text-generator',
   '/tool/voice-to-crm-extractor',
   '/tool/voice-resume-builder',
+  '/tool/website-roaster',
   '/tools'
 ];
 

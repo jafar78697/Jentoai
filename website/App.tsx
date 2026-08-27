@@ -31,6 +31,7 @@ const ServicePageTemplate = lazy(() => import('./ServicePageTemplate'));
 const ImageAltTextGeneratorPage = lazy(() => import('./ImageAltTextGeneratorPage'));
 const VoiceToCrmTool = lazy(() => import('./VoiceToCrmTool').then(module => ({ default: module.VoiceToCrmTool })));
 const VoiceResumeBuilder = lazy(() => import('./VoiceResumeBuilder').then(module => ({ default: module.VoiceResumeBuilder })));
+const WebsiteRoaster = lazy(() => import('./WebsiteRoaster').then(module => ({ default: module.WebsiteRoaster })));
 const ToolsPage = lazy(() => import('./Tools').then(module => ({ default: module.ToolsPage })));
 
 // Loading Fallback Component
@@ -53,7 +54,7 @@ const isValidPage = (path: string): boolean => {
     'contact', 'book-call', 'faq', 'legal', 'case-studies', 'agentic-strategy',
     'resources', 'framework-comparison', 'agentic-rag', 'ai-governance', 'ai-sdr-guide', 'ai-agents-guide', 'reviews',
     'ai-receptionist-for-small-business', 'ai-answering-service', 'ai-voice-agent', 'tool/image-alt-text-generator',
-    'tool/voice-to-crm-extractor', 'tool/voice-resume-builder', 'ai-virtual-receptionist', 'ai-phone-receptionist', 'ai-call-answering-service', 'tools'
+    'tool/voice-to-crm-extractor', 'tool/voice-resume-builder', 'tool/website-roaster', 'ai-virtual-receptionist', 'ai-phone-receptionist', 'ai-call-answering-service', 'tools'
   ];
   return validPages.includes(path.toLowerCase());
 };
@@ -295,6 +296,11 @@ const App: React.FC = () => {
       title: 'Free AI Voice-to-Resume Builder | Speak Your CV',
       desc: 'Speak your skills or upload an old resume, and our AI will generate a highly professional, beautifully formatted PDF resume in seconds.',
       keywords: 'ai resume builder, voice to resume, generate resume from audio, ai cv maker, free resume builder'
+    },
+    'tool/website-roaster': {
+      title: 'The Brutal AI Website Roaster | Landing Page Feedback',
+      desc: 'Enter your website URL and our brutally honest AI will roast your marketing copy, exposing why you aren\'t getting sales, and how to fix it.',
+      keywords: 'ai website roaster, landing page feedback ai, roast my website, cro analyzer, ai conversion optimization'
     },
     'tools': {
       title: 'Free AI Tools | Jento AI',
@@ -799,6 +805,8 @@ const App: React.FC = () => {
         return <VoiceToCrmTool setPage={setPage} />;
       case 'tool/voice-resume-builder':
         return <VoiceResumeBuilder setPage={setPage} />;
+      case 'tool/website-roaster':
+        return <WebsiteRoaster setPage={setPage} />;
       case 'tools':
         return <ToolsPage setPage={setPage} />;
       default:

@@ -134,6 +134,11 @@ const SEO_DATA = {
     desc: 'Speak your skills or upload an old resume, and our AI will generate a highly professional, beautifully formatted PDF resume in seconds.',
     keywords: 'ai resume builder, voice to resume, generate resume from audio, ai cv maker, free resume builder'
   },
+  'tool/website-roaster': {
+    title: 'The Brutal AI Website Roaster | Landing Page Feedback',
+    desc: 'Enter your website URL and our brutally honest AI will roast your marketing copy, exposing why you aren\'t getting sales, and how to fix it.',
+    keywords: 'ai website roaster, landing page feedback ai, roast my website, cro analyzer, ai conversion optimization'
+  },
   'tools': {
     title: 'Free AI Tools | Jento AI',
     desc: 'Explore our suite of free AI automation tools including Image Alt Text Generator and Voice-to-CRM Data Extractor.',

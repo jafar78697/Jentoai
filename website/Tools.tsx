@@ -78,6 +78,26 @@ export const ToolsPage: React.FC<{ setPage: (page: Page) => void }> = ({ setPage
             </div>
           </a>
 
+          {/* Website Roaster Tool Card */}
+          <a href="/tool/website-roaster" onClick={(e) => handleNavClick(e, 'tool/website-roaster')} className="group block bg-white rounded-[2rem] p-8 md:p-12 shadow-xl shadow-slate-200/50 border border-slate-100 hover:-translate-y-2 hover:shadow-2xl hover:shadow-orange-500/10 transition-all duration-300">
+            <div className="w-16 h-16 bg-orange-50 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-orange-600 transition-colors duration-300">
+              <svg className="w-8 h-8 text-orange-600 group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z" />
+              </svg>
+            </div>
+            <h2 className="text-2xl md:text-3xl font-black text-slate-900 tracking-tight mb-4">The Website Roaster</h2>
+            <p className="text-slate-600 font-medium mb-8 leading-relaxed">
+              Enter a URL and let our brutally honest AI roast your marketing copy and expose why you aren't getting sales.
+            </p>
+            <div className="flex items-center text-orange-600 font-black uppercase tracking-widest text-[11px]">
+              Open Tool 
+              <svg className="w-4 h-4 ml-2 group-hover:translate-x-2 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </div>
+          </a>
+
         </div>
       </div>
     </main>

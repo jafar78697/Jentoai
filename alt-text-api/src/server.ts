@@ -9,6 +9,7 @@ import { createVoiceToCrmRouter } from './routes/voice-to-crm.js';
 import { createChatRouter } from './routes/chat.js';
 import { createBookCallRouter } from './routes/book-call.js';
 import { createResumeBuilderRouter } from './routes/resume-builder.js';
+import { createWebsiteRoasterRouter } from './routes/website-roaster.js';
 import { UsageService } from './services/usage.service.js';
 
 const logger = pino({ level: process.env.NODE_ENV === 'production' ? 'info' : 'debug' });
@@ -144,6 +145,14 @@ app.use('/api/book-call', createBookCallRouter());
 app.use(
   '/api/resume-builder',
   createResumeBuilderRouter({
+    vertexClient,
+    vertexModel,
+  })
+);
+
+app.use(
+  '/api/website-roaster',
+  createWebsiteRoasterRouter({
     vertexClient,
     vertexModel,
   })
