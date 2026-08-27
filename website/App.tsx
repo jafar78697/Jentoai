@@ -30,6 +30,7 @@ const Reviews = lazy(() => import('./Reviews'));
 const ServicePageTemplate = lazy(() => import('./ServicePageTemplate'));
 const ImageAltTextGeneratorPage = lazy(() => import('./ImageAltTextGeneratorPage'));
 const VoiceToCrmTool = lazy(() => import('./VoiceToCrmTool').then(module => ({ default: module.VoiceToCrmTool })));
+const VoiceResumeBuilder = lazy(() => import('./VoiceResumeBuilder').then(module => ({ default: module.VoiceResumeBuilder })));
 const ToolsPage = lazy(() => import('./Tools').then(module => ({ default: module.ToolsPage })));
 
 // Loading Fallback Component
@@ -52,7 +53,7 @@ const isValidPage = (path: string): boolean => {
     'contact', 'book-call', 'faq', 'legal', 'case-studies', 'agentic-strategy',
     'resources', 'framework-comparison', 'agentic-rag', 'ai-governance', 'ai-sdr-guide', 'ai-agents-guide', 'reviews',
     'ai-receptionist-for-small-business', 'ai-answering-service', 'ai-voice-agent', 'tool/image-alt-text-generator',
-    'tool/voice-to-crm-extractor', 'ai-virtual-receptionist', 'ai-phone-receptionist', 'ai-call-answering-service', 'tools'
+    'tool/voice-to-crm-extractor', 'tool/voice-resume-builder', 'ai-virtual-receptionist', 'ai-phone-receptionist', 'ai-call-answering-service', 'tools'
   ];
   return validPages.includes(path.toLowerCase());
 };
@@ -289,6 +290,11 @@ const App: React.FC = () => {
       title: 'Free AI Voice to CRM Data Extractor | Sales Meeting Notes Automation',
       desc: 'Upload your sales call recording and let AI instantly transcribe and extract structured CRM fields (Budget, Pain Points, Next Steps) in seconds.',
       keywords: 'ai meeting notes, voice to crm, sales call data extractor AI, automated sales notes, hubspot meeting AI'
+    },
+    'tool/voice-resume-builder': {
+      title: 'Free AI Voice-to-Resume Builder | Speak Your CV',
+      desc: 'Speak your skills or upload an old resume, and our AI will generate a highly professional, beautifully formatted PDF resume in seconds.',
+      keywords: 'ai resume builder, voice to resume, generate resume from audio, ai cv maker, free resume builder'
     },
     'tools': {
       title: 'Free AI Tools | Jento AI',
@@ -791,6 +797,8 @@ const App: React.FC = () => {
         return <ImageAltTextGeneratorPage setPage={setPage} />;
       case 'tool/voice-to-crm-extractor':
         return <VoiceToCrmTool setPage={setPage} />;
+      case 'tool/voice-resume-builder':
+        return <VoiceResumeBuilder setPage={setPage} />;
       case 'tools':
         return <ToolsPage setPage={setPage} />;
       default:

@@ -8,6 +8,7 @@ import { createAltTextRouter } from './routes/alt-text.js';
 import { createVoiceToCrmRouter } from './routes/voice-to-crm.js';
 import { createChatRouter } from './routes/chat.js';
 import { createBookCallRouter } from './routes/book-call.js';
+import { createResumeBuilderRouter } from './routes/resume-builder.js';
 import { UsageService } from './services/usage.service.js';
 
 const logger = pino({ level: process.env.NODE_ENV === 'production' ? 'info' : 'debug' });
@@ -139,6 +140,14 @@ app.use(
 );
 
 app.use('/api/book-call', createBookCallRouter());
+
+app.use(
+  '/api/resume-builder',
+  createResumeBuilderRouter({
+    vertexClient,
+    vertexModel,
+  })
+);
 
 app.use((error: Error, _request: express.Request, response: express.Response, _next: express.NextFunction) => {
   if ((error as any)?.code === 'LIMIT_FILE_SIZE') {

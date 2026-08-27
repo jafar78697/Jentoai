@@ -129,6 +129,11 @@ const SEO_DATA = {
     title: 'AI Voice to CRM Data Extractor | Automated Lead Entry',
     desc: 'Extract contact details and meeting notes from voice recordings directly into your CRM. Automate data entry for sales and support teams.'
   },
+  'tool/voice-resume-builder': {
+    title: 'Free AI Voice-to-Resume Builder | Speak Your CV',
+    desc: 'Speak your skills or upload an old resume, and our AI will generate a highly professional, beautifully formatted PDF resume in seconds.',
+    keywords: 'ai resume builder, voice to resume, generate resume from audio, ai cv maker, free resume builder'
+  },
   'tools': {
     title: 'Free AI Tools | Jento AI',
     desc: 'Explore our suite of free AI automation tools including Image Alt Text Generator and Voice-to-CRM Data Extractor.',

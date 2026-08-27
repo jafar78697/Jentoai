@@ -59,6 +59,25 @@ export const ToolsPage: React.FC<{ setPage: (page: Page) => void }> = ({ setPage
             </div>
           </a>
 
+          {/* Voice Resume Tool Card */}
+          <a href="/tool/voice-resume-builder" onClick={(e) => handleNavClick(e, 'tool/voice-resume-builder')} className="group block bg-white rounded-[2rem] p-8 md:p-12 shadow-xl shadow-slate-200/50 border border-slate-100 hover:-translate-y-2 hover:shadow-2xl hover:shadow-indigo-500/10 transition-all duration-300">
+            <div className="w-16 h-16 bg-indigo-50 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-indigo-600 transition-colors duration-300">
+              <svg className="w-8 h-8 text-indigo-600 group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+            </div>
+            <h2 className="text-2xl md:text-3xl font-black text-slate-900 tracking-tight mb-4">Voice-to-Resume Builder</h2>
+            <p className="text-slate-600 font-medium mb-8 leading-relaxed">
+              Speak your skills or upload your old resume, and let AI generate a beautifully formatted PDF resume in seconds.
+            </p>
+            <div className="flex items-center text-indigo-600 font-black uppercase tracking-widest text-[11px]">
+              Open Tool 
+              <svg className="w-4 h-4 ml-2 group-hover:translate-x-2 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </div>
+          </a>
+
         </div>
       </div>
     </main>

@@ -39,6 +39,7 @@ const PAGES = [
   '/ai-call-answering-service',
   '/tool/image-alt-text-generator',
   '/tool/voice-to-crm-extractor',
+  '/tool/voice-resume-builder',
   '/tools'
 ];
 
