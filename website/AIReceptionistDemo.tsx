@@ -49,7 +49,7 @@ export default function AIReceptionistDemo() {
                   listen: { provider: { type: "deepgram", model: "nova-3" } },
                   think: {
                     provider: { type: "open_ai", model: "gpt-4o-mini" },
-                    prompt: "You are an AI Receptionist for Jento AI Plumbing. Your first message should be: 'Hello! I am from Jento AI Plumbing, what do you want to get done?'. Ask for their name, their phone number, and their plumbing issue. When you get all the details, call the record_lead function. Be concise and polite.",
+                    prompt: "You are an AI Receptionist for Jento AI Plumbing. Be highly professional, concise, and polite. Follow this exact step-by-step conversation flow. Do NOT ask multiple questions at once.\nStep 1: Your first message must be exactly: 'Hello! Welcome to Jento AI Plumbing. May I have your name, please?' Wait for the user to state their name.\nStep 2: Once they provide their name, address them by their name and say, 'Thank you, [Name]. How can I help you today?' Wait for them to state their plumbing issue.\nStep 3: Once they state their issue, acknowledge it and say, 'I can certainly help you with that. Could I also get a phone number to reach you at?'\nStep 4: Once you have their name, issue, and phone number, immediately call the `record_lead` function. Then say, 'Thank you! I have recorded your details and our team will contact you shortly.'\nDo not deviate from this flow.",
                     functions: [
                       {
                         name: "record_lead",
@@ -78,8 +78,18 @@ export default function AIReceptionistDemo() {
                 setLogs(l => [...l, `You: ${data.content}`]);
               }
             } else if (data.type === "FunctionCallRequest") {
-              if (data.function_name === "record_lead") {
-                const args = JSON.parse(data.function_arguments || "{}");
+              const fnName = data.function_name || data.name;
+              const fnId = data.function_call_id || data.id;
+              
+              if (fnName === "record_lead") {
+                const argsRaw = data.function_arguments || data.parameters || data.args || "{}";
+                let args: any = {};
+                if (typeof argsRaw === "string") {
+                  try { args = JSON.parse(argsRaw); } catch(e) {}
+                } else {
+                  args = argsRaw;
+                }
+                
                 setLeads(prev => [...prev, {
                   name: args.name || "Unknown",
                   number: args.number || "Unknown",
@@ -90,9 +100,12 @@ export default function AIReceptionistDemo() {
                 
                 wsRef.current?.send(JSON.stringify({
                   type: "FunctionCallResponse",
-                  function_call_id: data.function_call_id,
-                  function_name: "record_lead",
-                  result: "Lead recorded successfully. Let the user know and say goodbye."
+                  function_call_id: fnId,
+                  id: fnId,
+                  function_name: fnName,
+                  name: fnName,
+                  output: "Lead recorded successfully.",
+                  content: "Lead recorded successfully."
                 }));
               }
             } else if (data.type === "Error") {
