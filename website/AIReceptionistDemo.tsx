@@ -27,7 +27,7 @@ export default function AIReceptionistDemo() {
       processorRef.current = processor;
       
       setLogs(l => [...l, "Connecting to Deepgram Voice Agent API..."]);
-      wsRef.current = new WebSocket("wss://agent.deepgram.com/agent", ["token", DEEPGRAM_API_KEY]);
+      wsRef.current = new WebSocket("wss://agent.deepgram.com/v1/agent/converse", ["token", DEEPGRAM_API_KEY]);
       
       wsRef.current.onopen = () => {
         setLogs(l => [...l, "Connected! Waiting for Server Welcome..."]);
@@ -40,17 +40,16 @@ export default function AIReceptionistDemo() {
             if (data.type === "Welcome") {
               setLogs(l => [...l, "Welcome received. Sending configuration..."]);
               wsRef.current?.send(JSON.stringify({
-                type: "SettingsConfiguration",
+                type: "Settings",
                 audio: {
                   input: { encoding: "linear16", sample_rate: 16000 },
                   output: { encoding: "linear16", sample_rate: 16000, container: "none" }
                 },
                 agent: {
-                  listen: { model: "nova-2" },
+                  listen: { provider: { type: "deepgram", model: "nova-3" } },
                   think: {
-                    provider: { type: "open_ai" },
-                    model: "gpt-4o-mini",
-                    instructions: "You are an AI Receptionist for Jento AI Plumbing. Your first message should be: 'Hello! I am from Jento AI Plumbing, what do you want to get done?'. Ask for their name, their phone number, and their plumbing issue. When you get all the details, call the record_lead function. Be concise and polite.",
+                    provider: { type: "open_ai", model: "gpt-4o-mini" },
+                    prompt: "You are an AI Receptionist for Jento AI Plumbing. Your first message should be: 'Hello! I am from Jento AI Plumbing, what do you want to get done?'. Ask for their name, their phone number, and their plumbing issue. When you get all the details, call the record_lead function. Be concise and polite.",
                     functions: [
                       {
                         name: "record_lead",
@@ -67,7 +66,7 @@ export default function AIReceptionistDemo() {
                       }
                     ]
                   },
-                  speak: { model: "aura-asteria-en" }
+                  speak: { provider: { type: "deepgram", model: "aura-asteria-en" } }
                 }
               }));
             } else if (data.type === "SettingsApplied") {
