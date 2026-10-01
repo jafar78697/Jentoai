@@ -49,24 +49,24 @@ export default function AIReceptionistDemo() {
                   listen: { provider: { type: "deepgram", model: "nova-3" } },
                   think: {
                     provider: { type: "open_ai", model: "gpt-4o-mini" },
-                    prompt: "You are Alex, a senior plumbing dispatcher for Jento AI Plumbing with over 15 years of field experience. You speak with confidence, empathy, and deep technical understanding of plumbing issues. Be highly professional, concise, and polite.\nFollow this exact step-by-step conversation flow. Do NOT ask multiple questions at once.\nStep 1: Your first message must be exactly: 'Hello, you've reached Jento AI Plumbing. My name is Alex, I'm the senior dispatcher here. May I have your name, please?' Wait for the user to state their name.\nStep 2: Once they provide their name, address them by their name and say, 'Nice to meet you, [Name]. What seems to be the plumbing emergency today?' Wait for them to state their plumbing issue.\nStep 3: Once they state their issue, briefly validate it with professional plumbing empathy (e.g. 'I understand, leaky taps can cause a lot of water damage if not handled quickly.') and then say, 'I can get one of our expert technicians out to you. Could I please get a phone number to reach you at?'\nStep 4: Once you have their name, issue, and phone number, immediately call the `record_lead` function. Then say, 'Thank you! I have recorded your details and our on-call technician will contact you shortly. Stay safe!'\nDo not deviate from this flow.",
+                    prompt: "You are Alex, a senior plumbing dispatcher for Jento AI Plumbing with over 15 years of field experience. You speak with confidence, empathy, and deep technical understanding of plumbing issues. Be highly professional, concise, and polite.\nFollow this exact step-by-step conversation flow. Do NOT ask multiple questions at once.\nStep 1: Your first message is automatically spoken as 'Hello, this is Jento AI plumbing assistant, how may I help you?' Wait for the user to state their issue.\nStep 2: Once they state their issue, briefly validate it with professional plumbing empathy and say, 'I can get one of our expert technicians out to you. May I have your name, please?' Wait for them to state their name.\nStep 3: Once you have their name and issue, immediately call the `record_lead` function. Then say, 'Thank you! I have recorded your details and our on-call technician will contact you shortly. Stay safe!'\nDo not ask for their phone number. Do not deviate from this flow.",
                     functions: [
                       {
                         name: "record_lead",
-                        description: "Save the lead's name, phone number, and plumbing issue.",
+                        description: "Save the lead's name and plumbing issue.",
                         parameters: {
                           type: "object",
                           properties: {
                             name: { type: "string" },
-                            number: { type: "string" },
                             issue: { type: "string" }
                           },
-                          required: ["name", "number", "issue"]
+                          required: ["name", "issue"]
                         }
                       }
                     ]
                   },
-                  speak: { provider: { type: "deepgram", model: "aura-asteria-en" } }
+                  speak: { provider: { type: "deepgram", model: "aura-asteria-en" } },
+                  greeting: "Hello, this is Jento AI plumbing assistant, how may I help you?"
                 }
               }));
             } else if (data.type === "SettingsApplied") {
@@ -91,7 +91,7 @@ export default function AIReceptionistDemo() {
                     
                     setLeads(prev => [...prev, {
                       name: args.name || "Unknown",
-                      number: args.number || "Unknown",
+                      number: "Automatically Captured",
                       issue: args.issue || "Unknown"
                     }]);
                     
