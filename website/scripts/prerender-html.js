@@ -41,7 +41,8 @@ const PAGES = [
   '/tool/voice-to-crm-extractor',
   '/tool/voice-resume-builder',
   '/tool/website-roaster',
-  '/tools'
+  '/tools',
+  '/ai-receptionist'
 ];
 
 const distDir = path.resolve(__dirname, '../dist');

@@ -143,6 +143,10 @@ const SEO_DATA = {
     title: 'Free AI Tools | Jento AI',
     desc: 'Explore our suite of free AI automation tools including Image Alt Text Generator and Voice-to-CRM Data Extractor.',
     keywords: 'free ai tools, ai image alt text, voice to crm, jento ai tools'
+  },
+  'ai-receptionist': {
+    title: 'Live AI Receptionist Demo | Jento AI',
+    desc: 'Try our live AI Receptionist demo. Speak directly to our AI voice agent and see how it automatically extracts leads and CRM data.'
   }
 };
 
