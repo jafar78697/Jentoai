@@ -33,6 +33,7 @@ const VoiceToCrmTool = lazy(() => import('./VoiceToCrmTool').then(module => ({ d
 const VoiceResumeBuilder = lazy(() => import('./VoiceResumeBuilder').then(module => ({ default: module.VoiceResumeBuilder })));
 const WebsiteRoaster = lazy(() => import('./WebsiteRoaster').then(module => ({ default: module.WebsiteRoaster })));
 const ToolsPage = lazy(() => import('./Tools').then(module => ({ default: module.ToolsPage })));
+const AIReceptionistDemo = lazy(() => import('./AIReceptionistDemo'));
 
 // Loading Fallback Component
 const PageLoader = () => (
@@ -53,7 +54,7 @@ const isValidPage = (path: string): boolean => {
     'home', 'aiagent', 'services', 'use-cases', 'industries', 'pricing', 'about',
     'contact', 'book-call', 'faq', 'legal', 'case-studies', 'agentic-strategy',
     'resources', 'framework-comparison', 'agentic-rag', 'ai-governance', 'ai-sdr-guide', 'ai-agents-guide', 'reviews',
-    'ai-receptionist-for-small-business', 'ai-answering-service', 'ai-voice-agent', 'tool/image-alt-text-generator',
+    'ai-receptionist-for-small-business', 'ai-answering-service', 'ai-voice-agent', 'tool/image-alt-text-generator', 'ai-receptionist',
     'tool/voice-to-crm-extractor', 'tool/voice-resume-builder', 'tool/website-roaster', 'ai-virtual-receptionist', 'ai-phone-receptionist', 'ai-call-answering-service', 'tools'
   ];
   return validPages.includes(path.toLowerCase());
@@ -809,6 +810,8 @@ const App: React.FC = () => {
         return <WebsiteRoaster setPage={setPage} />;
       case 'tools':
         return <ToolsPage setPage={setPage} />;
+      case 'ai-receptionist':
+        return <AIReceptionistDemo />;
       default:
         return (
           <>
