@@ -33,6 +33,7 @@ const VoiceToCrmTool = lazy(() => import('./VoiceToCrmTool').then(module => ({ d
 const VoiceResumeBuilder = lazy(() => import('./VoiceResumeBuilder').then(module => ({ default: module.VoiceResumeBuilder })));
 const WebsiteRoaster = lazy(() => import('./WebsiteRoaster').then(module => ({ default: module.WebsiteRoaster })));
 const YouTubeAutomationTool = lazy(() => import('./YouTubeAutomationTool').then(module => ({ default: module.YouTubeAutomationTool })));
+const YouTubeAutomationDashboard = lazy(() => import('./YouTubeAutomationDashboard').then(module => ({ default: module.YouTubeAutomationDashboard })));
 const ToolsPage = lazy(() => import('./Tools').then(module => ({ default: module.ToolsPage })));
 const AIReceptionistDemo = lazy(() => import('./AIReceptionistDemo'));
 
@@ -56,7 +57,7 @@ const isValidPage = (path: string): boolean => {
     'contact', 'book-call', 'faq', 'legal', 'case-studies', 'agentic-strategy',
     'resources', 'framework-comparison', 'agentic-rag', 'ai-governance', 'ai-sdr-guide', 'ai-agents-guide', 'reviews',
     'ai-receptionist-for-small-business', 'ai-answering-service', 'ai-voice-agent', 'tool/image-alt-text-generator', 'ai-receptionist',
-    'tool/voice-to-crm-extractor', 'tool/voice-resume-builder', 'tool/website-roaster', 'tool/youtube-automation', 'ai-virtual-receptionist', 'ai-phone-receptionist', 'ai-call-answering-service', 'tools'
+    'tool/voice-to-crm-extractor', 'tool/voice-resume-builder', 'tool/website-roaster', 'tool/youtube-automation', 'tool/youtube-automation/dashboard', 'ai-virtual-receptionist', 'ai-phone-receptionist', 'ai-call-answering-service', 'tools'
   ];
   return validPages.includes(path.toLowerCase());
 };
@@ -308,6 +309,11 @@ const App: React.FC = () => {
       title: 'YouTube Automation & AI Video Studio | Free AI Tools | Jento AI',
       desc: 'Create viral YouTube videos and Shorts automatically. Scrape trending topics, generate AI scripts, neural voiceovers, and rendered videos with Jento AI.',
       keywords: 'youtube automation, ai video generator, faceless youtube channel, ai scriptwriter, shorts automation'
+    },
+    'tool/youtube-automation/dashboard': {
+      title: 'YouTube Automation Studio Dashboard | Jento AI',
+      desc: 'Access your autonomous YouTube video creation dashboard. Scrape niches, generate AI scripts, voiceovers, and rendered videos.',
+      keywords: 'youtube automation dashboard, ai video studio, faceless youtube dashboard'
     },
     'tools': {
       title: 'Free AI Tools | Jento AI',
@@ -816,6 +822,8 @@ const App: React.FC = () => {
         return <WebsiteRoaster setPage={setPage} />;
       case 'tool/youtube-automation':
         return <YouTubeAutomationTool setPage={setPage} />;
+      case 'tool/youtube-automation/dashboard':
+        return <YouTubeAutomationDashboard setPage={setPage} />;
       case 'tools':
         return <ToolsPage setPage={setPage} />;
       case 'ai-receptionist':

@@ -24,7 +24,12 @@ export const YouTubeAutomationTool: React.FC<{ setPage: (page: Page) => void }> 
   const [isGenerating, setIsGenerating] = useState(false);
   const [blueprint, setBlueprint] = useState<GeneratedBlueprint | null>(null);
 
-  const STUDIO_URL = 'https://automation-jentoai.pages.dev';
+  const handleOpenDashboard = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setPage('tool/youtube-automation/dashboard');
+    window.history.pushState(null, '', '/tool/youtube-automation/dashboard');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   const handleNicheSelect = (nicheId: string, sampleTopic: string) => {
     setSelectedNiche(nicheId);
@@ -128,6 +133,21 @@ export const YouTubeAutomationTool: React.FC<{ setPage: (page: Page) => void }> 
           </p>
         </div>
 
+        {/* Sub-Navigation Tabs */}
+        <div className="flex items-center gap-3 mb-8 border-b border-slate-200 pb-4">
+          <span className="px-4 py-2 rounded-xl bg-red-600 text-white font-bold text-xs tracking-wide shadow-sm">
+            1. Overview & Blueprint
+          </span>
+          <a
+            href="/tool/youtube-automation/dashboard"
+            onClick={handleOpenDashboard}
+            className="px-4 py-2 rounded-xl bg-slate-100 text-slate-600 hover:text-slate-900 hover:bg-slate-200 font-bold text-xs tracking-wide transition-colors cursor-pointer flex items-center gap-1.5"
+          >
+            <span>2. Studio Dashboard</span>
+            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          </a>
+        </div>
+
         {/* Live Studio App Banner */}
         <div className="bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 text-white rounded-3xl p-8 md:p-10 mb-12 shadow-2xl border border-slate-800 relative overflow-hidden">
           <div className="absolute -right-10 -bottom-10 w-64 h-64 bg-red-600/10 rounded-full blur-3xl pointer-events-none"></div>
@@ -144,12 +164,11 @@ export const YouTubeAutomationTool: React.FC<{ setPage: (page: Page) => void }> 
               </p>
             </div>
             <a
-              href={STUDIO_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center px-8 py-4 rounded-2xl bg-gradient-to-r from-red-600 to-rose-600 text-white font-black text-xs uppercase tracking-widest hover:brightness-110 shadow-lg shadow-red-600/30 transition-all hover:scale-105 active:scale-95 shrink-0"
+              href="/tool/youtube-automation/dashboard"
+              onClick={handleOpenDashboard}
+              className="inline-flex items-center justify-center px-8 py-4 rounded-2xl bg-gradient-to-r from-red-600 to-rose-600 text-white font-black text-xs uppercase tracking-widest hover:brightness-110 shadow-lg shadow-red-600/30 transition-all hover:scale-105 active:scale-95 shrink-0 cursor-pointer"
             >
-              Launch Studio App ↗
+              Open Studio Dashboard ➔
             </a>
           </div>
         </div>
@@ -301,12 +320,11 @@ export const YouTubeAutomationTool: React.FC<{ setPage: (page: Page) => void }> 
                   <p className="text-xs text-slate-600">Dispatch this topic directly to the Celery + FFmpeg production pipeline on Cloudflare.</p>
                 </div>
                 <a
-                  href={STUDIO_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-6 py-3 rounded-xl bg-red-600 text-white font-bold text-xs uppercase tracking-wider hover:bg-red-700 transition-colors shadow-md shadow-red-500/20 shrink-0"
+                  href="/tool/youtube-automation/dashboard"
+                  onClick={handleOpenDashboard}
+                  className="px-6 py-3 rounded-xl bg-red-600 text-white font-bold text-xs uppercase tracking-wider hover:bg-red-700 transition-colors shadow-md shadow-red-500/20 shrink-0 cursor-pointer"
                 >
-                  Send to Render Queue ↗
+                  Open Studio Dashboard ➔
                 </a>
               </div>
             </div>

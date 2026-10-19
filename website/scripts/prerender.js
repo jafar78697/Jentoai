@@ -144,6 +144,11 @@ const SEO_DATA = {
     desc: 'Create viral YouTube videos and Shorts automatically. Scrape trending topics, generate AI scripts, neural voiceovers, and rendered videos with Jento AI.',
     keywords: 'youtube automation, ai video generator, faceless youtube channel, ai scriptwriter, shorts automation'
   },
+  'tool/youtube-automation/dashboard': {
+    title: 'YouTube Automation Studio Dashboard | Jento AI',
+    desc: 'Access your autonomous YouTube video creation dashboard. Scrape niches, generate AI scripts, voiceovers, and rendered videos.',
+    keywords: 'youtube automation dashboard, ai video studio, faceless youtube dashboard'
+  },
   'tools': {
     title: 'Free AI Tools | Jento AI',
     desc: 'Explore our suite of free AI automation tools including Image Alt Text Generator and Voice-to-CRM Data Extractor.',
