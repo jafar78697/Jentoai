@@ -41,6 +41,7 @@ const PAGES = [
   '/tool/voice-to-crm-extractor',
   '/tool/voice-resume-builder',
   '/tool/website-roaster',
+  '/tool/youtube-automation',
   '/tools',
   '/ai-receptionist'
 ];

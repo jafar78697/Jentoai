@@ -108,6 +108,12 @@
 
   <!-- Free Tools -->
   <url>
+    <loc>https://jentoai.com/tool/youtube-automation</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
     <loc>https://jentoai.com/tool/image-alt-text-generator</loc>
     <lastmod>2026-07-01</lastmod>
     <changefreq>weekly</changefreq>

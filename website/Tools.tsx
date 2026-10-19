@@ -97,6 +97,30 @@ export const ToolsPage: React.FC<{ setPage: (page: Page) => void }> = ({ setPage
             </div>
           </a>
 
+          {/* YouTube Automation Tool Card */}
+          <a href="/tool/youtube-automation" onClick={(e) => handleNavClick(e, 'tool/youtube-automation')} className="group block bg-white rounded-[2rem] p-8 md:p-12 shadow-xl shadow-slate-200/50 border border-slate-100 hover:-translate-y-2 hover:shadow-2xl hover:shadow-red-500/10 transition-all duration-300">
+            <div className="w-16 h-16 bg-red-50 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-red-600 transition-colors duration-300">
+              <svg className="w-8 h-8 text-red-600 group-hover:text-white transition-colors duration-300" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+              </svg>
+            </div>
+            <div className="flex items-center gap-2 mb-3">
+              <span className="text-[10px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-red-50 text-red-600 border border-red-100">
+                Trending AI Tool
+              </span>
+            </div>
+            <h2 className="text-2xl md:text-3xl font-black text-slate-900 tracking-tight mb-4">YouTube Automation Studio</h2>
+            <p className="text-slate-600 font-medium mb-8 leading-relaxed">
+              Automate faceless YouTube videos & Reels. Scrape viral topics, auto-generate AI scripts, neural voiceovers, and rendered video clips.
+            </p>
+            <div className="flex items-center text-red-600 font-black uppercase tracking-widest text-[11px]">
+              Open Tool 
+              <svg className="w-4 h-4 ml-2 group-hover:translate-x-2 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </div>
+          </a>
+
           {/* Website Roaster Tool Card */}
           <a href="/tool/website-roaster" onClick={(e) => handleNavClick(e, 'tool/website-roaster')} className="group block bg-white rounded-[2rem] p-8 md:p-12 shadow-xl shadow-slate-200/50 border border-slate-100 hover:-translate-y-2 hover:shadow-2xl hover:shadow-orange-500/10 transition-all duration-300">
             <div className="w-16 h-16 bg-orange-50 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-orange-600 transition-colors duration-300">

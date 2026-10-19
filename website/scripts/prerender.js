@@ -139,6 +139,11 @@ const SEO_DATA = {
     desc: 'Enter your website URL and our brutally honest AI will roast your marketing copy, exposing why you aren\'t getting sales, and how to fix it.',
     keywords: 'ai website roaster, landing page feedback ai, roast my website, cro analyzer, ai conversion optimization'
   },
+  'tool/youtube-automation': {
+    title: 'YouTube Automation & AI Video Studio | Free AI Tools | Jento AI',
+    desc: 'Create viral YouTube videos and Shorts automatically. Scrape trending topics, generate AI scripts, neural voiceovers, and rendered videos with Jento AI.',
+    keywords: 'youtube automation, ai video generator, faceless youtube channel, ai scriptwriter, shorts automation'
+  },
   'tools': {
     title: 'Free AI Tools | Jento AI',
     desc: 'Explore our suite of free AI automation tools including Image Alt Text Generator and Voice-to-CRM Data Extractor.',
