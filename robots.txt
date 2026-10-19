@@ -1,0 +1,9 @@
+# Jento AI - Robots.txt
+# https://jentoai.com
+
+User-agent: *
+Disallow:
+Allow: /
+
+# Sitemap Location
+Sitemap: https://jentoai.com/sitemap.xml
