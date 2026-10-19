@@ -954,6 +954,16 @@ const App: React.FC = () => {
     }
   };
 
+  if (page === 'tool/youtube-automation/dashboard') {
+    return (
+      <div className="w-screen h-screen overflow-hidden bg-slate-950">
+        <Suspense fallback={<PageLoader />}>
+          <YouTubeAutomationDashboard setPage={setPage} />
+        </Suspense>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-white flex flex-col">
       <Navbar currentPage={page} setPage={setPage} />
